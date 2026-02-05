@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Han Jaehui | Data Analyst Portfolio</title>
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary: #00462A; /* Deep Forest Green */
+            --primary-dark: #00331F;
+            --accent: #C3E88D; /* Lime Point */
+            --bg-light: #F9FAFB;
+            --bg-white: #FFFFFF;
+            --text-main: #111827;
+            --text-sub: #4B5563;
+            --text-light: #9CA3AF;
+            --border: #E5E7EB;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 16px;
+            --container-width: 1100px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            word-break: keep-all; /* 한국어 줄바꿈 최적화 */
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        
+        /* --- UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 32px;
+            display: inline-block;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 4px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background-color: rgba(0, 70, 42, 0.08);
+            color: var(--primary);
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+        .text-accent { color: var(--primary); font-weight: 600; }
+        
+        /* [NEW] Insight Quote Box Style */
+        .insight-quote {
+            border-left: 4px solid var(--accent);
+            background: #fff;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 12px 12px 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .insight-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .insight-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+
+        /* [NEW] Process Pipeline Style */
+        .process-pipeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 56px;
+            padding: 28px;
+            background: #FFFFFF;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .pipeline-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .pipeline-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -20%;
+            top: 20%;
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        .step-icon { 
+            font-size: 1.5rem; 
+            margin-bottom: 10px; 
+            display: inline-block;
+            background: var(--bg-light);
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+        }
+        .step-text { 
+            font-size: 0.85rem; 
+            font-weight: 700; 
+            color: var(--primary-dark); 
+            line-height: 1.3; 
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            height: 64px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .logo { font-weight: 800; font-size: 1.25rem; color: var(--primary); }
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-sub); }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            padding: 160px 0 100px;
+            background-color: var(--bg-white);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-text h1 {
+            font-size: 2.75rem;
+            line-height: 1.3;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+        }
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--text-sub);
+            margin-bottom: 32px;
+            max-width: 600px;
+        }
+        .hero-tags { margin-bottom: 40px; }
+        .cta-group { display: flex; gap: 16px; }
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        .btn-secondary:hover { background-color: var(--bg-light); transform: translateY(-2px); }
+
+        /* Hero Visual (Flow Chart) */
+        .hero-visual-card {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+        }
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            z-index: 10;
+            width: 100%;
+            max-width: 240px;
+        }
+        .flow-card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .flow-card:hover { transform: translateY(-2px); }
+        .flow-icon { font-size: 1.5rem; margin-bottom: 4px; display: block; }
+        .flow-text { font-size: 0.9rem; font-weight: 700; color: var(--primary-dark); }
+        .flow-arrow { color: rgba(255,255,255,0.6); font-size: 1.2rem; }
+
+        .abstract-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.1;
+            filter: blur(50px);
+            z-index: 1;
+        }
+        .c1 { width: 300px; height: 300px; top: -50px; left: -50px; }
+        .c2 { width: 250px; height: 250px; bottom: -20px; right: -20px; background: white; opacity: 0.05; }
+
+        /* --- ABOUT SECTION --- */
+        #about { padding: 80px 0; background-color: var(--bg-light); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 40px;
+        }
+        .profile-card {
+            background: white;
+            padding: 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        .profile-img-slot {
+            width: 120px;
+            height: 120px;
+            background-color: #E2E8F0;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+        .profile-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+        .profile-detail { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 4px; }
+        .profile-links { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+        .link-btn {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+        .link-btn:hover { border-color: var(--primary); color: var(--primary); background: rgba(0,70,42,0.03); }
+
+        .about-text-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .about-quote {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--text-main);
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+        /* What I Build Section */
+        .what-i-build {
+            margin-bottom: 32px;
+            padding: 20px;
+            background: #FAFAFA;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .wib-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .wib-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .wib-item { font-size: 0.95rem; color: var(--text-sub); display: flex; align-items: center; }
+        .wib-item::before { content: '✔'; color: var(--accent); margin-right: 8px; font-weight: bold; }
+
+        .about-current {
+            background-color: rgba(0, 70, 42, 0.03);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+        .about-current h4 { font-size: 0.9rem; color: var(--primary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .about-current p { font-size: 1rem; color: var(--text-main); }
+
+        /* --- KEYWORDS SECTION --- */
+        #keywords { padding: 80px 0; background-color: var(--bg-white); }
+        .keywords-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px; /* Reduced gap for tighter look */
+        }
+        .keyword-card {
+            background: var(--bg-light);
+            padding: 20px; /* Reduced padding */
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .keyword-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+        .hash { 
+            color: var(--primary); 
+            font-weight: 800; /* Bolder */
+            font-size: 1.25rem; /* Larger */
+            display: block; 
+            margin-bottom: 8px; 
+        }
+        .desc { font-size: 0.9rem; color: var(--text-sub); line-height: 1.4; }
+        .sub-desc { font-size: 0.8rem; color: var(--text-light); margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--border); }
+
+        /* --- TIMELINE SECTION --- */
+        #timeline { padding: 80px 0; background-color: var(--bg-light); }
+        .timeline-container { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #D1D5DB;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 60px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 13px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            border: 3px solid var(--primary);
+            z-index: 1;
+        }
+        .time-date {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: rgba(0,70,42,0.1);
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        .time-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+        .time-desc { font-size: 1rem; color: var(--text-sub); }
+
+        /* --- PROJECT SECTION (General) --- */
+        .project-section { padding: 100px 0; border-top: 1px solid var(--border); background-color: var(--bg-white); }
+        .project-header { margin-bottom: 40px; }
+        .project-eyebrow { font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 8px; }
+        .project-title { font-size: 2.25rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .project-focus { font-size: 1.25rem; color: var(--text-sub); margin-bottom: 24px; border-left: 4px solid var(--accent); padding-left: 16px; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .text-block { margin-bottom: 48px; position: relative; }
+        /* Visual Guide for Phases */
+        .phase-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .text-block h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
+        .text-block p, .text-block ul { font-size: 1rem; color: var(--text-sub); margin-bottom: 8px; }
+        .text-block li { position: relative; padding-left: 14px; margin-bottom: 6px; }
+        .text-block li::before { content: '•'; position: absolute; left: 0; color: var(--text-light); }
+
+        /* Visual Slots */
+        .visual-stack { display: flex; flex-direction: column; gap: 32px; }
+        .slot-box {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .slot-box:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+        .slot-box:hover .slot-header {
+            color: var(--primary);
+            background: rgba(0, 70, 42, 0.03);
+        }
+
+        .slot-header {
+            padding: 12px 16px;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .slot-header::before { content: '📁'; margin-right: 6px; }
+        .slot-header::after { 
+            content: '확대하기 ↗'; 
+            font-size: 0.75rem; 
+            font-weight: 400;
+            color: var(--text-light);
+            background: #F3F4F6;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .slot-content {
+            position: relative;
+            background: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 240px;
+        }
+        .slot-scrollable {
+            height: 320px;
+            overflow-y: auto;
+            background: #F3F4F6;
+            padding: 16px;
+        }
+        .ppt-slide-placeholder {
+            background: white;
+            height: 160px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-size: 0.8rem;
+            border: 1px dashed #D1D5DB;
+        }
+        .media-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #6B7280;
+            padding: 40px;
+            text-align: center;
+        }
+        .media-icon { font-size: 2rem; margin-bottom: 8px; opacity: 0.5; }
+
+        /* Segment Cards */
+        .segment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .seg-card {
+            background: white;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+        .seg-title { font-size: 0.85rem; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .seg-desc { font-size: 0.8rem; color: var(--text-sub); }
+
+        /* --- OTHER PROJECTS --- */
+        #other-projects { padding: 80px 0; background: var(--bg-light); }
+        .other-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .other-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        .other-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+        .other-title { font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+        .other-desc { font-size: 0.9rem; color: var(--text-sub); }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 60px 0;
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+        }
+        .footer-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .footer-links a { border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+        .footer-links a:hover { color: var(--accent); border-color: var(--accent); }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            overflow-y: auto;
+            box-shadow: var(--shadow-md);
+            animation: modalFadeIn 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-sub);
+            z-index: 10;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #F3F4F6;
+        }
+        .modal-close:hover { background: #E5E7EB; color: var(--text-main); }
+        
+        .modal-body-container {
+            flex: 1;
+            margin-top: 20px;
+            min-height: 400px;
+            background: #F3F4F6;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px dashed #D1D5DB;
+        }
+        .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; padding-right: 40px; }
+        .modal-desc { font-size: 1rem; color: var(--text-sub); margin-bottom: 8px; }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 1100px) {
+            :root { --container-width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            /* Layout Adjustments */
+            .hero-grid, .about-grid, .project-content { grid-template-columns: 1fr; gap: 40px; }
+            .hero-grid { grid-template-rows: auto auto; }
+            
+            /* Order Change for Hero: Visual First on Mobile */
+            .hero-text { order: 2; text-align: center; }
+            .hero-visual-card { order: 1; aspect-ratio: 16/9; max-height: 320px; }
+            .hero-text h1 { font-size: 2rem; }
+            .cta-group { justify-content: center; }
+            
+            /* Typography */
+            .section-title { font-size: 1.3rem; }
+            
+            /* Nav */
+            .nav-links { display: none; }
+            
+            /* Timeline */
+            .timeline-container::before { left: 10px; }
+            .timeline-item { padding-left: 36px; }
+            .timeline-item::before { left: 3px; }
+
+            /* Project Specifics */
+            .project-title { font-size: 1.75rem; }
+            .segment-grid { grid-template-columns: 1fr; }
+            .wib-list { grid-template-columns: 1fr; }
+            
+            /* [NEW] Mobile Pipeline Adjustment */
+            .process-pipeline {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding: 20px;
+            }
+            .pipeline-step {
+                flex-direction: row;
+                gap: 16px;
+                text-align: left;
+                width: 100%;
+            }
+            .pipeline-step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                left: 24px;
+                top: 48px;
+                height: 20px; /* Connects vertically */
+                width: 2px;
+                background: #E5E7EB;
+                /* Reset existing */
+                right: auto;
+                font-size: 0;
+            }
+            .step-icon { margin-bottom: 0; }
+            
+            /* Mobile UX Improvement: Visuals below text */
+            .visual-stack { order: 2; margin-top: 20px; }
+            .text-content { order: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Nav -->
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">Han Jaehui.</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#project-1">ThinkGood</a>
+                <a href="#project-2">Cheonan</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1>문제를 다시 정의하고,<br>데이터로 선택 가능한<br>구조를 만듭니다.</h1>
+                    <p>분석 결과가 의사결정으로 이어지도록,<br>기준·설명·실행까지 함께 만듭니다.</p>
+                    <div class="hero-tags">
+                        <span class="badge">#문제정의</span>
+                        <span class="badge">#설명력</span>
+                        <span class="badge">#구조설계</span>
+                        <span class="badge">#협업</span>
+                        <span class="badge">#에너지</span>
+                    </div>
+                    <div class="cta-group">
+                        <a href="#project-1" class="btn btn-primary">Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Contact</a>
+                    </div>
+                </div>
+                <!-- Hero Visual (Modified B Option) -->
+                <div class="hero-visual-card">
+                    <div class="abstract-circle c1"></div>
+                    <div class="abstract-circle c2"></div>
+                    <div class="flow-container">
+                        <div class="flow-card">
+                            <span class="flow-icon">🤔</span>
+                            <div class="flow-text">Problem Definition</div>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-card">
+                            <span class="flow-icon">🏗️</span>
+                            <div class="flow-text">Structure Design</div>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-card">
+                            <span class="flow-icon">✅</span>
+                            <div class="flow-text">Actionable Decision</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <!-- Left: Profile Card -->
+                <div class="profile-card">
+                    <div class="profile-img-slot">
+                        <span>사진</span>
+                    </div>
+                    <h3 class="profile-name">Han Jaehui</h3>
+                    <p class="profile-detail">이화여자대학교 통계학과</p>
+                    <p class="profile-detail" style="font-size: 0.85rem; color: #9CA3AF;">(3학년 수료 후 휴학)</p>
+                    <div style="margin-top:12px;">
+                        <span class="badge" style="background:#F3F4F6; color:#4B5563;">ADsP (2024.09)</span>
+                    </div>
+                    <div class="profile-links">
+                        <a href="#" class="link-btn">Email (placeholder)</a>
+                        <a href="#" class="link-btn">Github (placeholder)</a>
+                        <a href="#" class="link-btn">Blog (placeholder)</a>
+                    </div>
+                </div>
+
+                <!-- Right: Intro Text + What I Build -->
+                <div class="about-text-card">
+                    <div class="about-quote">
+                        <!-- [MODIFIED] Active voice verbs -->
+                        "혼자 조용히 고민하며 근거를 쌓고,<br>
+                        팀이 앞으로 나아갈 방향으로 의견을 정리해 <strong>당차게 제안합니다.</strong><br>
+                        <strong class="text-accent">데이터와 제품 사이의 간극을 메우는 일을 직접 수행합니다.</strong>"
+                    </div>
+                    
+                    <!-- [MODIFIED] "AI-assisted Prototyping" -->
+                    <div class="what-i-build">
+                        <div class="wib-title">What I Build</div>
+                        <div class="wib-list">
+                            <div class="wib-item">Data Analysis & Modeling</div>
+                            <div class="wib-item">Data Structuring</div>
+                            <div class="wib-item">Dashboard / PPT / Demo</div>
+                            <div class="wib-item">AI-assisted Prototyping</div>
+                        </div>
+                    </div>
+
+                    <div class="about-current">
+                        <h4>Communication</h4>
+                        <!-- [MODIFIED] Replaced slang with professional phrasing -->
+                        <p>AI를 활용해 웹 데모와 문서까지 <strong>직접 구현하고 전달하며</strong>, 분석 결과가 가장 설득력 있게 닿는 방법을 스스로 만들어냅니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keywords Section -->
+    <section id="keywords">
+        <div class="container">
+            <h2 class="section-title">Core Values</h2>
+            <div class="keywords-grid">
+                <div class="keyword-card">
+                    <span class="hash">#문제정의</span>
+                    <p class="desc">보이는 지표보다, 왜 이 문제가 지금 중요한지부터 다시 정의합니다.</p>
+                </div>
+                <div class="keyword-card">
+                    <span class="hash">#설명력</span>
+                    <p class="desc">결과보다 과정을 숨기지 않고, 비전문가도 이해할 수 있는 언어로 번역합니다.</p>
+                </div>
+                <div class="keyword-card">
+                    <span class="hash">#구조설계</span>
+                    <p class="desc">당장 성능이 나오지 않더라도, 데이터가 쌓일 수 있는 구조를 먼저 만듭니다.</p>
+                </div>
+                <div class="keyword-card">
+                    <span class="hash">#협업</span>
+                    <p class="desc">혼자 푸는 문제보다, 팀이 같은 방향을 보게 만드는 과정에 가치를 둡니다.</p>
+                </div>
+                <div class="keyword-card" style="grid-row: span 1;">
+                    <span class="hash">#에너지</span>
+                    <p class="desc">혼자 충분히 고민하며 근거를 쌓은 뒤, 당차게 제안합니다.</p>
+                    <p class="sub-desc">대화를 좋아하지만, 결정을 위해 혼자 깊게 파고드는 시간도 소중하게 씁니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <span class="time-date">2025.07.05 ~ 현재</span>
+                    <h3 class="time-title">Tobig’s 24기</h3>
+                    <p class="time-desc">추천 시스템 심화 스터디 및 기업 연계 컨퍼런스 프로젝트를 리드했습니다.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-date">2024.09.02 ~ 2025.08.29</span>
+                    <h3 class="time-title">ESAA</h3>
+                    <p class="time-desc">11기 팀원 → 12기 부회장으로 운영 구조 개선과 프로젝트 수행을 병행했습니다.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-date">2024.06.29 ~ 2024.08.31</span>
+                    <h3 class="time-title">OUTTA AI Bootcamp 데이터반</h3>
+                    <p class="time-desc">데이터 분석 전 과정(수집-전처리-모델링) 기반을 빠르게 쌓았습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT 1: ThinkGood -->
+    <section id="project-1" class="project-section">
+        <div class="container">
+            <div class="project-header">
+                <div class="project-eyebrow">Project 01 · 2025.10 ~ 2026.01</div>
+                <h2 class="project-title">ThinkGood | 공모전 추천 시스템 구축<br>& DB 고도화 제안</h2>
+                <div class="project-focus">
+                    "AI 도입을 넘어, 현업에 즉시 적용 가능한(Attach) 모델을 설계하고<br>더 나은 성능을 위한 DB 자산화 방향을 함께 제안했습니다."
+                </div>
+                <div class="project-tags">
+                    <span class="badge">Cold Start</span>
+                    <span class="badge">Rule-based</span>
+                    <span class="badge">Segment</span>
+                    <span class="badge">DB Proposal</span>
+                    <span class="badge">Streamlit</span>
+                </div>
+            </div>
+
+            <!-- [NEW] ThinkGood Pipeline -->
+            <div class="process-pipeline">
+                <div class="pipeline-step">
+                    <span class="step-icon">💡</span>
+                    <span class="step-text">Problem<br>Definition</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">🔎</span>
+                    <span class="step-text">Data<br>Reality Check</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">🏗️</span>
+                    <span class="step-text">Data<br>Structuring</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">🎯</span>
+                    <span class="step-text">Segmentation<br>Strategy</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">⚙️</span>
+                    <span class="step-text">Attach-ready<br>Recsys</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">🤝</span>
+                    <span class="step-text">Demo &<br>Persuasion</span>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <!-- Left: Text Blocks -->
+                <div class="text-content">
+                    
+                    <!-- [MODIFIED] Using Insight Quote Style -->
+                    <div class="insight-quote">
+                        <span class="insight-label">Key Insight</span>
+                        <div class="insight-text">
+                            "AI를 모르는 임원진에게 기술이 아닌 '비즈니스 가치'로 설득하고,<br>정돈되지 않은 실데이터 환경에서 '지금 당장 실행 가능한' 구조를 설계했습니다."
+                        </div>
+                    </div>
+
+                    <div class="text-block">
+                        <span class="phase-badge">Step 01</span>
+                        <h3>Problem Definition & Persuasion</h3>
+                        <p>AI 도입 자체가 목적이 아니라, "사용자가 공모전을 찾는 탐색 비용을 줄여 전환율을 높이는 것"이 핵심임을 설득했습니다. 마케터와 임원진에게 기술 용어 대신 비즈니스 언어로 접근하여, 완벽한 모델보다 '검증 가능한 MVP'가 필요함을 합의했습니다.</p>
+                    </div>
+                    <div class="text-block">
+                        <span class="phase-badge">Step 02</span>
+                        <h3>Reality & Action: 정제되지 않은 데이터의 가치화</h3>
+                        <p>수기로 관리되던 데이터, 고유 식별자가 없는 엑셀 파일 등 열악한 환경이었지만, 불평보다 '지금 무엇이 가능한가'에 집중했습니다. 흩어진 정보에서 '접수'라는 핵심 행동 신호를 발굴하고, 이를 추천 학습 데이터로 재구성하는 파이프라인을 구축했습니다.</p>
+                    </div>
+                    <div class="text-block">
+                        <span class="phase-badge">Phase 1</span>
+                        <h3>현업에 Attach 가능한 추천 로직</h3>
+                        <p>90%의 콜드스타트 유저에게 복잡한 딥러닝 모델은 무용지물이었습니다. 대신 마케터가 이해하고 타겟팅할 수 있는 '세그먼트(Dormant/Light/Power)' 전략을 제안했습니다. 단순해 보이지만 현업 운영 로직에 바로 붙일 수 있는 하이브리드 모델로 실질적인 성능을 확보했습니다.</p>
+                        <div class="segment-grid">
+                            <div class="seg-card">
+                                <div class="seg-title">GUEST</div>
+                                <div class="seg-desc">정보 없음 → 인기+최신 탐색 유도</div>
+                            </div>
+                            <div class="seg-card">
+                                <div class="seg-title">DORMANT</div>
+                                <div class="seg-desc">장기 미접속 → 복귀 장벽 완화</div>
+                            </div>
+                            <div class="seg-card">
+                                <div class="seg-title">LIGHT</div>
+                                <div class="seg-desc">관심사 보유 → 태그/분야 매칭</div>
+                            </div>
+                            <div class="seg-card">
+                                <div class="seg-title">POWER</div>
+                                <div class="seg-desc">접수 2회+ → 이력/관심사 하이브리드</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-block">
+                        <span class="phase-badge">Phase 2</span>
+                        <h3>자산화를 위한 설계: DB & Demo</h3>
+                        <p>눈에 보이지 않는 알고리즘은 설득하기 어렵습니다. 추천 원리가 시각적으로 보이는 'XAI 대시보드'와, 데이터가 자산으로 쌓이는 'DB 설계안'을 함께 제시했습니다. DB 구축은 단순 개발 영역이 아니라, 회사가 더 좋은 AI 모델을 갖기 위해 선행되어야 할 투자임을 강조했습니다.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Visual Slots (Clickable for Modal) -->
+                <div class="visual-stack">
+                    <div class="slot-box" onclick="openModal('발표 자료 (PPT)', 'Page 1: Intro\nPage 2: Problem Definition\nPage 3: Data Architecture\nPage 4: Logic Flow')">
+                        <div class="slot-header">발표 자료 (thinkgood_ppt_images/*)</div>
+                        <div class="slot-scrollable">
+                            <div class="ppt-slide-placeholder">Page 1: Intro</div>
+                            <div class="ppt-slide-placeholder">Page 2: Problem Definition</div>
+                            <div class="ppt-slide-placeholder">Page 3: Data Architecture</div>
+                            <div class="ppt-slide-placeholder">Page 4: Logic Flow</div>
+                        </div>
+                    </div>
+                    <div class="slot-box" onclick="openModal('서비스 데모 영상', '로그인 및 추천 결과 시연 영상\nUser View Simulation')">
+                        <div class="slot-header">서비스 데모 (thinkgood_demo.mp4)</div>
+                        <div class="slot-content">
+                            <div class="media-placeholder">
+                                <div class="media-icon">▶️</div>
+                                <p>로그인 및 추천 결과 시연 영상<br><small>User View Simulation</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slot-box" onclick="openModal('관리자 XAI 화면', 'XAI 대시보드\n추천 근거 및 사용자 특성 시각화')">
+                        <div class="slot-header">관리자 화면 (thinkgood_admin_xai.png)</div>
+                        <div class="slot-content">
+                            <div class="media-placeholder">
+                                <div class="media-icon">⚙️</div>
+                                <p>XAI 대시보드<br><small>추천 근거 및 사용자 특성 시각화</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT 2: Cheonan -->
+    <section id="project-2" class="project-section">
+        <div class="container">
+            <div class="project-header">
+                <div class="project-eyebrow">Project 02 · 2025.07 ~ 2025.08</div>
+                <h2 class="project-title">Cheonan | 노인 복지 사각지대<br>고위험군 분석 & 정책 제안</h2>
+                <div class="project-focus">
+                    "정교한 블랙박스 모델보다, 담당 공무원이 납득할 수 있는<br>'설명 가능한(Explainable)' 분석을 우선했습니다."
+                </div>
+                <div class="project-tags">
+                    <span class="badge">GIS</span>
+                    <span class="badge">Factor Analysis</span>
+                    <span class="badge">KMeans</span>
+                    <span class="badge">Tableau</span>
+                </div>
+            </div>
+
+            <!-- [NEW] Cheonan Pipeline -->
+            <div class="process-pipeline">
+                <div class="pipeline-step">
+                    <span class="step-icon">🏛️</span>
+                    <span class="step-text">Policy-oriented<br>Problem</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">🗺️</span>
+                    <span class="step-text">Admin Data<br>Alignment</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">🧱</span>
+                    <span class="step-text">Feature<br>Construction</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">📊</span>
+                    <span class="step-text">Factor Analysis<br>(Explainability)</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">📍</span>
+                    <span class="step-text">Spatial<br>Analysis</span>
+                </div>
+                <div class="pipeline-step">
+                    <span class="step-icon">📢</span>
+                    <span class="step-text">Policy-ready<br>Visualization</span>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <!-- Left: Text Blocks -->
+                <div class="text-content">
+                    <div class="text-block">
+                        <h3>Background</h3>
+                        <p>행정동 단위의 실효성 있는 정책 제안을 위해, 데이터의 지리적 정합성을 확보하는 것부터 시작했습니다.</p>
+                    </div>
+                    <div class="text-block">
+                        <h3>Data Engineering: 정합성 확보</h3>
+                        <p>법정동/행정동 혼재 문제를 해결하기 위해 읍면동 기준을 정리하고, 주소-위경도 변환 후 GeoJSON의 MultiPolygon 포함 여부를 확인하는 매핑 함수를 직접 구현해 '정확한 행정동' 데이터를 확보했습니다.</p>
+                    </div>
+                    <div class="text-block">
+                        <h3>Modeling Choice: 왜 인자분석인가?</h3>
+                        
+                        <!-- [MODIFIED] Using Insight Quote Style -->
+                        <div class="insight-quote">
+                            <span class="insight-label">Decision Criteria</span>
+                            <div class="insight-text">
+                                “정책 입안자에게는 '정확도 99% 모델'보다<br>'왜 여기가 위험한가'를 설명할 수 있는 근거가 더 중요합니다.”
+                            </div>
+                        </div>
+
+                        <p>단순 나열식 지표보다 "위험의 원인"을 구조화하기 위해 인자분석(Factor Analysis)을 선택했습니다.</p>
+                        <ul>
+                            <li>수십 개의 변수를 '경제여력', '인프라 부족' 등 설명 가능한 요인으로 축소</li>
+                            <li>KMO 0.6 이상, 의미적 연결이 명확한 변수 조합 선택</li>
+                            <li><strong>최종 5개 인자:</strong> 고령화/독거, 경제여력, 인지건강지원, 금융취약, 생활인프라</li>
+                        </ul>
+                    </div>
+                    <div class="text-block">
+                        <h3>Spatial Analysis & Proposal</h3>
+                        <p>Moran’s I로 공간적 핫스팟(HH)을 도출하고, KMeans로 위험군을 분류했습니다. 최종적으로 Tableau 대시보드를 통해 비전문가도 "어디에 예산을 투입해야 하는지" 한눈에 볼 수 있도록 시각화하여 설득력을 높였습니다.</p>
+                    </div>
+                </div>
+
+                <!-- Right: Visual Slots (Clickable for Modal) -->
+                <div class="visual-stack">
+                    <div class="slot-box" onclick="openModal('공간 분석 지도', 'Morans I Hotspot Map\n행정동별 위험도 시각화')">
+                        <div class="slot-header">공간 분석 (cheonan_hotspot_map.png)</div>
+                        <div class="slot-content">
+                            <div class="media-placeholder">
+                                <div class="media-icon">🗺️</div>
+                                <p>Moran's I Hotspot Map<br><small>행정동별 위험도 시각화</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slot-box" onclick="openModal('Tableau 대시보드', 'Interactive Dashboard\n인자별 위험 요인 탐색 UI')">
+                        <div class="slot-header">대시보드 (cheonan_tableau.png)</div>
+                        <div class="slot-content">
+                            <div class="media-placeholder">
+                                <div class="media-icon">📈</div>
+                                <p>Interactive Dashboard<br><small>인자별 위험 요인 탐색 UI</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slot-box" onclick="openModal('발표 자료 (PPT)', 'Page 1: Intro\nPage 2: GIS Mapping Logic\nPage 3: Factor Analysis Result')">
+                        <div class="slot-header">발표 자료 (cheonan_ppt_images/*)</div>
+                        <div class="slot-scrollable">
+                            <div class="ppt-slide-placeholder">Page 1: Intro</div>
+                            <div class="ppt-slide-placeholder">Page 2: GIS Mapping Logic</div>
+                            <div class="ppt-slide-placeholder">Page 3: Factor Analysis Result</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Projects -->
+    <section id="other-projects">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: 40px;">Other Projects</h2>
+            <div class="other-grid">
+                <div class="other-card">
+                    <h4 class="other-title">Run-Trip 관광 정책 분석</h4>
+                    <p class="other-desc">관광 데이터 기반 러닝 코스 추천 및 정책 제안</p>
+                </div>
+                <div class="other-card">
+                    <h4 class="other-title">Airbnb 가격 예측</h4>
+                    <p class="other-desc">숙소 특성 데이터 기반 가격 책정 모델링</p>
+                </div>
+                <div class="other-card">
+                    <h4 class="other-title">Credit Card Default</h4>
+                    <p class="other-desc">신용카드 연체 고객 예측 및 리스크 관리</p>
+                </div>
+                <div class="other-card">
+                    <h4 class="other-title">Novel Author NLP</h4>
+                    <p class="other-desc">문체 분석을 통한 소설 작가 분류 모델</p>
+                </div>
+                <div class="other-card">
+                    <h4 class="other-title">Movie Audience Series</h4>
+                    <p class="other-desc">시계열 분석을 통한 영화 관객수 예측</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <h3>Let's Connect</h3>
+            <p style="margin-top:16px; opacity: 0.8;">데이터로 문제를 정의하고 해결하는 과정에 대해 더 이야기 나누고 싶습니다.</p>
+            <div class="footer-links">
+                <a href="#">Email</a>
+                <a href="#">Github</a>
+                <a href="#">Blog</a>
+            </div>
+            <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">
+                &copy; 2025 Han Jaehui. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="visualModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal()">✕</div>
+            <h3 id="modalTitle" class="modal-title">Title</h3>
+            <div class="modal-body-container">
+                <div class="media-icon" style="font-size: 4rem; opacity: 0.3; margin-bottom: 16px;">🖼️</div>
+                <p id="modalDesc" class="modal-desc" style="white-space: pre-line; text-align: center;">Content</p>
+                <small style="color: #9CA3AF; margin-top: 16px;">(실제 파일이 연결되면 이곳에 이미지가 표시됩니다)</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Script -->
+    <script>
+        function openModal(title, desc) {
+            const modal = document.getElementById('visualModal');
+            const mTitle = document.getElementById('modalTitle');
+            const mDesc = document.getElementById('modalDesc');
+            
+            mTitle.innerText = title;
+            mDesc.innerText = desc || '내용이 없습니다.';
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('visualModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside content
+        document.getElementById('visualModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
