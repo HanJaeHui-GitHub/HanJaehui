@@ -316,13 +316,8 @@
         .project-focus { font-size: 1.25rem; color: var(--text-sub); margin-bottom: 24px; border-left: 4px solid var(--accent); padding-left: 16px; }
         .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
         
-        /* Layout Adjustments per Section */
+        /* Layout Adjustments */
         .project-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        /* Cheonan Section: Stacked Layout */
-        #project-2 .project-content { display: block; }
-        #project-2 .text-content { max-width: 800px; margin-bottom: 40px; }
-        #project-2 .visual-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-
         .text-block { margin-bottom: 48px; position: relative; }
         .phase-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); background: var(--primary); padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
         .text-block h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
@@ -371,7 +366,7 @@
         .slot-content {
             position: relative;
             background: #f3f4f6;
-            aspect-ratio: 16/9; /* Better preview size */
+            aspect-ratio: 16/9; 
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -384,9 +379,6 @@
             height: 100%;
             object-fit: cover;
             object-position: top center;
-            /* Allow interactions for scrolling, but don't bubble clicks if not wanted. 
-               However, usually we want click-to-modal. 
-               We will use a separate 'expand' area or rely on the user clicking the header for full expansion if interaction is needed. */
             pointer-events: auto; /* Allow scrolling inside */
         }
         
@@ -395,30 +387,6 @@
             color: var(--primary-dark); padding: 40px; text-align: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(2px);
         }
         .media-icon { font-size: 2.5rem; margin-bottom: 8px; opacity: 0.8; }
-
-        /* Tableau Link Card */
-        .tableau-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.2s;
-            height: 100%;
-            text-decoration: none;
-        }
-        .tableau-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-        .tableau-icon { font-size: 2rem; margin-bottom: 12px; }
-        .tableau-text { font-weight: 700; color: var(--primary); margin-bottom: 4px; }
-        .tableau-sub { font-size: 0.85rem; color: var(--text-sub); }
 
         .segment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
         .seg-card { background: white; padding: 12px; border: 1px solid var(--border); border-radius: 8px; }
@@ -484,8 +452,7 @@
             .pipeline-step { flex-direction: row; gap: 16px; text-align: left; width: 100%; }
             .pipeline-step:not(:last-child)::after { content: ''; position: absolute; left: 24px; top: 48px; height: 20px; width: 2px; background: #E5E7EB; right: auto; font-size: 0; }
             .step-icon { margin-bottom: 0; }
-            .visual-stack { order: 2; margin-top: 20px; display: flex; } /* Revert to flex stack on mobile */
-            #project-2 .visual-stack { grid-template-columns: 1fr; }
+            .visual-stack { order: 2; margin-top: 20px; }
             .text-content { order: 1; }
         }
     </style>
@@ -703,18 +670,11 @@
                     </div>
 
                     <!-- Demo Slot: Image Thumbnail -->
-                    <div class="slot-box" onclick="openModal('서비스 데모', 'Hugging Face Space에서 직접 실행해보세요.', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System')">
+                    <div class="slot-box" onclick="openModal('서비스 데모', '', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System', true)">
                         <div class="slot-header">서비스 데모 (Hugging Face)</div>
                         <div class="slot-content">
+                            <!-- [수정] 썸네일 경로 수정 및 공백 처리 -->
                             <img src="asset/thinkgood%20demo.PNG" class="slot-thumbnail" alt="ThinkGood Demo">
-                        </div>
-                    </div>
-
-                    <!-- Image Slot -->
-                    <div class="slot-box" onclick="openModal('관리자 XAI 화면', 'XAI 대시보드', 'asset/thinkgood_admin_xai.png')">
-                        <div class="slot-header">관리자 화면 (Image)</div>
-                        <div class="slot-content">
-                            <img src="asset/thinkgood_admin_xai.png" class="slot-thumbnail" alt="Admin Dashboard">
                         </div>
                     </div>
                 </div>
@@ -745,8 +705,8 @@
                 <div class="pipeline-step"><span class="step-icon">📢</span><span class="step-text">Policy-ready<br>Visualization</span></div>
             </div>
 
-            <!-- Changed Layout: Text Top, Visual Grid Bottom -->
             <div class="project-content">
+                <!-- Left: Text Blocks + Tableau Button -->
                 <div class="text-content">
                     <div class="text-block">
                         <h3>Background & Data Engineering</h3>
@@ -764,22 +724,29 @@
                         <h3>Spatial Analysis & Proposal</h3>
                         <p>Moran’s I로 공간적 핫스팟(HH)을 도출하고, Tableau 대시보드를 통해 비전문가도 쉽게 이해할 수 있도록 시각화했습니다.</p>
                     </div>
+                    
+                    <!-- [수정] Tableau Button Here -->
+                    <div style="margin-top: 32px;">
+                        <a href="https://public.tableau.com/views/_Tableau2_17560266784060/sheet0?:showVizHome=no&:embed=true" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; height: 56px;">
+                            📊 Tableau 대시보드 바로가기 ↗
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Visual Stack: Grid Layout -->
+                <!-- Right: Visual Slots (Thumbnails) -->
                 <div class="visual-stack">
                     <!-- Image Slot 1 -->
                     <div class="slot-box" onclick="openModal('공간 분석 지도', 'Moran\'s I Hotspot Map', 'asset/행정동별 위험도 시각화.jpg')">
                         <div class="slot-header">공간 분석 (Image)</div>
                         <div class="slot-content">
-                            <img src="asset/행정동별 위험도 시각화.jpg" class="slot-thumbnail" alt="Spatial Analysis">
+                            <img src="asset/행정동별%20위험도%20시각화.jpg" class="slot-thumbnail" alt="Spatial Analysis">
                         </div>
                     </div>
                     <!-- Image Slot 2 -->
                     <div class="slot-box" onclick="openModal('탐색 UI 화면', 'Factor Analysis Dashboard UI', 'asset/인자별 위험 요인 탐색 UI.jpg')">
                         <div class="slot-header">탐색 UI (Image)</div>
                         <div class="slot-content">
-                            <img src="asset/인자별 위험 요인 탐색 UI.jpg" class="slot-thumbnail" alt="Exploration UI">
+                            <img src="asset/인자별%20위험%20요인%20탐색%20UI.jpg" class="slot-thumbnail" alt="Exploration UI">
                         </div>
                     </div>
                     <!-- PDF Slot -->
@@ -791,12 +758,6 @@
                             <iframe src="asset/cheonan_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1" class="slot-thumbnail"></iframe>
                         </div>
                     </div>
-                    <!-- Tableau Link Card (No Preview) -->
-                    <a href="https://public.tableau.com/views/_Tableau2_17560266784060/sheet0?:showVizHome=no&:embed=true" target="_blank" class="tableau-card">
-                        <div class="tableau-icon">📊</div>
-                        <div class="tableau-text">Tableau 대시보드</div>
-                        <div class="tableau-sub">새 창에서 데이터 탐색하기 ↗</div>
-                    </a>
                 </div>
             </div>
         </div>
@@ -842,7 +803,7 @@
 
     <!-- Modal Script -->
     <script>
-        function openModal(title, desc, imagePath = null, url = null) {
+        function openModal(title, desc, imagePath = null, url = null, isLinkOnly = false) {
             const modal = document.getElementById('visualModal');
             const mTitle = document.getElementById('modalTitle');
             const mBody = document.querySelector('.modal-body-container');
@@ -851,7 +812,34 @@
             mBody.innerHTML = ''; 
             mTitle.innerText = title;
 
-            if (url) {
+            // [수정] HuggingFace 등 링크 전용 모달 처리
+            if (isLinkOnly && url) {
+                // 설명 문구
+                const infoTitle = document.createElement('h3');
+                infoTitle.innerText = title;
+                infoTitle.style.marginBottom = '16px';
+                infoTitle.style.color = '#00462A';
+
+                const infoDesc = document.createElement('p');
+                infoDesc.innerText = "보안 정책상 미리보기를 지원하지 않습니다.\n아래 버튼을 눌러 새 창에서 확인해주세요.";
+                infoDesc.style.textAlign = 'center';
+                infoDesc.style.marginBottom = '24px';
+                infoDesc.style.color = '#4B5563';
+                infoDesc.style.lineHeight = '1.6';
+
+                // 버튼
+                const newWindowLink = document.createElement('a');
+                newWindowLink.href = url;
+                newWindowLink.target = '_blank';
+                newWindowLink.innerText = '새 창에서 실행하기 ↗';
+                newWindowLink.className = 'btn btn-primary'; // Primary style
+                newWindowLink.style.textDecoration = 'none';
+                
+                mBody.appendChild(infoTitle);
+                mBody.appendChild(infoDesc);
+                mBody.appendChild(newWindowLink);
+
+            } else if (url) {
                 const iframe = document.createElement('iframe');
                 iframe.src = url;
                 iframe.style.width = '100%';
