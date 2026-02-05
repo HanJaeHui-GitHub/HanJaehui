@@ -966,16 +966,16 @@
 
                 <!-- Right: Visual Slots (Clickable for Modal) -->
                 <div class="visual-stack">
-                    <!-- [수정: PDF 연결] <a> 태그로 변경하여 새창 열기 -->
-                    <a href="asset/thinkgood_presentation.pdf" target="_blank" class="slot-box" style="text-decoration: none; color: inherit;">
-                        <div class="slot-header">발표 자료 (PDF View)</div>
-                        <div class="slot-scrollable" style="cursor: pointer;">
-                            <div class="ppt-slide-placeholder">Click to Open PDF</div>
+                    <!-- [수정: PDF 연결] <a> 태그를 div onclick으로 변경하여 팝업(모달)으로 연결 -->
+                    <div class="slot-box" onclick="openModal('발표 자료 (PDF View)', 'PDF 미리보기', null, 'asset/thinkgood_presentation.pdf')" style="cursor: pointer;">
+                        <div class="slot-header">발표 자료 (Click to View PDF)</div>
+                        <div class="slot-scrollable">
+                            <div class="ppt-slide-placeholder">Click to Open PDF (Popup)</div>
                             <div class="ppt-slide-placeholder">Page 2: Problem Definition</div>
                             <div class="ppt-slide-placeholder">Page 3: Data Architecture</div>
                             <div class="ppt-slide-placeholder">Page 4: Logic Flow</div>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- [수정: 데모 영상 연결 (URL iframe)] -->
                     <div class="slot-box" onclick="openModal('서비스 데모', 'Hugging Face Space에서 직접 실행해보세요.', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System')">
@@ -1103,15 +1103,15 @@
                             </div>
                         </div>
                     </div>
-                    <!-- [수정: PDF 연결] <a> 태그로 변경하여 새창 열기 -->
-                    <a href="asset/cheonan_presentation.pdf" target="_blank" class="slot-box" style="text-decoration: none; color: inherit;">
-                        <div class="slot-header">발표 자료 (PDF View)</div>
-                        <div class="slot-scrollable" style="cursor: pointer;">
-                            <div class="ppt-slide-placeholder">Click to Open PDF</div>
+                    <!-- [수정: PDF 연결] <a> 태그를 div onclick으로 변경하여 팝업(모달)으로 연결 -->
+                    <div class="slot-box" onclick="openModal('발표 자료 (PDF View)', 'PDF 미리보기', null, 'asset/cheonan_presentation.pdf')" style="cursor: pointer;">
+                        <div class="slot-header">발표 자료 (Click to View PDF)</div>
+                        <div class="slot-scrollable">
+                            <div class="ppt-slide-placeholder">Click to Open PDF (Popup)</div>
                             <div class="ppt-slide-placeholder">Page 2: GIS Mapping Logic</div>
                             <div class="ppt-slide-placeholder">Page 3: Factor Analysis Result</div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
