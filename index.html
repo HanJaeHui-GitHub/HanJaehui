@@ -333,9 +333,9 @@
         }
         .phase-badge.step {
             /* Lighter style for preparation steps */
-            background-color: #F0FDF4; 
-            color: var(--primary); 
-            border: 1px solid rgba(0, 70, 42, 0.2);
+            background-color: #E2E8F0; 
+            color: #4B5563; 
+            border: 1px solid #CBD5E1;
         }
         .phase-badge.phase {
             /* Stronger style for execution phases */
@@ -655,22 +655,22 @@
                 <div class="text-content">
                     <div class="insight-quote">
                         <span class="insight-label">Key Insight</span>
-                        <div class="insight-text">"AI를 모르는 임원진에게 기술이 아닌 '비즈니스 가치'로 설득하고, 정돈되지 않은 실데이터 환경에서 '지금 당장 실행 가능한' 구조를 설계했습니다."</div>
+                        <div class="insight-text">"AI를 모르는 임원진에게 기술이 아닌 '비즈니스 가치'로 설득하고,<br>정돈되지 않은 실데이터 환경에서 '지금 당장 실행 가능한' 구조를 설계했습니다."</div>
                     </div>
                     <div class="text-block">
                         <span class="phase-badge step">Step 01</span>
                         <h3>Problem Definition & Persuasion</h3>
-                        <p>AI 도입 자체가 목적이 아니라, "사용자가 공모전을 찾는 탐색 비용을 줄여 전환율을 높이는 것"이 핵심임을 설득했습니다.</p>
+                        <p>AI 도입 자체가 목적이 아니라, "사용자가 공모전을 찾는 탐색 비용을 줄여 전환율을 높이는 것"이 핵심임을 설득했습니다. 마케터와 임원진에게 기술 용어 대신 비즈니스 언어로 접근하여, 완벽한 모델보다 '검증 가능한 MVP'가 필요함을 합의했습니다.</p>
                     </div>
                     <div class="text-block">
                         <span class="phase-badge step">Step 02</span>
                         <h3>Reality & Action: 정제되지 않은 데이터의 가치화</h3>
-                        <p>수기로 관리되던 데이터, 고유 식별자가 없는 엑셀 파일 등 열악한 환경이었지만, 흩어진 정보에서 '접수'라는 핵심 행동 신호를 발굴했습니다.</p>
+                        <p>수기로 관리되던 데이터, 고유 식별자가 없는 엑셀 파일 등 열악한 환경이었지만, 불평보다 '지금 무엇이 가능한가'에 집중했습니다. 흩어진 정보에서 '접수'라는 핵심 행동 신호를 발굴하고, 이를 추천 학습 데이터로 재구성하는 파이프라인을 구축했습니다.</p>
                     </div>
                     <div class="text-block">
                         <span class="phase-badge phase">Phase 1</span>
                         <h3>현업에 Attach 가능한 추천 로직</h3>
-                        <p>90%의 콜드스타트 유저에게 복잡한 딥러닝 모델은 무용지물이었습니다. 대신 마케터가 이해하고 타겟팅할 수 있는 '세그먼트' 전략을 제안했습니다.</p>
+                        <p>90%의 콜드스타트 유저에게 복잡한 딥러닝 모델은 무용지물이었습니다. 대신 마케터가 이해하고 타겟팅할 수 있는 '세그먼트(Dormant/Light/Power)' 전략을 제안했습니다. 단순해 보이지만 현업 운영 로직에 바로 붙일 수 있는 하이브리드 모델로 실질적인 성능을 확보했습니다.</p>
                         <div class="segment-grid">
                             <div class="seg-card"><div class="seg-title">GUEST</div><div class="seg-desc">정보 없음 → 인기+최신 탐색 유도</div></div>
                             <div class="seg-card"><div class="seg-title">DORMANT</div><div class="seg-desc">장기 미접속 → 복귀 장벽 완화</div></div>
@@ -681,7 +681,7 @@
                     <div class="text-block">
                         <span class="phase-badge phase">Phase 2</span>
                         <h3>자산화를 위한 설계: DB & Demo</h3>
-                        <p>눈에 보이지 않는 알고리즘은 설득하기 어렵습니다. 추천 원리가 시각적으로 보이는 'XAI 대시보드'와, 데이터가 자산으로 쌓이는 'DB 설계안'을 함께 제시했습니다.</p>
+                        <p>눈에 보이지 않는 알고리즘은 설득하기 어렵습니다. 추천 원리가 시각적으로 보이는 'XAI 대시보드'와, 데이터가 자산으로 쌓이는 'DB 설계안'을 함께 제시했습니다. DB 구축은 단순 개발 영역이 아니라, 회사가 더 좋은 AI 모델을 갖기 위해 선행되어야 할 투자임을 강조했습니다.</p>
                     </div>
                 </div>
 
@@ -690,7 +690,7 @@
                     <!-- PDF Slot: Scrollable Thumbnail -->
                     <div class="slot-box">
                         <div class="slot-header" onclick="openModal('발표 자료', 'PDF 전체 보기', null, 'asset/thinkgood_presentation.pdf')">
-                            <span>발표 자료 (PDF)</span> <span>확대하기 ↗</span>
+                            <span>발표 자료 (PDF)</span> 
                         </div>
                         <div class="slot-content">
                             <!-- Direct Scrollable PDF Preview -->
@@ -699,7 +699,7 @@
                     </div>
 
                     <!-- Demo Slot: Image Thumbnail -->
-                    <div class="slot-box" onclick="openModal('서비스 데모', '', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System', true)">
+                    <div class="slot-box" onclick="openModal('서비스 데모', 'Hugging Face Space', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System', true)">
                         <div class="slot-header">서비스 데모 (Hugging Face)</div>
                         <div class="slot-content">
                             <!-- [수정] 썸네일 경로 수정 및 공백 처리 -->
@@ -739,24 +739,30 @@
                 <div class="text-content">
                     <div class="text-block">
                         <h3>Background & Data Engineering</h3>
-                        <p>행정동 단위의 실효성 있는 정책 제안을 위해, 법정동/행정동 혼재 문제를 해결하고 정합성을 확보했습니다.</p>
+                        <p>행정동 단위의 실효성 있는 정책 제안을 위해, 데이터의 지리적 정합성을 확보하는 것부터 시작했습니다.</p>
+                        <p style="margin-top:8px;">법정동/행정동 혼재 문제를 해결하기 위해 읍면동 기준을 정리하고, 주소-위경도 변환 후 GeoJSON의 MultiPolygon 포함 여부를 확인하는 매핑 함수를 직접 구현해 '정확한 행정동' 데이터를 확보했습니다.</p>
                     </div>
                     <div class="text-block">
                         <h3>Modeling Choice: 왜 인자분석인가?</h3>
                         <div class="insight-quote">
                             <span class="insight-label">Decision Criteria</span>
-                            <div class="insight-text">“정책 입안자에게는 '정확도 99% 모델'보다 '왜 여기가 위험한가'를 설명할 수 있는 근거가 더 중요합니다.”</div>
+                            <div class="insight-text">“정책 입안자에게는 '정확도 99% 모델'보다<br>'왜 여기가 위험한가'를 설명할 수 있는 근거가 더 중요합니다.”</div>
                         </div>
-                        <p>수십 개의 변수를 '경제여력', '인프라 부족' 등 5개 핵심 인자로 축소하여 설명력을 높였습니다.</p>
+                        <p>단순 나열식 지표보다 "위험의 원인"을 구조화하기 위해 인자분석(Factor Analysis)을 선택했습니다.</p>
+                        <ul>
+                            <li>수십 개의 변수를 '경제여력', '인프라 부족' 등 설명 가능한 요인으로 축소</li>
+                            <li>KMO 0.6 이상, 의미적 연결이 명확한 변수 조합 선택</li>
+                            <li><strong>최종 5개 인자:</strong> 고령화/독거, 경제여력, 인지건강지원, 금융취약, 생활인프라</li>
+                        </ul>
                     </div>
                     <div class="text-block">
                         <h3>Spatial Analysis & Proposal</h3>
-                        <p>Moran’s I로 공간적 핫스팟(HH)을 도출하고, Tableau 대시보드를 통해 비전문가도 쉽게 이해할 수 있도록 시각화했습니다.</p>
+                        <p>Moran’s I로 공간적 핫스팟(HH)을 도출하고, KMeans로 위험군을 분류했습니다. 최종적으로 Tableau 대시보드를 통해 비전문가도 "어디에 예산을 투입해야 하는지" 한눈에 볼 수 있도록 시각화하여 설득력을 높였습니다.</p>
                     </div>
                     
                     <!-- [수정] Tableau Button Here -->
                     <div style="margin-top: 32px;">
-                        <a href="https://public.tableau.com/views/_Tableau2_17560266784060/sheet0?:showVizHome=no&:embed=true" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; height: 56px;">
+                        <a href="https://public.tableau.com/app/profile/.45103572/viz/_Tableau2_17560266784060/sheet0" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; height: 56px; text-decoration: none;">
                             📊 Tableau 대시보드 바로가기 ↗
                         </a>
                     </div>
@@ -781,7 +787,7 @@
                     <!-- PDF Slot -->
                     <div class="slot-box">
                         <div class="slot-header" onclick="openModal('발표 자료', 'PDF 전체 보기', null, 'asset/cheonan_presentation.pdf')">
-                            <span>발표 자료 (PDF)</span> <span>확대하기 ↗</span>
+                            <span>발표 자료 (PDF)</span> 
                         </div>
                         <div class="slot-content">
                             <iframe src="asset/cheonan_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1" class="slot-thumbnail"></iframe>
@@ -845,7 +851,7 @@
             if (isLinkOnly && url) {
                 // 설명 문구
                 const infoTitle = document.createElement('h3');
-                infoTitle.innerText = title;
+                infoTitle.innerText = "서비스 데모"; // Fixed Title or pass via param
                 infoTitle.style.marginBottom = '16px';
                 infoTitle.style.color = '#00462A';
 
