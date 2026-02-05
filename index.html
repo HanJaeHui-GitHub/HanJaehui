@@ -881,24 +881,29 @@
                 iframe.style.height = '100%';
                 iframe.style.border = 'none';
                 
-                const btnDiv = document.createElement('div');
-                btnDiv.style.position = 'absolute';
-                btnDiv.style.bottom = '20px';
-                btnDiv.style.left = '50%';
-                btnDiv.style.transform = 'translateX(-50%)';
-                btnDiv.style.zIndex = '10';
-                
-                const newWindowLink = document.createElement('a');
-                newWindowLink.href = url;
-                newWindowLink.target = '_blank';
-                newWindowLink.innerText = '새 창에서 열기 ↗';
-                newWindowLink.className = 'btn btn-secondary';
-                newWindowLink.style.backgroundColor = 'white';
-                newWindowLink.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
-                
-                btnDiv.appendChild(newWindowLink);
                 mBody.appendChild(iframe);
-                mBody.appendChild(btnDiv);
+                
+                // Remove new window button for PDFs to discourage downloading
+                const isPdf = url.toLowerCase().endsWith('.pdf');
+                if (!isPdf) {
+                    const btnDiv = document.createElement('div');
+                    btnDiv.style.position = 'absolute';
+                    btnDiv.style.bottom = '20px';
+                    btnDiv.style.left = '50%';
+                    btnDiv.style.transform = 'translateX(-50%)';
+                    btnDiv.style.zIndex = '10';
+                    
+                    const newWindowLink = document.createElement('a');
+                    newWindowLink.href = url;
+                    newWindowLink.target = '_blank';
+                    newWindowLink.innerText = '새 창에서 열기 ↗';
+                    newWindowLink.className = 'btn btn-secondary';
+                    newWindowLink.style.backgroundColor = 'white';
+                    newWindowLink.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                    
+                    btnDiv.appendChild(newWindowLink);
+                    mBody.appendChild(btnDiv);
+                }
 
             } else if (imagePath) {
                 const img = document.createElement('img');
