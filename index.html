@@ -453,6 +453,7 @@
             box-shadow: var(--shadow-sm);
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
+            display: block; /* For a tags */
         }
         .slot-box:hover {
             transform: translateY(-4px);
@@ -628,6 +629,7 @@
             justify-content: center;
             flex-direction: column;
             border: 2px dashed #D1D5DB;
+            padding: 20px;
         }
         .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; padding-right: 40px; }
         .modal-desc { font-size: 1rem; color: var(--text-sub); margin-bottom: 8px; }
@@ -772,10 +774,11 @@
                     <div style="margin-top:12px;">
                         <span class="badge" style="background:#F3F4F6; color:#4B5563;">ADsP (2024.09)</span>
                     </div>
+                    <!-- [수정: 링크 연결] -->
                     <div class="profile-links">
-                        <a href="#" class="link-btn">Email (placeholder)</a>
-                        <a href="#" class="link-btn">Github (placeholder)</a>
-                        <a href="#" class="link-btn">Blog (placeholder)</a>
+                        <a href="mailto:han.zinna@email.com" class="link-btn">Email</a>
+                        <a href="https://github.com/HanJaeHui-GitHub" target="_blank" class="link-btn">Github</a>
+                        <a href="#" class="link-btn">Blog</a>
                     </div>
                 </div>
 
@@ -963,25 +966,28 @@
 
                 <!-- Right: Visual Slots (Clickable for Modal) -->
                 <div class="visual-stack">
-                    <div class="slot-box" onclick="openModal('발표 자료 (PPT)', 'Page 1: Intro\nPage 2: Problem Definition\nPage 3: Data Architecture\nPage 4: Logic Flow')">
-                        <div class="slot-header">발표 자료 (thinkgood_ppt_images/*)</div>
-                        <div class="slot-scrollable">
-                            <div class="ppt-slide-placeholder">Page 1: Intro</div>
+                    <!-- [수정: PDF 연결] <a> 태그로 변경하여 새창 열기 -->
+                    <a href="asset/thinkgood_presentation.pdf" target="_blank" class="slot-box" style="text-decoration: none; color: inherit;">
+                        <div class="slot-header">발표 자료 (PDF View)</div>
+                        <div class="slot-scrollable" style="cursor: pointer;">
+                            <div class="ppt-slide-placeholder">Click to Open PDF</div>
                             <div class="ppt-slide-placeholder">Page 2: Problem Definition</div>
                             <div class="ppt-slide-placeholder">Page 3: Data Architecture</div>
                             <div class="ppt-slide-placeholder">Page 4: Logic Flow</div>
                         </div>
-                    </div>
-                    <div class="slot-box" onclick="openModal('서비스 데모 영상', '로그인 및 추천 결과 시연 영상\nUser View Simulation')">
-                        <div class="slot-header">서비스 데모 (thinkgood_demo.mp4)</div>
+                    </a>
+
+                    <!-- [수정: 데모 영상 연결 (URL iframe)] -->
+                    <div class="slot-box" onclick="openModal('서비스 데모', 'Hugging Face Space에서 직접 실행해보세요.', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System')">
+                        <div class="slot-header">서비스 데모 (Click to Play)</div>
                         <div class="slot-content">
                             <div class="media-placeholder">
                                 <div class="media-icon">▶️</div>
-                                <p>로그인 및 추천 결과 시연 영상<br><small>User View Simulation</small></p>
+                                <p>서비스 시연 (HuggingFace)<br><small>Click to Interact</small></p>
                             </div>
                         </div>
                     </div>
-                    <div class="slot-box" onclick="openModal('관리자 XAI 화면', 'XAI 대시보드\n추천 근거 및 사용자 특성 시각화')">
+                    <div class="slot-box" onclick="openModal('관리자 XAI 화면', 'XAI 대시보드\n추천 근거 및 사용자 특성 시각화', 'thinkgood_admin_xai.png')">
                         <div class="slot-header">관리자 화면 (thinkgood_admin_xai.png)</div>
                         <div class="slot-content">
                             <div class="media-placeholder">
@@ -1077,8 +1083,9 @@
 
                 <!-- Right: Visual Slots (Clickable for Modal) -->
                 <div class="visual-stack">
-                    <div class="slot-box" onclick="openModal('공간 분석 지도', 'Morans I Hotspot Map\n행정동별 위험도 시각화')">
-                        <div class="slot-header">공간 분석 (asset/행정동별 위험도 시각화.jpg)</div>
+                    <!-- [수정: 이미지 팝업 연결] onclick에 이미지 경로 추가 -->
+                    <div class="slot-box" onclick="openModal('공간 분석 지도', 'Moran\'s I Hotspot Map\n행정동별 위험도 시각화', 'asset/행정동별 위험도 시각화.jpg')">
+                        <div class="slot-header">공간 분석 (Click to View)</div>
                         <div class="slot-content">
                             <div class="media-placeholder">
                                 <div class="media-icon">🗺️</div>
@@ -1086,8 +1093,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="slot-box" onclick="openModal('Tableau 대시보드', 'Interactive Dashboard\n인자별 위험 요인 탐색 UI')">
-                        <div class="slot-header">대시보드 (asset/인자별 위험 요인 탐색 UI.jpg)</div>
+                    <!-- [수정: Tableau 대시보드 연결 (URL iframe)] -->
+                    <div class="slot-box" onclick="openModal('Tableau 대시보드', 'Interactive Dashboard\n인자별 위험 요인 탐색 UI', null, 'https://public.tableau.com/views/_Tableau2_17560266784060/sheet0?:showVizHome=no&:embed=true')">
+                        <div class="slot-header">대시보드 (Click to Interact)</div>
                         <div class="slot-content">
                             <div class="media-placeholder">
                                 <div class="media-icon">📈</div>
@@ -1095,14 +1103,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="slot-box" onclick="openModal('발표 자료 (PPT)', 'Page 1: Intro\nPage 2: GIS Mapping Logic\nPage 3: Factor Analysis Result')">
-                        <div class="slot-header">발표 자료 (cheonan_ppt_images/*)</div>
-                        <div class="slot-scrollable">
-                            <div class="ppt-slide-placeholder">Page 1: Intro</div>
+                    <!-- [수정: PDF 연결] <a> 태그로 변경하여 새창 열기 -->
+                    <a href="asset/cheonan_presentation.pdf" target="_blank" class="slot-box" style="text-decoration: none; color: inherit;">
+                        <div class="slot-header">발표 자료 (PDF View)</div>
+                        <div class="slot-scrollable" style="cursor: pointer;">
+                            <div class="ppt-slide-placeholder">Click to Open PDF</div>
                             <div class="ppt-slide-placeholder">Page 2: GIS Mapping Logic</div>
                             <div class="ppt-slide-placeholder">Page 3: Factor Analysis Result</div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1143,8 +1152,8 @@
             <h3>Let's Connect</h3>
             <p style="margin-top:16px; opacity: 0.8;">데이터로 문제를 정의하고 해결하는 과정에 대해 더 이야기 나누고 싶습니다.</p>
             <div class="footer-links">
-                <a href="#">Email</a>
-                <a href="#">Github</a>
+                <a href="mailto:han.zinna@email.com">Email</a>
+                <a href="https://github.com/HanJaeHui-GitHub" target="_blank">Github</a>
                 <a href="#">Blog</a>
             </div>
             <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">
@@ -1166,18 +1175,81 @@
         </div>
     </div>
 
-    <!-- Modal Script -->
+    <!-- Modal Script (Updated to handle Images & Iframe) -->
     <script>
-        function openModal(title, desc) {
+        function openModal(title, desc, imagePath = null, url = null) {
             const modal = document.getElementById('visualModal');
             const mTitle = document.getElementById('modalTitle');
             const mDesc = document.getElementById('modalDesc');
+            const mBody = document.querySelector('.modal-body-container');
             
             mTitle.innerText = title;
-            mDesc.innerText = desc || '내용이 없습니다.';
+            mDesc.innerText = desc || '';
+            
+            // 초기화
+            mBody.innerHTML = '';
+
+            if (url) {
+                // [NEW] iframe으로 웹페이지 미리보기
+                const iframe = document.createElement('iframe');
+                iframe.src = url;
+                iframe.style.width = '100%';
+                iframe.style.height = '60vh';
+                iframe.style.border = 'none';
+                iframe.style.borderRadius = '8px';
+                mBody.appendChild(iframe);
+
+                // 새 창에서 열기 버튼 추가 (미리보기 안될 경우 대비)
+                const newWindowLink = document.createElement('a');
+                newWindowLink.href = url;
+                newWindowLink.target = '_blank';
+                newWindowLink.innerText = '새 창에서 열기 ↗';
+                newWindowLink.style.display = 'inline-block';
+                newWindowLink.style.marginTop = '16px';
+                newWindowLink.style.padding = '8px 16px';
+                newWindowLink.style.backgroundColor = '#FFFFFF';
+                newWindowLink.style.border = '1px solid #E5E7EB';
+                newWindowLink.style.borderRadius = '8px';
+                newWindowLink.style.fontSize = '0.9rem';
+                newWindowLink.style.color = '#4B5563';
+                newWindowLink.style.textDecoration = 'none';
+                newWindowLink.onmouseover = function() { this.style.borderColor = '#00462A'; this.style.color = '#00462A'; };
+                newWindowLink.onmouseout = function() { this.style.borderColor = '#E5E7EB'; this.style.color = '#4B5563'; };
+                
+                mBody.appendChild(newWindowLink);
+
+            } else if (imagePath) {
+                // 이미지가 있는 경우
+                const img = document.createElement('img');
+                img.src = imagePath;
+                img.style.maxWidth = '100%';
+                img.style.maxHeight = '60vh';
+                img.style.borderRadius = '8px';
+                img.style.objectFit = 'contain';
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    mBody.innerHTML += '<p style="color:red; margin-top:10px;">이미지를 불러올 수 없습니다.<br>경로: ' + imagePath + '</p>';
+                };
+                
+                mBody.appendChild(img);
+                
+                // 설명 추가
+                const p = document.createElement('p');
+                p.innerText = desc;
+                p.className = 'modal-desc';
+                p.style.marginTop = '16px';
+                p.style.textAlign = 'center';
+                mBody.appendChild(p);
+            } else {
+                // 이미지가 없는 경우 (기본 텍스트 표시)
+                mBody.innerHTML = `
+                    <div class="media-icon" style="font-size: 4rem; opacity: 0.3; margin-bottom: 16px;">🖼️</div>
+                    <p class="modal-desc" style="white-space: pre-line; text-align: center;">${desc}</p>
+                `;
+            }
             
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeModal() {
