@@ -586,8 +586,8 @@
         .modal-content {
             background: white;
             width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
+            max-width: 1000px; /* Wider for PDF/Tableau */
+            max-height: 95vh;
             border-radius: 16px;
             padding: 32px;
             position: relative;
@@ -630,6 +630,7 @@
             flex-direction: column;
             border: 2px dashed #D1D5DB;
             padding: 20px;
+            position: relative;
         }
         .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; padding-right: 40px; }
         .modal-desc { font-size: 1rem; color: var(--text-sub); margin-bottom: 8px; }
@@ -774,11 +775,10 @@
                     <div style="margin-top:12px;">
                         <span class="badge" style="background:#F3F4F6; color:#4B5563;">ADsP (2024.09)</span>
                     </div>
-                    <!-- [수정: 링크 연결] -->
+                    <!-- [수정: Blog 삭제] -->
                     <div class="profile-links">
                         <a href="mailto:han.zinna@email.com" class="link-btn">Email</a>
                         <a href="https://github.com/HanJaeHui-GitHub" target="_blank" class="link-btn">Github</a>
-                        <a href="#" class="link-btn">Blog</a>
                     </div>
                 </div>
 
@@ -966,7 +966,7 @@
 
                 <!-- Right: Visual Slots (Clickable for Modal) -->
                 <div class="visual-stack">
-                    <!-- [수정: PDF 연결] <a> 태그를 div onclick으로 변경하여 팝업(모달)으로 연결 -->
+                    <!-- [수정: PDF 팝업 내 스크롤] div onclick으로 변경, 4번째 인자에 경로 전달하여 Iframe으로 렌더링 -->
                     <div class="slot-box" onclick="openModal('발표 자료 (PDF View)', 'PDF 미리보기', null, 'asset/thinkgood_presentation.pdf')" style="cursor: pointer;">
                         <div class="slot-header">발표 자료 (Click to View PDF)</div>
                         <div class="slot-scrollable">
@@ -1084,7 +1084,7 @@
                 <!-- Right: Visual Slots (Clickable for Modal) -->
                 <div class="visual-stack">
                     <!-- [수정: 이미지 팝업 연결 1] 공간 분석 지도 -->
-                    <div class="slot-box" onclick="openModal('공간 분석 지도', 'Moran\'s I Hotspot Map\n행정동별 위험도 시각화', 'asset/행정동별 위험도 시각화.jpg')">
+                    <div class="slot-box" onclick="openModal('공간 분석 지도', 'Morans I Hotspot Map\n행정동별 위험도 시각화', 'asset/행정동별 위험도 시각화.jpg')">
                         <div class="slot-header">공간 분석 (이미지 보기)</div>
                         <div class="slot-content">
                             <div class="media-placeholder">
@@ -1104,6 +1104,7 @@
                         </div>
                     </div>
                     <!-- [수정: Tableau 대시보드 연결 (URL iframe)] - 별도 슬롯으로 분리 -->
+                    <!-- Iframe Embed URL 사용 (showVizHome=no) -->
                     <div class="slot-box" onclick="openModal('Tableau 대시보드', 'Interactive Dashboard\n인자별 위험 요인 탐색 UI', null, 'https://public.tableau.com/views/_Tableau2_17560266784060/sheet0?:showVizHome=no&:embed=true')">
                         <div class="slot-header">Tableau 대시보드 (실습하기)</div>
                         <div class="slot-content">
@@ -1113,7 +1114,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- [수정: PDF 연결] <a> 태그를 div onclick으로 변경하여 팝업(모달)으로 연결 -->
+                    <!-- [수정: PDF 팝업 내 스크롤] div onclick으로 변경, 4번째 인자에 경로 전달 -->
                     <div class="slot-box" onclick="openModal('발표 자료 (PDF View)', 'PDF 미리보기', null, 'asset/cheonan_presentation.pdf')" style="cursor: pointer;">
                         <div class="slot-header">발표 자료 (Click to View PDF)</div>
                         <div class="slot-scrollable">
@@ -1164,7 +1165,6 @@
             <div class="footer-links">
                 <a href="mailto:han.zinna@email.com">Email</a>
                 <a href="https://github.com/HanJaeHui-GitHub" target="_blank">Github</a>
-                <a href="#">Blog</a>
             </div>
             <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">
                 &copy; 2025 Han Jaehui. All rights reserved.
@@ -1196,28 +1196,26 @@
             mTitle.innerText = title;
             mDesc.innerText = desc || '';
             
-            // 초기화
+            // 초기화 (Reset)
             mBody.innerHTML = '';
 
+            // 1. 외부 URL 또는 PDF (Iframe 처리)
             if (url) {
-                // [NEW] iframe으로 웹페이지 미리보기
                 const iframe = document.createElement('iframe');
                 iframe.src = url;
                 iframe.style.width = '100%';
-                iframe.style.height = '60vh';
+                iframe.style.height = '80vh'; // 높이 확보
                 iframe.style.border = 'none';
                 iframe.style.borderRadius = '8px';
-                // HuggingFace 등에서 차단될 수 있으므로 sandbox 속성 추가 (필요시 조정)
-                // iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-forms');
                 
-                // 만약 로드 실패 시 대체 텍스트 표시 (간단한 처리)
+                // 만약 로드 실패 시 대체 텍스트 표시
                 iframe.onerror = function() {
                     iframe.style.display = 'none';
                 };
                 
                 mBody.appendChild(iframe);
 
-                // 새 창에서 열기 버튼 추가 (미리보기 안될 경우 대비)
+                // 새 창에서 열기 버튼 (보조 수단)
                 const newWindowLink = document.createElement('a');
                 newWindowLink.href = url;
                 newWindowLink.target = '_blank';
@@ -1225,20 +1223,19 @@
                 newWindowLink.style.display = 'inline-block';
                 newWindowLink.style.marginTop = '16px';
                 newWindowLink.style.padding = '10px 20px';
-                newWindowLink.style.backgroundColor = '#00462A'; // Primary Color
+                newWindowLink.style.backgroundColor = '#00462A';
                 newWindowLink.style.color = '#FFFFFF';
                 newWindowLink.style.fontWeight = 'bold';
                 newWindowLink.style.border = 'none';
                 newWindowLink.style.borderRadius = '8px';
                 newWindowLink.style.fontSize = '0.95rem';
                 newWindowLink.style.textDecoration = 'none';
-                newWindowLink.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
                 newWindowLink.onmouseover = function() { this.style.backgroundColor = '#00331F'; };
                 newWindowLink.onmouseout = function() { this.style.backgroundColor = '#00462A'; };
                 
-                // 연결이 안될 때 안내 문구 추가
+                // 안내 문구 (보안상 차단될 경우를 대비)
                 const notice = document.createElement('p');
-                notice.innerText = "※ 보안 설정으로 인해 미리보기가 표시되지 않을 수 있습니다.\n아래 버튼을 눌러 새 창에서 확인해주세요.";
+                notice.innerText = "※ 보안 설정으로 인해 미리보기가 표시되지 않을 수 있습니다.\n화면이 보이지 않으면 아래 버튼을 눌러주세요.";
                 notice.style.fontSize = '0.85rem';
                 notice.style.color = '#6B7280';
                 notice.style.marginTop = '12px';
@@ -1249,12 +1246,13 @@
                 mBody.appendChild(notice);
                 mBody.appendChild(newWindowLink);
 
-            } else if (imagePath) {
-                // 이미지가 있는 경우
+            } 
+            // 2. 이미지 (Image Path)
+            else if (imagePath) {
                 const img = document.createElement('img');
                 img.src = imagePath;
                 img.style.maxWidth = '100%';
-                img.style.maxHeight = '60vh';
+                img.style.maxHeight = '80vh';
                 img.style.borderRadius = '8px';
                 img.style.objectFit = 'contain';
                 img.onerror = function() {
@@ -1271,8 +1269,9 @@
                 p.style.marginTop = '16px';
                 p.style.textAlign = 'center';
                 mBody.appendChild(p);
-            } else {
-                // 이미지가 없는 경우 (기본 텍스트 표시)
+            } 
+            // 3. 텍스트만 있는 경우
+            else {
                 mBody.innerHTML = `
                     <div class="media-icon" style="font-size: 4rem; opacity: 0.3; margin-bottom: 16px;">🖼️</div>
                     <p class="modal-desc" style="white-space: pre-line; text-align: center;">${desc}</p>
