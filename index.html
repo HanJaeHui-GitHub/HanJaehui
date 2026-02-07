@@ -595,12 +595,13 @@
 
                     <!-- 2. Phase 1 & 2 (2 Columns) -->
                     <div class="phase-grid-2">
-                        
+                    
                         <!-- Left: Phase 1 (Segment) -->
                         <div class="phase-wrapper">
-                            <div class="phase-title">Phase 1: Segment Strategy</div>
+                            <div class="phase-badge">PHASE 1</div>
+                            <div class="phase-title">Segment Strategy</div>
                             <p class="phase-subtitle">마케터가 이해하고 운영할 수 있는 '설명 가능한 로직'으로 즉시 도입 가능한 모델을 구현했습니다.</p>
-                            
+                    
                             <div class="segment-grid-2x2">
                                 <!-- GUEST -->
                                 <div class="seg-card-mini">
@@ -609,9 +610,10 @@
                                         <span class="seg-purpose">탐색 유도</span>
                                     </div>
                                     <div class="seg-desc-mini">인기 + 최신성 반영</div>
-                                    <code class="formula-code">Score = 0.7 · Norm(log(1 + Pop)) + 0.3 · Norm(Recency Decay)</code>
-                                    <div class="seg-vars">Pop=최근 N일 인기, Recency=exp(-d/τ)</div>
+                                    <code class="formula-code">Score = 0.7 · Norm(log(1 + Pop)) + 0.3 · Norm(RecencyDecay)</code>
+                                    <div class="seg-vars">Pop=최근 N일 인기, RecencyDecay=exp(-d/τ)</div>
                                 </div>
+                    
                                 <!-- DORMANT -->
                                 <div class="seg-card-mini">
                                     <div class="seg-head">
@@ -619,9 +621,10 @@
                                         <span class="seg-purpose">장벽 완화</span>
                                     </div>
                                     <div class="seg-desc-mini">EASY 공모전 가중치</div>
-                                    <code class="formula-code">Score = Norm(Pop) · Easy Weight</code>
+                                    <code class="formula-code">Score = Norm(Pop) · EasyWeight</code>
                                     <div class="seg-vars">EASY=[네이밍, 사진, 퀴즈]</div>
                                 </div>
+                    
                                 <!-- LIGHT -->
                                 <div class="seg-card-mini">
                                     <div class="seg-head">
@@ -629,9 +632,10 @@
                                         <span class="seg-purpose">취향 매칭</span>
                                     </div>
                                     <div class="seg-desc-mini">관심사 기반 CBF</div>
-                                    <code class="formula-code">core = Norm(Σ (IDF(tag) · match(tag)))</code>
-                                    <div class="seg-vars">Explicit 관심사 매칭</div>
+                                    <code class="formula-code">Score = Norm(Σ (IDF(tag) · match(tag)))</code>
+                                    <div class="seg-vars">match=관심사 일치(0/1)</div>
                                 </div>
+                    
                                 <!-- POWER -->
                                 <div class="seg-card-mini">
                                     <div class="seg-head">
@@ -639,17 +643,18 @@
                                         <span class="seg-purpose">정밀 개인화</span>
                                     </div>
                                     <div class="seg-desc-mini">이력 기반 Hybrid</div>
-                                    <code class="formula-code">1.5 · Norm(SimilarityCF) + 1.0 · Norm(Σ (IDF(tag) · match(tag)))</code>
-                                    <div class="seg-vars">Sim=Cosine, Int=Tag Match</div>
+                                    <code class="formula-code">Score = 1.5 · Norm(SimilarityCF) + 1.0 · Norm(Σ (IDF(tag) · match(tag)))</code>
+                                    <div class="seg-vars">Sim=Cosine, Interest=Tag Match</div>
                                 </div>
                             </div>
                         </div>
-
+                    
                         <!-- Right: Phase 2 (Assetization) -->
                         <div class="phase-wrapper">
-                            <div class="phase-title">Phase 2: Data Assetization</div>
+                            <div class="phase-badge">PHASE 2</div>
+                            <div class="phase-title">Data Assetization</div>
                             <p class="phase-subtitle">AI 고도화의 병목을 데이터 구조로 정의하고, 운영 DB를 ‘학습 가능한 자산’으로 전환하는 설계를 역제안했습니다.</p>
-                            
+                    
                             <div class="asset-stack">
                                 <div class="asset-card">
                                     <span class="asset-head">👤 식별 (Identity)</span>
@@ -664,10 +669,12 @@
                                     <span class="asset-body">입력값·용어를 코드(Code)로 통일해 데이터 품질을 구조적으로 보장</span>
                                 </div>
                             </div>
+                    
                             <div class="impact-highlight">
                                 💡 Impact: Result 중심 → Process 중심으로 확장 가능한 데이터 인프라 전환
                             </div>
                         </div>
+                    
                     </div>
 
                     <!-- 3. Result & Media (Bottom) -->
