@@ -35,7 +35,7 @@
         }
 
         a { text-decoration: none; color: inherit; transition: color 0.2s; }
-        ul { list-style: none; }
+        ul { list-style: none; padding: 0; margin: 0; }
         img { max-width: 100%; display: block; }
         
         /* --- UTILITIES --- */
@@ -138,6 +138,41 @@
             line-height: 1.3; 
         }
 
+        /* --- RESULTS STRIP --- */
+        .results-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .result-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 70, 42, 0.15); /* Primary color low opacity */
+            border-radius: 12px;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(11, 59, 46, 0.03);
+            transition: transform 0.2s;
+            justify-content: center;
+        }
+        .result-card:hover {
+            transform: translateY(-2px);
+            background: rgba(11, 59, 46, 0.02);
+            border-color: var(--primary);
+        }
+        
+        .result-text {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.5;
+            margin: 0;
+            word-break: keep-all;
+        }
+
         /* --- NAVIGATION --- */
         nav {
             position: fixed;
@@ -190,7 +225,21 @@
             margin-bottom: 32px;
             max-width: 600px;
         }
-        .hero-tags { margin-bottom: 40px; }
+        /* Proof Strip in Hero */
+        .proof-strip {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .proof-item {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            background: #F3F4F6;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
         .cta-group { display: flex; gap: 16px; }
         .btn {
             display: inline-flex;
@@ -230,251 +279,293 @@
             justify-content: center;
             padding: 32px;
         }
-        .flow-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            z-index: 10;
-            width: 100%;
-            max-width: 240px;
-        }
-        .flow-card {
-            background: rgba(255, 255, 255, 0.95);
-            width: 100%;
-            padding: 16px;
+        .collage-card {
+            position: absolute;
             border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border: 1px solid rgba(0,0,0,0.05);
+            background: white;
+            overflow: hidden;
             transition: transform 0.3s ease;
         }
-        .flow-card:hover { transform: translateY(-2px); }
-        .flow-icon { font-size: 1.5rem; margin-bottom: 4px; display: block; }
-        .flow-text { font-size: 0.9rem; font-weight: 700; color: var(--primary-dark); }
-        .flow-arrow { color: rgba(255,255,255,0.6); font-size: 1.2rem; }
-        .abstract-circle { position: absolute; border-radius: 50%; background: var(--accent); opacity: 0.1; filter: blur(50px); z-index: 1; }
-        .c1 { width: 300px; height: 300px; top: -50px; left: -50px; }
-        .c2 { width: 250px; height: 250px; bottom: -20px; right: -20px; background: white; opacity: 0.05; }
+        .collage-card img { width: 100%; height: 100%; object-fit: cover; }
+        .card-1 { width: 280px; height: 180px; top: 20px; right: 20px; z-index: 1; transform: rotate(5deg); background: #f8f8f8; }
+        .card-2 { width: 300px; height: 200px; top: 80px; left: 40px; z-index: 2; transform: rotate(-3deg); background: #f0f0f0; }
+        .card-3 { width: 320px; height: 220px; bottom: 20px; right: 80px; z-index: 3; transform: rotate(2deg); background: white; }
+        .hero-visual-card:hover .card-1 { transform: rotate(8deg) translate(10px, -10px); }
+        .hero-visual-card:hover .card-2 { transform: rotate(-5deg) translate(-10px, 10px); }
+        .hero-visual-card:hover .card-3 { transform: rotate(0deg) scale(1.05); z-index: 4; }
+
+        /* --- PROOF TEASER SECTION --- */
+        #proof { padding-bottom: 80px; }
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .teaser-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 260px;
+        }
+        .teaser-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+        .teaser-meta { font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px; font-weight: 500; }
+        .teaser-title { font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 8px; line-height: 1.3; }
+        .teaser-desc { font-size: 1rem; color: var(--text-sub); margin-bottom: 24px; line-height: 1.5; flex-grow: 1; }
+        .teaser-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+        .teaser-footer { display: flex; justify-content: flex-end; }
+        .btn-link { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
 
         /* --- ABOUT SECTION --- */
         #about { padding: 80px 0; background-color: var(--bg-light); }
-        .about-grid { display: grid; grid-template-columns: 320px 1fr; gap: 40px; }
-        .profile-card {
-            background: white; padding: 32px; border-radius: var(--radius);
-            box-shadow: var(--shadow-sm); text-align: center; border: 1px solid var(--border);
+        .about-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 60px;
         }
+        .profile-side { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .profile-img-slot {
-            width: 120px; height: 120px; background-color: #E2E8F0; border-radius: 50%;
+            width: 140px; height: 140px; background-color: #E2E8F0; border-radius: 50%;
             margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: #64748B; font-size: 0.9rem;
+            overflow: hidden;
         }
         .profile-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
-        .profile-detail { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 4px; }
-        .profile-links { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
-        .link-btn {
-            padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; color: var(--text-sub);
+        .profile-links { display: flex; flex-direction: row; gap: 10px; justify-content: center; margin-top: 16px; }
+        .social-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 8px 18px;
+            border-radius: 20px;
+            background-color: white;
+            border: 1px solid var(--border);
+            color: var(--text-sub);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-decoration: none;
         }
-        .link-btn:hover { border-color: var(--primary); color: var(--primary); background: rgba(0,70,42,0.03); }
+        .social-btn:hover {
+            border-color: var(--primary); color: var(--primary); background-color: rgba(0, 70, 42, 0.05); transform: translateY(-2px);
+        }
+
+        .profile-quote {
+            margin-top: 32px;
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            line-height: 1.7;
+            word-break: keep-all;
+            font-weight: 500;
+            text-align: center;
+            width: 100%;
+        }
 
         .about-text-card {
             background: white; padding: 40px; border-radius: var(--radius);
             box-shadow: var(--shadow-sm); border: 1px solid var(--border);
             display: flex; flex-direction: column; justify-content: center;
         }
-        .about-quote { font-size: 1.15rem; line-height: 1.7; color: var(--text-main); margin-bottom: 32px; font-weight: 500; }
-        .what-i-build { margin-bottom: 32px; padding: 20px; background: #FAFAFA; border-radius: 12px; border: 1px solid var(--border); }
-        .wib-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
-        .wib-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .wib-item { font-size: 0.95rem; color: var(--text-sub); display: flex; align-items: center; }
-        .wib-item::before { content: '✔'; color: var(--accent); margin-right: 8px; font-weight: bold; }
-        .about-current { background-color: rgba(0, 70, 42, 0.03); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent); }
-        .about-current h4 { font-size: 0.9rem; color: var(--primary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
-        .about-current p { font-size: 1rem; color: var(--text-main); }
-
-        /* --- KEYWORDS & TIMELINE --- */
-        #keywords { padding: 80px 0; background-color: var(--bg-white); }
-        .keywords-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        
+        .keywords-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
         .keyword-card { background: var(--bg-light); padding: 20px; border-radius: 16px; border: 1px solid var(--border); transition: transform 0.2s; display: flex; flex-direction: column; }
         .keyword-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--accent); }
         .hash { color: var(--primary); font-weight: 800; font-size: 1.25rem; display: block; margin-bottom: 8px; }
         .desc { font-size: 0.9rem; color: var(--text-sub); line-height: 1.4; }
-        .sub-desc { font-size: 0.8rem; color: var(--text-light); margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--border); }
 
-        #timeline { padding: 80px 0; background-color: var(--bg-light); }
-        .timeline-container { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline-container::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: #D1D5DB; }
-        .timeline-item { position: relative; margin-bottom: 40px; padding-left: 60px; }
-        .timeline-item::before { content: ''; position: absolute; left: 13px; top: 6px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg-white); border: 3px solid var(--primary); z-index: 1; }
-        .time-date { display: inline-block; font-size: 0.85rem; font-weight: 600; color: var(--primary); background: rgba(0,70,42,0.1); padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; }
-        .time-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
-        .time-desc { font-size: 1rem; color: var(--text-sub); }
-
-        /* --- PROJECT SECTION --- */
-        .project-section { padding: 100px 0; border-top: 1px solid var(--border); background-color: var(--bg-white); }
-        .project-header { margin-bottom: 40px; }
-        .project-eyebrow { font-weight: 700; color: var(--primary); font-size: 1.1rem; margin-bottom: 8px; }
-        .project-title { font-size: 2.25rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
-        .project-focus { font-size: 1.25rem; color: var(--text-sub); margin-bottom: 24px; border-left: 4px solid var(--accent); padding-left: 16px; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        /* --- PROJECT DETAIL --- */
+        .project-section, .project-detail { 
+            padding: 100px 0; 
+            border-top: 1px solid var(--border); 
+            background-color: var(--bg-white); 
+        }
         
-        /* Layout Adjustments */
-        .project-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .pj-summary { margin-bottom: 40px; text-align: center; }
+        .pj-date { 
+            display: inline-block; font-size: 0.9rem; font-weight: 600; color: var(--primary); 
+            background: rgba(0,70,42,0.08); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; 
+        }
+        .pj-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; word-break: keep-all; }
+        .pj-desc { font-size: 1.25rem; color: var(--text-sub); line-height: 1.6; max-width: 800px; margin: 0 auto; word-break: keep-all; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; justify-content: center; }
+
+        .pj-info-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+            max-width: 700px; margin: 24px auto; text-align: left;
+            background: #F9FAFB; padding: 16px; border-radius: 12px; border: 1px solid var(--border);
+        }
+        .pj-info-item h5 { font-size: 0.8rem; color: var(--primary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
+        .pj-info-item p { font-size: 0.9rem; color: var(--text-sub); margin: 0; line-height: 1.4; }
+
+        /* Results Strip */
+        .results-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+        .result-card {
+            background: #ffffff; border: 1px solid rgba(0, 70, 42, 0.15); border-radius: 12px; padding: 24px 20px;
+            display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(11, 59, 46, 0.03); transition: transform 0.2s;
+        }
+        .result-card:hover { transform: translateY(-2px); background: rgba(11, 59, 46, 0.02); border-color: var(--primary); }
+        .result-text { font-size: 0.95rem; font-weight: 700; color: var(--text-main); line-height: 1.5; margin: 0; word-break: keep-all; }
+
+        /* Content Blocks */
+        .context-block { margin-bottom: 32px; padding: 24px; background-color: #f8fafc; border-radius: 12px; border-left: 4px solid var(--primary); }
+        .context-title { font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .context-list { margin: 0; padding: 0; list-style: none; }
+        .context-list li { font-size: 1rem; color: var(--text-sub); margin-bottom: 6px; padding-left: 16px; position: relative; font-weight: 500; }
+        .context-list li::before { content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+
+        /* Main Content Grid */
+        .project-content { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; margin-top: 40px; }
         
         .text-block { margin-bottom: 48px; position: relative; }
+        .text-block h3 { font-size: 1.25rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
+        .text-block p { font-size: 1rem; color: var(--text-sub); margin-bottom: 12px; line-height: 1.6; }
         
-        /* Step vs Phase Badge Visual Distinction */
+        /* Unified Phase Badge */
         .phase-badge { 
-            display: inline-block; 
-            font-size: 0.75rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            padding: 3px 10px; 
-            border-radius: 4px; 
-            margin-bottom: 8px; 
+            display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; 
+            padding: 3px 10px; border-radius: 4px; margin-bottom: 8px; 
+            background-color: var(--primary); color: var(--accent); border: 1px solid var(--primary);
         }
-        .phase-badge.step {
-            background-color: #E2E8F0; 
-            color: #4B5563; 
-            border: 1px solid #CBD5E1;
-        }
-        .phase-badge.phase {
-            background-color: var(--primary); 
-            color: var(--accent); 
-            border: 1px solid var(--primary);
-        }
+        .phase-badge.step { background-color: var(--primary); color: var(--accent); border: 1px solid var(--primary); }
 
-        .text-block h3 { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
-        .text-block p, .text-block ul { font-size: 1rem; color: var(--text-sub); margin-bottom: 8px; }
-        .text-block li { position: relative; padding-left: 14px; margin-bottom: 6px; }
-        .text-block li::before { content: '•'; position: absolute; left: 0; color: var(--text-light); }
-
-        /* [UPDATED] Visual Slots Style */
-        .visual-stack { display: flex; flex-direction: column; gap: 32px; }
-        .slot-box {
-            background: white;
+        /* Phase Box (New) */
+        .phase-box {
+            background: #ffffff;
             border: 1px solid var(--border);
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-            position: relative;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-        .slot-box:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary);
+        .phase-box .text-block:last-child { margin-bottom: 0; }
+
+        /* Visual Stack */
+        .visual-stack { display: flex; flex-direction: column; gap: 32px; }
+        .slot-box {
+            background: white; border: 1px solid var(--border); border-radius: 12px;
+            overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer; position: relative;
         }
+        .slot-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary); }
         .slot-header {
-            padding: 12px 16px;
-            background: white;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 2;
-            position: relative;
+            padding: 12px 16px; background: white; border-bottom: 1px solid var(--border);
+            font-size: 0.85rem; font-weight: 600; color: var(--text-light);
+            display: flex; align-items: center; justify-content: space-between;
         }
-        .slot-header::before { content: '📁'; margin-right: 6px; }
-        .slot-header::after { 
-            content: '확대하기 ↗'; 
-            font-size: 0.75rem; font-weight: 400; color: var(--text-light);
-            background: #F3F4F6; padding: 2px 6px; border-radius: 4px;
-        }
+        .slot-action { font-size: 0.75rem; font-weight: 400; color: var(--text-light); background: #F3F4F6; padding: 2px 6px; border-radius: 4px; }
+        .slot-content { position: relative; background: #f3f4f6; aspect-ratio: 16/9; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .slot-thumbnail { width: 100%; height: 100%; object-fit: contain; object-position: center; pointer-events: auto; background-color: #f3f4f6; }
         
-        /* Thumbnail Container */
-        .slot-content {
-            position: relative;
-            background: #f3f4f6;
-            aspect-ratio: 16/9; 
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* [UPDATED] Actual Media in Thumbnail - Contain to prevent cutting */
-        .slot-thumbnail {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Changed from cover to contain to prevent cropping */
-            object-position: center;
-            pointer-events: auto; /* Allow scrolling inside */
-            background-color: #f3f4f6; /* Background for contained images */
-        }
-        
-        .media-placeholder {
-            width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: var(--primary-dark); padding: 40px; text-align: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(2px);
-        }
-        .media-icon { font-size: 2.5rem; margin-bottom: 8px; opacity: 0.8; }
+        .media-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--primary-dark); padding: 40px; text-align: center; background: rgba(255,255,255,0.8); backdrop-filter: blur(2px); }
+        .media-icon-box { width: 48px; height: 48px; background-color: var(--border); margin-bottom: 12px; border-radius: 8px; }
 
+        /* Custom Visuals for ThinkGood */
+        .pie-chart-visual {
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary) 0% 92%, #e5e7eb 92% 100%);
+            margin: 0 auto;
+        }
+        .pie-legend { display: flex; justify-content: center; gap: 15px; margin-top: 15px; font-size: 0.85rem; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+        .code-comparison {
+            display: flex; align-items: center; gap: 10px; width: 100%; max-width: 400px; margin: 0 auto;
+        }
+        .code-card {
+            flex: 1; padding: 15px; border-radius: 8px; font-size: 0.8rem;
+            border: 1px solid var(--border); background: white; text-align: center;
+        }
+        .code-card.before { border-left: 3px solid #ef4444; }
+        .code-card.after { border-left: 3px solid var(--primary); background: #f0fdf4; }
+
+        /* Collapsible Details */
+        .project-details-wrapper { display: none; margin-top: 40px; padding-top: 40px; border-top: 1px dashed var(--border); animation: fadeIn 0.4s ease; }
+        .project-details-wrapper.active { display: block; }
+        .btn-toggle-details {
+            display: flex; align-items: center; justify-content: center; margin: 40px auto 0; padding: 12px 28px;
+            background-color: white; color: var(--primary); border: 1px solid var(--primary); border-radius: 999px;
+            font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; gap: 8px;
+        }
+        .btn-toggle-details:hover { background-color: var(--primary); color: white; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 70, 42, 0.15); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Segment Grid (ThinkGood) */
         .segment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-        .seg-card { background: white; padding: 12px; border: 1px solid var(--border); border-radius: 8px; }
-        .seg-title { font-size: 0.85rem; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
-        .seg-desc { font-size: 0.8rem; color: var(--text-sub); }
+        .seg-card { background: white; padding: 16px; border: 1px solid var(--border); border-radius: 8px; }
+        .seg-title { font-size: 0.9rem; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
+        .seg-desc { font-size: 0.85rem; color: var(--text-sub); line-height: 1.4; }
 
-        /* --- OTHER PROJECTS --- */
-        #other-projects { padding: 80px 0; background: var(--bg-light); }
-        .other-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-        .other-card { background: white; padding: 24px; border-radius: 12px; border: 1px solid var(--border); transition: all 0.2s; }
-        .other-card:hover { border-color: var(--primary); transform: translateY(-2px); }
-        .other-title { font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
-        .other-desc { font-size: 0.9rem; color: var(--text-sub); }
+        /* Segment Item & Formula Code Style */
+        .segment-item {
+            background: #fff; border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px; margin-bottom: 16px; list-style: none; box-shadow: var(--shadow-sm);
+        }
+        .segment-item strong { display: block; margin-bottom: 8px; color: var(--primary-dark); font-size: 1.1rem; }
+        .text-detail { font-size: 0.95rem; color: #4B5563; margin-bottom: 8px; line-height: 1.6; }
+        .formula-code {
+            display: block; margin-top: 8px; background: #f1f5f9; color: #0f172a; padding: 12px 16px;
+            border-radius: 8px; font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem; line-height: 1.5; border: 1px solid #e2e8f0; overflow-x: auto;
+        }
 
-        /* --- FOOTER --- */
+        /* --- EXPERIENCE SECTION --- */
+        #experience { padding: 100px 0; background-color: var(--bg-light); }
+        .exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .exp-card { background: white; padding: 32px; border-radius: 16px; border: 1px solid var(--border); }
+        .exp-date { display: block; font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px; font-weight: 500; }
+        .exp-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; color: var(--primary); }
+        .exp-role { font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin-bottom: 12px; }
+        .exp-desc { font-size: 0.9rem; color: var(--text-sub); line-height: 1.5; word-break: keep-all; }
+
+        /* --- SKILLS SECTION --- */
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+            margin-bottom: 40px; text-align: left;
+        }
+        .skill-col h4 { font-size: 1.1rem; color: #fff; margin-bottom: 16px; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 4px; }
+        .skill-list { list-style: none; padding: 0; }
+        .skill-list li { margin-bottom: 8px; color: rgba(255,255,255,0.9); font-size: 0.95rem; font-weight: 500; }
+
+        /* FOOTER */
         footer { padding: 60px 0; background: var(--primary-dark); color: rgba(255,255,255,0.8); text-align: center; }
         .footer-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
         .footer-links a { border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
         .footer-links a:hover { color: var(--accent); border-color: var(--accent); }
 
-        /* --- MODAL --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7); z-index: 2000;
-            display: none; justify-content: center; align-items: center;
-            backdrop-filter: blur(5px);
-        }
+        /* MODAL */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
         .modal-overlay.active { display: flex; }
-        .modal-content {
-            background: white; width: 90%; max-width: 1100px; height: 90vh;
-            border-radius: 16px; padding: 32px; position: relative;
-            box-shadow: var(--shadow-md); animation: modalFadeIn 0.2s ease;
-            display: flex; flex-direction: column;
-        }
+        .modal-content { background: white; width: 90%; max-width: 1100px; height: 90vh; border-radius: 16px; padding: 32px; position: relative; box-shadow: var(--shadow-md); animation: modalFadeIn 0.2s ease; display: flex; flex-direction: column; }
         @keyframes modalFadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-        .modal-close {
-            position: absolute; top: 20px; right: 20px; font-size: 1.5rem;
-            cursor: pointer; color: var(--text-sub); z-index: 20;
-            width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; background: #F3F4F6;
-        }
+        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-sub); z-index: 20; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #F3F4F6; }
         .modal-close:hover { background: #E5E7EB; color: var(--text-main); }
-        
-        .modal-body-container {
-            flex: 1; margin-top: 20px; width: 100%; height: 100%;
-            background: #F3F4F6; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center; flex-direction: column;
-            border: 1px solid var(--border); overflow: hidden; position: relative;
-        }
+        .modal-body-container { flex: 1; margin-top: 20px; width: 100%; height: 100%; background: #F3F4F6; border-radius: 12px; display: flex; align-items: center; justify-content: flex-start; flex-direction: column; border: 1px solid var(--border); overflow-y: auto; overflow-x: hidden; position: relative; padding-top: 40px; }
         .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; padding-right: 40px; }
-        .modal-desc { font-size: 1rem; color: var(--text-sub); margin-bottom: 8px; }
+        .modal-desc { font-size: 1rem; color: var(--text-sub); margin-bottom: 8px; max-width: 90%; text-align: center; }
 
-        /* --- MEDIA QUERIES --- */
-        @media (max-width: 1100px) { :root { --container-width: 100%; } }
+        /* MEDIA QUERIES */
+        @media (max-width: 1024px) {
+            .results-strip { grid-template-columns: 1fr; gap: 12px; }
+            .result-card { text-align: left; align-items: flex-start; }
+            .pj-info-grid { grid-template-columns: 1fr; }
+        }
         @media (max-width: 768px) {
-            .hero-grid, .about-grid, .project-content { grid-template-columns: 1fr; gap: 40px; }
-            .hero-grid { grid-template-rows: auto auto; }
+            .hero-grid, .about-layout, .project-content, .exp-grid, .skills-grid { grid-template-columns: 1fr; gap: 40px; }
             .hero-text { order: 2; text-align: center; }
             .hero-visual-card { order: 1; aspect-ratio: 16/9; max-height: 320px; }
             .section-title { font-size: 1.3rem; }
             .nav-links { display: none; }
-            .process-pipeline { flex-direction: column; gap: 20px; padding: 20px; align-items: flex-start; }
-            .pipeline-step { flex-direction: row; gap: 16px; text-align: left; width: 100%; }
-            .pipeline-step:not(:last-child)::after { content: ''; position: absolute; left: 24px; top: 48px; height: 20px; width: 2px; background: #E5E7EB; right: auto; font-size: 0; }
-            .step-icon { margin-bottom: 0; }
             .visual-stack { order: 2; margin-top: 20px; }
             .text-content { order: 1; }
         }
@@ -488,9 +579,9 @@
             <div class="logo">Han Jaehui.</div>
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#project-1">ThinkGood</a>
-                <a href="#project-2">Cheonan</a>
-                <a href="#contact">Contact</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="mailto:han.zinna@email.com">Contact</a>
             </div>
         </div>
     </nav>
@@ -500,209 +591,286 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <h1>문제를 다시 정의하고,<br>데이터로 선택 가능한<br>구조를 만듭니다.</h1>
-                    <p>분석 결과가 의사결정으로 이어지도록,<br>기준·설명·실행까지 함께 만듭니다.</p>
-                    <div class="hero-tags">
-                        <span class="badge">#문제정의</span>
-                        <span class="badge">#설명력</span>
-                        <span class="badge">#구조설계</span>
-                        <span class="badge">#협업</span>
-                        <span class="badge">#에너지</span>
+                    <h1>복잡한 데이터를 정리해,<br>선택 가능한 구조로<br>만듭니다.</h1>
+                    <div class="proof-strip">
+                        <span class="proof-item">#Problem_Solver</span>
+                        <span class="proof-item">#Data_Assetization</span>
+                        <span class="proof-item">#Logical_Thinking</span>
                     </div>
+                    <p>데이터와 비즈니스 사이를 연결하는 데이터 분석가 한재희입니다.</p>
                     <div class="cta-group">
                         <a href="#project-1" class="btn btn-primary">Projects</a>
-                        <a href="#contact" class="btn btn-secondary">Contact</a>
+                        <a href="mailto:han.zinna@email.com" class="btn btn-secondary">Contact</a>
                     </div>
                 </div>
                 <div class="hero-visual-card">
-                    <div class="abstract-circle c1"></div>
-                    <div class="abstract-circle c2"></div>
-                    <div class="flow-container">
-                        <div class="flow-card"><span class="flow-icon">🤔</span><div class="flow-text">Problem Definition</div></div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-card"><span class="flow-icon">🏗️</span><div class="flow-text">Structure Design</div></div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-card"><span class="flow-icon">✅</span><div class="flow-text">Actionable Decision</div></div>
+                    <div class="collage-card card-1">
+                        <img src="asset/thinkgood_ppt_thumb.png" alt="PPT Thumbnail" style="background:#f5f5f5; object-fit:cover;" onerror="this.style.background='#eee'; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmNWY1ZjUiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIiBmaWxsPSIjY2NjIj5QUFQ8L3RleHQ+PC9zdmc+'">
+                    </div>
+                    <div class="collage-card card-2">
+                        <img src="asset/heatmap.jpg" alt="Map" style="background:#e0e0e0;">
+                    </div>
+                    <div class="collage-card card-3">
+                        <img src="asset/thinkgood%20demo.PNG" alt="Demo" style="background:#dcdcdc;">
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Proof Teaser -->
+    <section id="proof">
+        <div class="container">
+            <div class="proof-grid">
+                <a href="#project-1" class="teaser-card">
+                    <div>
+                        <div class="teaser-meta">2025.10 - 2026.01</div>
+                        <h3 class="teaser-title">ThinkGood:<br>공모전 추천 시스템</h3>
+                        <p class="teaser-desc">현업 Attach 추천 모델 구현: 15년치 데이터 정비 및 비전문가 설득을 위한 XAI 설계</p>
+                        <div class="teaser-tags">
+                            <span class="badge">Cold Start</span>
+                            <span class="badge">Rule-based</span>
+                            <span class="badge">Streamlit</span>
+                        </div>
+                    </div>
+                    <div class="teaser-footer"><span class="btn-link">View Project →</span></div>
+                </a>
+                <a href="#project-2" class="teaser-card">
+                    <div>
+                        <div class="teaser-meta">2025.07 - 2025.08</div>
+                        <h3 class="teaser-title">Cheonan:<br>복지 사각지대 분석</h3>
+                        <p class="teaser-desc">통계적 타당성(KMO/Moran's I) 검증을 기반으로 한 행정동별 예산 배정 우선순위 도출</p>
+                        <div class="teaser-tags">
+                            <span class="badge">GIS</span>
+                            <span class="badge">Factor Analysis</span>
+                            <span class="badge">Tableau</span>
+                        </div>
+                    </div>
+                    <div class="teaser-footer"><span class="btn-link">View Project →</span></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <div class="profile-card">
-                    <div class="profile-img-slot"><span>사진</span></div>
+            <h2 class="section-title" style="display:block; text-align:center; margin-bottom:60px;">About Me</h2>
+            <div class="about-layout">
+                <div class="profile-side">
+                    <div class="profile-img-slot" style="overflow: hidden;">
+                        <img src="asset/photo.jpg" alt="Han Jaehui" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
                     <h3 class="profile-name">Han Jaehui</h3>
-                    <p class="profile-detail">이화여자대학교 통계학과</p>
-                    <p class="profile-detail" style="font-size: 0.85rem; color: #9CA3AF;">(3학년 수료 후 휴학)</p>
-                    <div style="margin-top:12px;"><span class="badge" style="background:#F3F4F6; color:#4B5563;">ADsP (2024.09)</span></div>
                     <div class="profile-links">
-                        <a href="mailto:han.zinna@email.com" class="link-btn">Email</a>
-                        <a href="https://github.com/HanJaeHui-GitHub" target="_blank" class="link-btn">Github</a>
+                        <a href="mailto:han.zinna@email.com" class="social-btn">Email</a>
+                        <a href="https://github.com/HanJaeHui-GitHub" target="_blank" class="social-btn">Github</a>
+                    </div>
+                    <!-- New Quote Block (Text style) -->
+                    <div class="profile-quote">
+                        "데이터와 비즈니스 환경을 함께 고려하여,<br>
+                        주어진 상황에서 가장 실행 가능한 최적의 구조를 설계합니다.<br>
+                        단순 분석을 넘어 의사결정을 이끄는 단단한 근거를 만듭니다."
                     </div>
                 </div>
                 <div class="about-text-card">
-                    <div class="about-quote">
-                        "혼자 조용히 고민하며 근거를 쌓고,<br>팀이 앞으로 나아갈 방향으로 의견을 정리해 <strong>당차게 제안합니다.</strong><br>
-                        <strong class="text-accent">데이터와 제품 사이의 간극을 메우는 일을 직접 수행합니다.</strong>"
-                    </div>
-                    <div class="what-i-build">
-                        <div class="wib-title">What I Build</div>
-                        <div class="wib-list">
-                            <div class="wib-item">Data Analysis & Modeling</div>
-                            <div class="wib-item">Data Structuring</div>
-                            <div class="wib-item">Dashboard / PPT / Demo</div>
-                            <div class="wib-item">AI-assisted Prototyping</div>
+                    <div class="keywords-grid">
+                        <div class="keyword-card">
+                            <span class="hash">#문제정의</span>
+                            <p class="desc">수치 뒤 맥락을 읽고,<br>무엇을 풀어야 하는지부터 다시 정의합니다.</p>
+                        </div>
+                        <div class="keyword-card">
+                            <span class="hash">#설명력</span>
+                            <p class="desc">결과를 기준과 근거로 정리해,<br>선택할 수 있는 언어로 바꿉니다.</p>
+                        </div>
+                        <div class="keyword-card">
+                            <span class="hash">#구조설계</span>
+                            <p class="desc">모델보다 먼저,<br>데이터와 서비스가 함께 굴러갈 구조를 설계합니다.</p>
+                        </div>
+                        <div class="keyword-card">
+                            <span class="hash">#협업</span>
+                            <p class="desc">팀이 같은 방향을 보도록 기준을 맞추고,<br>논의를 앞으로 움직입니다.</p>
+                        </div>
+                        <div class="keyword-card" style="grid-row: span 1;">
+                            <span class="hash">#에너지</span>
+                            <p class="desc">충분히 고민해 근거를 세우고,<br>팀이 나아갈 방향을 제안합니다.</p>
                         </div>
                     </div>
-                    <div class="about-current">
-                        <h4>Communication</h4>
-                        <p>AI를 활용해 웹 데모와 문서까지 <strong>직접 구현하고 전달하며</strong>, 분석 결과가 가장 설득력 있게 닿는 방법을 스스로 만들어냅니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="projects"></div>
+
+    <!-- Project 1 (ThinkGood) -->
+    <section id="project-1" class="project-detail thinkgood">
+        <div class="container">
+            <!-- 1. Summary & Results -->
+            <div class="pj-summary">
+                <span class="pj-date">2025.10 ~ 2026.01</span>
+                <h2 class="pj-title">사용자 행동 데이터 기반 공모전 추천 시스템 및 DB 고도화 제안</h2>
+                <p class="pj-desc">"90%의 비식별 유저(Cold Start) 환경을 돌파하는<br>세그먼트 전략과 데이터 자산화 설계"</p>
+                <!-- Project Info Grid -->
+                <div class="pj-info-grid">
+                    <div class="pj-info-item">
+                        <h5>Role</h5>
+                        <p>데이터 전처리, 세그먼트 알고리즘 설계, DB 스키마 제안, Streamlit 데모</p>
+                    </div>
+                    <div class="pj-info-item">
+                        <h5>Tech Stack</h5>
+                        <p>Python, Pandas, Streamlit, Scikit-learn</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Keywords & Timeline Sections -->
-    <section id="keywords">
-        <div class="container">
-            <h2 class="section-title">Core Values</h2>
-            <div class="keywords-grid">
-                <div class="keyword-card">
-                    <span class="hash">#문제정의</span>
-                    <p class="desc">보이는 지표보다, 왜 이 문제가 지금 중요한지부터 다시 정의합니다.</p>
-                </div>
-                <div class="keyword-card">
-                    <span class="hash">#설명력</span>
-                    <p class="desc">결과보다 과정을 숨기지 않고, 비전문가도 이해할 수 있는 언어로 번역합니다.</p>
-                </div>
-                <div class="keyword-card">
-                    <span class="hash">#구조설계</span>
-                    <p class="desc">당장 성능이 나오지 않더라도, 데이터가 쌓일 수 있는 구조를 먼저 만듭니다.</p>
-                </div>
-                <div class="keyword-card">
-                    <span class="hash">#협업</span>
-                    <p class="desc">혼자 푸는 문제보다, 팀이 같은 방향을 보게 만드는 과정에 가치를 둡니다.</p>
-                </div>
-                <div class="keyword-card" style="grid-row: span 1;">
-                    <span class="hash">#에너지</span>
-                    <p class="desc">혼자 충분히 고민하며 근거를 쌓은 뒤, 당차게 제안합니다.</p>
-                    <p class="sub-desc">대화를 좋아하지만, 결정을 위해 혼자 깊게 파고드는 시간도 소중하게 씁니다.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="timeline">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline-container">
-                <div class="timeline-item">
-                    <span class="time-date">2025.07.05 ~ 현재</span>
-                    <h3 class="time-title">Tobig’s 24기</h3>
-                    <p class="time-desc">추천 시스템 심화 스터디 및 기업 연계 컨퍼런스 프로젝트를 리드했습니다.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="time-date">2024.09.02 ~ 2025.08.29</span>
-                    <h3 class="time-title">ESAA</h3>
-                    <p class="time-desc">11기 팀원 → 12기 부회장으로 운영 구조 개선과 프로젝트 수행을 병행했습니다.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="time-date">2024.06.29 ~ 2024.08.31</span>
-                    <h3 class="time-title">OUTTA AI Bootcamp 데이터반</h3>
-                    <p class="time-desc">데이터 분석 전 과정(수집-전처리-모델링) 기반을 빠르게 쌓았습니다.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECT 1: ThinkGood -->
-    <section id="project-1" class="project-section">
-        <div class="container">
-            <div class="project-header">
-                <div class="project-eyebrow">Project 01 · 2025.10 ~ 2026.01</div>
-                <h2 class="project-title">ThinkGood | 공모전 추천 시스템 구축<br>& DB 고도화 제안</h2>
-                <div class="project-focus">
-                    "AI 도입을 넘어, 현업에 즉시 적용 가능한(Attach) 모델을 설계하고<br>더 나은 성능을 위한 DB 자산화 방향을 함께 제안했습니다."
-                </div>
                 <div class="project-tags">
-                    <span class="badge">Cold Start</span>
+                    <span class="badge accent">Cold Start</span>
                     <span class="badge">Rule-based</span>
                     <span class="badge">Segment</span>
                     <span class="badge">DB Proposal</span>
-                    <span class="badge">Streamlit</span>
+                </div>
+            </div>
+            
+            <div class="results-strip">
+                <div class="result-card">
+                    <p class="result-text">15년 수기·엑셀 병합 환경에서<br>추천 MVP 구현</p>
+                </div>
+                <div class="result-card">
+                    <p class="result-text">90% Cold Start 대응<br>세그먼트 로직 설계</p>
+                </div>
+                <div class="result-card">
+                    <p class="result-text">설득 가능한 AI<br>XAI 대시보드 구현</p>
                 </div>
             </div>
 
-            <!-- Pipeline -->
+            <!-- [RESTORED] Process Pipeline -->
             <div class="process-pipeline">
-                <div class="pipeline-step"><span class="step-icon">💡</span><span class="step-text">Problem<br>Definition</span></div>
-                <div class="pipeline-step"><span class="step-icon">🔎</span><span class="step-text">Data<br>Reality Check</span></div>
-                <div class="pipeline-step"><span class="step-icon">🏗️</span><span class="step-text">Data<br>Structuring</span></div>
-                <div class="pipeline-step"><span class="step-icon">🎯</span><span class="step-text">Segmentation<br>Strategy</span></div>
-                <div class="pipeline-step"><span class="step-icon">⚙️</span><span class="step-text">Attach-ready<br>Recsys</span></div>
-                <div class="pipeline-step"><span class="step-icon">🤝</span><span class="step-text">Demo &<br>Persuasion</span></div>
+                <div class="pipeline-step"><span class="step-icon">💡</span><span class="step-text">문제 정의<br>& 합의</span></div>
+                <div class="pipeline-step"><span class="step-icon">🔎</span><span class="step-text">데이터<br>현실 점검</span></div>
+                <div class="pipeline-step"><span class="step-icon">🏗️</span><span class="step-text">구조 재정의<br>(정비)</span></div>
+                <div class="pipeline-step"><span class="step-icon">🎯</span><span class="step-text">세그먼트<br>전략</span></div>
+                <div class="pipeline-step"><span class="step-icon">⚙️</span><span class="step-text">현업 부착<br>(Attach) 추천</span></div>
+                <div class="pipeline-step"><span class="step-icon">🤝</span><span class="step-text">설득/데모<br>& DB 제안</span></div>
             </div>
 
-            <div class="project-content">
-                <!-- Left: Text Blocks -->
-                <div class="text-content">
-                    <div class="insight-quote">
-                        <span class="insight-label">Key Insight</span>
-                        <div class="insight-text">"AI를 모르는 임원진에게 기술이 아닌 '비즈니스 가치'로 설득하고,<br>정돈되지 않은 실데이터 환경에서 '지금 당장 실행 가능한' 구조를 설계했습니다."</div>
-                    </div>
-                    <div class="text-block">
-                        <span class="phase-badge step">Step 01</span>
-                        <h3>Problem Definition & Persuasion</h3>
-                        <p>AI 도입 자체가 목적이 아니라, "사용자가 공모전을 찾는 탐색 비용을 줄여 전환율을 높이는 것"이 핵심임을 설득했습니다. 마케터와 임원진에게 기술 용어 대신 비즈니스 언어로 접근하여, 완벽한 모델보다 '검증 가능한 MVP'가 필요함을 합의했습니다.</p>
-                    </div>
-                    <div class="text-block">
-                        <span class="phase-badge step">Step 02</span>
-                        <h3>Reality & Action: 정제되지 않은 데이터의 가치화</h3>
-                        <p>수기로 관리되던 데이터, 고유 식별자가 없는 엑셀 파일 등 열악한 환경이었지만, 불평보다 '지금 무엇이 가능한가'에 집중했습니다. 흩어진 정보에서 '접수'라는 핵심 행동 신호를 발굴하고, 이를 추천 학습 데이터로 재구성하는 파이프라인을 구축했습니다.</p>
-                    </div>
-                    <div class="text-block">
-                        <span class="phase-badge phase">Phase 1</span>
-                        <h3>현업에 Attach 가능한 추천 로직</h3>
-                        <p>90%의 콜드스타트 유저에게 복잡한 딥러닝 모델은 무용지물이었습니다. 대신 마케터가 이해하고 타겟팅할 수 있는 '세그먼트(Dormant/Light/Power)' 전략을 제안했습니다. 단순해 보이지만 현업 운영 로직에 바로 붙일 수 있는 하이브리드 모델로 실질적인 성능을 확보했습니다.</p>
-                        <div class="segment-grid">
-                            <div class="seg-card"><div class="seg-title">GUEST</div><div class="seg-desc">정보 없음 → 인기+최신 탐색 유도</div></div>
-                            <div class="seg-card"><div class="seg-title">DORMANT</div><div class="seg-desc">장기 미접속 → 복귀 장벽 완화</div></div>
-                            <div class="seg-card"><div class="seg-title">LIGHT</div><div class="seg-desc">관심사 보유 → 태그/분야 매칭</div></div>
-                            <div class="seg-card"><div class="seg-title">POWER</div><div class="seg-desc">접수 2회+ → 이력/관심사 하이브리드</div></div>
-                        </div>
-                    </div>
-                    <div class="text-block">
-                        <span class="phase-badge phase">Phase 2</span>
-                        <h3>자산화를 위한 설계: DB & Demo</h3>
-                        <p>눈에 보이지 않는 알고리즘은 설득하기 어렵습니다. 추천 원리가 시각적으로 보이는 'XAI 대시보드'와, 데이터가 자산으로 쌓이는 'DB 설계안'을 함께 제시했습니다. DB 구축은 단순 개발 영역이 아니라, 회사가 더 좋은 AI 모델을 갖기 위해 선행되어야 할 투자임을 강조했습니다.</p>
-                    </div>
-                </div>
+            <button class="btn-toggle-details" onclick="toggleDetails('pj1-details', this)">
+                상세 과정 보기 ▾
+            </button>
 
-                <!-- Right: Visual Slots (Thumbnails) -->
-                <div class="visual-stack">
-                    <!-- PDF Slot: Scrollable Thumbnail -->
-                    <div class="slot-box">
-                        <div class="slot-header" onclick="openModal('발표 자료', 'PDF 전체 보기', null, 'asset/thinkgood_presentation.pdf')">
-                            <span>발표 자료 (PDF)</span> <span>확대하기 ↗</span>
+            <!-- Collapsible Content -->
+            <div id="pj1-details" class="project-details-wrapper">
+                <div class="project-content">
+                    <div class="text-content">
+                        <!-- A. Problem -->
+                        <div class="text-block">
+                            <h3>1. Problem Definition – Data Reality</h3>
+                            
+                            <div class="context-block" style="margin-bottom:20px;">
+                                <p>추천을 위한 행동 로그(Click/View)가 부재하고, 오직 연 1~2회의 '접수(Result)' 데이터만 존재하는 환경이었습니다.</p>
+                                <p style="margin-top:12px;">"데이터가 없어서 AI가 불가능하다"는 기술적 한계를 넘어, <strong>"사용자의 탐색 비용을 줄여 이탈을 막는다"</strong>는 비즈니스 목표로 문제를 재정의했습니다. 전체 유저의 92%가 비회원, 7.7%가 휴면 유저로 개인화 신호가 극도로 부족함을 확인했습니다.</p>
+                            </div>
+                            <!-- Visual: Pie Chart -->
+                            <div class="slot-box" style="cursor:default; padding: 24px;">
+                                <div class="slot-content" style="background: white; flex-direction: column; gap:16px; aspect-ratio: auto; height: auto;">
+                                    <div class="pie-chart-visual"></div>
+                                    <div class="pie-legend">
+                                        <div class="legend-item"><div class="dot" style="background:var(--primary)"></div><span>92% 비회원</span></div>
+                                        <div class="legend-item"><div class="dot" style="background:#e5e7eb"></div><span>8% 회원</span></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="slot-content">
-                            <!-- Direct Scrollable PDF Preview -->
-                            <iframe src="asset/thinkgood_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1" class="slot-thumbnail"></iframe>
+
+                        <!-- B. Solution 1 -->
+                        <!-- [CHANGED] Phase 1 Box Wrapper -->
+                        <div class="phase-box">
+                            <div class="text-block">
+                                <span class="phase-badge phase">Phase 1</span>
+                                <h3>현업 적용형 모델 (Attach-ready)</h3>
+                                <p>복잡한 딥러닝 대신, 마케터가 이해하고 운영할 수 있는 <strong>'설명 가능한 세그먼트 로직'</strong>으로 즉시 도입 가능한 모델을 구현했습니다.</p>
+                                
+                                <ul style="padding-left: 0; margin-top: 16px;">
+                                    <li class="segment-item">
+                                        <strong>GUEST (92%)</strong>
+                                        <div class="text-detail">정보 없음 → 인기(Log) + 최신성(Recency) 결합 (트렌드 반영)</div>
+                                        <code class="formula-code">Score = 0.7 * log(Logs) + 0.3 * log(Hits)</code>
+                                    </li>
+                                    <li class="segment-item">
+                                        <strong>DORMANT (7.7%)</strong>
+                                        <div class="text-detail">장기 미접속 → EASY(난이도) 가중치 2배 (복귀 장벽 완화)</div>
+                                        <code class="formula-code">Score = Norm(Popularity) * Difficulty_Weight (EASY=2.0)</code>
+                                    </li>
+                                    <li class="segment-item">
+                                        <strong>LIGHT (소수)</strong>
+                                        <div class="text-detail">관심사 보유 → 콘텐츠 필터링(CBF) (태그 매칭)</div>
+                                        <code class="formula-code">Score = 1.0 * Interest_Match(TF-IDF) + 0.3 * Popularity</code>
+                                    </li>
+                                    <li class="segment-item">
+                                        <strong>POWER (0.18%)</strong>
+                                        <div class="text-detail">접수 2회+ → 이력 기반 하이브리드 (정밀 개인화)</div>
+                                        <code class="formula-code">Score = 1.5 * History_Sim + 1.0 * Interest + 0.3 * Popularity</code>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- C. Solution 2 -->
+                        <!-- [CHANGED] Phase 2 Box Wrapper -->
+                        <div class="phase-box">
+                            <div class="text-block">
+                                <span class="phase-badge phase">Phase 2</span>
+                                <h3>데이터 자산화 (Assetization)</h3>
+                                <p>AI 성능의 한계는 알고리즘이 아닌 데이터 구조에 있음을 설득하며, DB 설계를 역제안했습니다.</p>
+                                
+                                <ul class="context-list" style="margin-top:16px;">
+                                    <li><strong>입력 구조 정형화 (Text to Code):</strong> "만 19세 이상 서울 거주" 같은 텍스트를 Age:19, Region:11 코드로 변환하는 관리자 UI 설계를 제안했습니다.</li>
+                                    <li><strong>유저 식별 체계(PK):</strong> 전화번호/이메일 중복을 정제하고 비회원 식별자(NM25_...)를 생성하여, 버려지던 비회원 접수 이력을 학습 데이터로 편입시켰습니다.</li>
+                                </ul>
+
+                                <!-- Visual: Before/After Comparison -->
+                                <div class="slot-box" style="margin-top:24px; cursor:default; max-width: 600px; margin-left: auto; margin-right: auto;">
+                                    <div class="slot-content" style="background:#f9fafb; padding:20px; aspect-ratio: auto; height: auto;">
+                                        <div class="code-comparison">
+                                            <div class="code-card before">
+                                                <div style="color:#ef4444; font-weight:bold; margin-bottom:6px;">Before</div>
+                                                <div style="color:#666;">"서울 거주 20대..."</div>
+                                                <div style="font-size:0.75rem; color:#999; margin-top:4px;">(비정형 텍스트)</div>
+                                            </div>
+                                            <div style="font-size:1.5rem; color:#ccc;">→</div>
+                                            <div class="code-card after">
+                                                <div style="color:var(--primary); font-weight:bold; margin-bottom:6px;">After</div>
+                                                <div style="color:#333;">age:19, region:11</div>
+                                                <div style="font-size:0.75rem; color:var(--primary); margin-top:4px;">(구조화된 코드)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- D. Result -->
+                        <div class="text-block">
+                            <span class="phase-badge phase">Result</span>
+                            <h3>Result & Key Outcome</h3>
+                            <div class="insight-quote">
+                                <span class="insight-label">Key Outcome</span>
+                                <div class="insight-text">추천 근거("이력 유사도 55%")를 시각화한 웹 데모(Streamlit)를 통해 블랙박스 모델을 불신하던 실무진을 설득했습니다. 임원진에게 AI를 단순 기능이 아닌, 장기적인 데이터 자산화를 위한 <strong>'운영 인프라'</strong>로 인식시키는 계기를 마련했습니다.</div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Demo Slot: Image Thumbnail -->
-                    <div class="slot-box" onclick="openModal('서비스 데모', 'Hugging Face Space', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System', true)">
-                        <div class="slot-header">서비스 데모 (Hugging Face)</div>
-                        <div class="slot-content">
-                            <!-- [수정] 썸네일 경로 수정 및 공백 처리 -->
-                            <img src="asset/thinkgood%20demo.PNG" class="slot-thumbnail" alt="ThinkGood Demo">
+                    <!-- Right Visual Stack -->
+                    <div class="visual-stack">
+                        <div class="slot-box" onclick="openModal('발표 자료', 'PDF 전체 보기', null, 'asset/thinkgood_presentation.pdf')">
+                            <div class="slot-header"><span>발표 자료 (PDF)</span> <span class="slot-action">확대하기 ↗</span></div>
+                            <div class="slot-content">
+                                <iframe src="asset/thinkgood_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1" class="slot-thumbnail"></iframe>
+                            </div>
+                        </div>
+                        <div class="slot-box" onclick="openModal('서비스 데모', 'Hugging Face Space', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System', true)">
+                            <div class="slot-header">서비스 데모 (Hugging Face)</div>
+                            <div class="slot-content">
+                                <img src="asset/thinkgood%20demo.PNG" class="slot-thumbnail" alt="ThinkGood Demo">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -710,86 +878,125 @@
         </div>
     </section>
 
-    <!-- PROJECT 2: Cheonan -->
-    <section id="project-2" class="project-section">
+    <!-- Project 2 (Cheonan) -->
+    <section id="project-2" class="project-detail">
         <div class="container">
-            <div class="project-header">
-                <div class="project-eyebrow">Project 02 · 2025.07 ~ 2025.08</div>
-                <h2 class="project-title">Cheonan | 노인 복지 사각지대<br>고위험군 분석 & 정책 제안</h2>
-                <div class="project-focus">
-                    "정교한 블랙박스 모델보다, 담당 공무원이 납득할 수 있는 '설명 가능한(Explainable)' 분석을 우선했습니다."
-                </div>
-                <div class="project-tags">
-                    <span class="badge">GIS</span> <span class="badge">Factor Analysis</span> <span class="badge">KMeans</span> <span class="badge">Tableau</span>
-                </div>
-            </div>
-
-            <div class="process-pipeline">
-                <div class="pipeline-step"><span class="step-icon">🏛️</span><span class="step-text">Policy-oriented<br>Problem</span></div>
-                <div class="pipeline-step"><span class="step-icon">🗺️</span><span class="step-text">Admin Data<br>Alignment</span></div>
-                <div class="pipeline-step"><span class="step-icon">🧱</span><span class="step-text">Feature<br>Construction</span></div>
-                <div class="pipeline-step"><span class="step-icon">📊</span><span class="step-text">Factor Analysis</span></div>
-                <div class="pipeline-step"><span class="step-icon">📍</span><span class="step-text">Spatial<br>Analysis</span></div>
-                <div class="pipeline-step"><span class="step-icon">📢</span><span class="step-text">Policy-ready<br>Visualization</span></div>
-            </div>
-
-            <div class="project-content">
-                <!-- Left: Text Blocks + Tableau Button -->
-                <div class="text-content">
-                    <div class="text-block">
-                        <h3>Background & Data Engineering</h3>
-                        <p>행정동 단위의 실효성 있는 정책 제안을 위해, 데이터의 지리적 정합성을 확보하는 것부터 시작했습니다.</p>
-                        <p style="margin-top:8px;">법정동/행정동 혼재 문제를 해결하기 위해 읍면동 기준을 정리하고, 주소-위경도 변환 후 GeoJSON의 MultiPolygon 포함 여부를 확인하는 매핑 함수를 직접 구현해 '정확한 행정동' 데이터를 확보했습니다.</p>
+            <!-- 1. Summary & Results -->
+            <div class="pj-summary">
+                <span class="pj-date">2025.07 ~ 2025.08</span>
+                <h2 class="pj-title">천안시 노인 복지 사각지대 고위험군 예측 및 맞춤형 정책 제안</h2>
+                <p class="pj-desc">"5만 건의 좌표 데이터와 통계적 검증으로 찾아낸<br>'설명 가능한' 복지 사각지대"</p>
+                <div class="pj-info-grid">
+                    <div class="pj-info-item">
+                        <h5>Role</h5>
+                        <p>GIS 데이터 가공, 인자 분석(Factor Analysis), Tableau 시각화, 정책 제안</p>
                     </div>
-                    <div class="text-block">
-                        <h3>Modeling Choice: 왜 인자분석인가?</h3>
+                    <div class="pj-info-item">
+                        <h5>Tech Stack</h5>
+                        <p>Python, QGIS, Tableau, Factor Analyzer</p>
+                    </div>
+                </div>
+                <div style="margin-top: 16px;" class="project-tags">
+                    <span class="badge accent">GIS</span>
+                    <span class="badge">Factor Analysis</span>
+                    <span class="badge">Moran's I</span>
+                    <span class="badge">Tableau</span>
+                </div>
+            </div>
+
+            <div class="results-strip">
+                <div class="result-card">
+                    <p class="result-text">5.7만 건 좌표 변환<br>정밀 매핑 데이터 구축</p>
+                </div>
+                <div class="result-card">
+                    <p class="result-text">14개 변수 → 5개 인자<br>통계적 검증(KMO)</p>
+                </div>
+                <div class="result-card">
+                    <p class="result-text">맞춤형 정책 제안<br>위험군별 복지 서비스 매칭</p>
+                </div>
+            </div>
+
+            <!-- [RESTORED] Process Pipeline -->
+            <div class="process-pipeline">
+                <div class="pipeline-step"><span class="step-icon">🏛️</span><span class="step-text">정책 목적<br>정의</span></div>
+                <div class="pipeline-step"><span class="step-icon">🗺️</span><span class="step-text">행정 기준<br>정렬</span></div>
+                <div class="pipeline-step"><span class="step-icon">🧱</span><span class="step-text">지표 구성<br>(파생)</span></div>
+                <div class="pipeline-step"><span class="step-icon">📊</span><span class="step-text">인자분석<br>(설명력)</span></div>
+                <div class="pipeline-step"><span class="step-icon">📍</span><span class="step-text">공간분석<br>/군집화</span></div>
+                <div class="pipeline-step"><span class="step-icon">📢</span><span class="step-text">시각화<br>/정책 제안</span></div>
+            </div>
+
+            <button class="btn-toggle-details" onclick="toggleDetails('pj2-details', this)">
+                상세 과정 보기 ▾
+            </button>
+
+            <div id="pj2-details" class="project-details-wrapper">
+                <div class="project-content">
+                    <div class="text-content">
+                        <!-- A. Logic -->
+                        <div class="text-block">
+                            <h3>1. Problem Definition: Why Explainability?</h3>
+                            <p>한정된 예산을 효율적으로 집행하기 위해서는 단순히 "위험하다"는 결과보다 <strong>"왜 위험한가?"</strong>를 설명할 수 있는 근거가 필수적이었습니다. 단순 인구수 집계를 넘어, '경제적 여력', '인프라 접근성' 등 복합적인 결핍 요인을 찾아내기 위해 통계적 방법론을 도입했습니다.</p>
+                        </div>
+
+                        <!-- B. Factor Analysis -->
+                        <div class="text-block">
+                            <h3>2. Logical Framework: 근거 중심의 모델링</h3>
+                            <div class="phase-box">
+                                <ul class="context-list">
+                                    <li><strong>GIS 정밀 가공:</strong> 주소 데이터 57,790건을 위경도로 변환하고, GeoJSON 매핑 함수를 직접 구현하여 행정동 단위의 데이터 정확도를 확보했습니다.</li>
+                                    <li><strong>인자 분석 (Factor Analysis):</strong> 14개의 파생 지표를 ①고령화/독거 ②경제력 ③인지건강 ④금융취약 ⑤생활인프라 등 5개의 해석 가능한 핵심 인자로 압축했습니다.<br>(Validation: KMO 검정(0.6 이상)과 Bartlett 검정을 통해 분석의 통계적 타당성을 입증했습니다.)</li>
+                                    <li><strong>공간 분석 (Spatial Analysis):</strong> Moran's I를 통해 특정 동네만 위험한 것이 아니라, 주변 지역까지 위험이 군집된 Hot Spot을 도출하여 관리의 우선순위를 정했습니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- D. Policy -->
+                        <div class="text-block">
+                            <h3>3. Result & Policy Proposal</h3>
+                            <p>K-Means 군집화로 도출된 3가지 위험 유형별로 천안시의 <strong>'2025 복지 시행 계획'</strong>을 매칭하여 실현 가능한 정책을 제안했습니다.</p>
+                            <div class="segment-grid" style="grid-template-columns: 1fr;">
+                                <div class="seg-card"><div class="seg-title">🔴 고위험군 (병천면 등 - 복합 결핍)</div><div class="seg-desc">진단: 고령화와 경제적 빈곤, 인프라 부족이 중첩된 최취약 지역.<br>Action: 이동이 어려우므로 시설 확충보다는 '찾아가는 통합 복지 서비스(이동식 의료/목욕)' 우선 배정.</div></div>
+                                <div class="seg-card"><div class="seg-title">🟠 중위험군 (동면, 북면 - 인프라 결핍)</div><div class="seg-desc">진단: 경제력은 양호하나 생활 인프라가 극도로 부족하여 고립 위험 존재.<br>Action: 경제적 지원보다 '마을 커뮤니티' 및 셔틀버스 등 이동권 보장 정책.</div></div>
+                                <div class="seg-card"><div class="seg-title">🟢 저위험군 (원성동 등 - 소득 결핍)</div><div class="seg-desc">진단: 인프라는 우수하나 소득 및 경제 활동이 취약한 도심형 빈곤.<br>Action: '노인 일자리 매칭' 및 지역 화폐 바우처 지급을 통한 소득 보전.</div></div>
+                            </div>
+                        </div>
+
                         <div class="insight-quote">
-                            <span class="insight-label">Decision Criteria</span>
-                            <div class="insight-text">“정책 입안자에게는 '정확도 99% 모델'보다<br>'왜 여기가 위험한가'를 설명할 수 있는 근거가 더 중요합니다.”</div>
+                            <span class="insight-label">Key Insight</span>
+                            <div class="insight-text" style="text-align: center;">
+                                막연한 위험 예측이 아닌<br>데이터 근거 기반 의사결정 지원
+                            </div>
                         </div>
-                        <p>단순 나열식 지표보다 "위험의 원인"을 구조화하기 위해 인자분석(Factor Analysis)을 선택했습니다.</p>
-                        <ul>
-                            <li>수십 개의 변수를 '경제여력', '인프라 부족' 등 설명 가능한 요인으로 축소</li>
-                            <li>KMO 0.6 이상, 의미적 연결이 명확한 변수 조합 선택</li>
-                            <li><strong>최종 5개 인자:</strong> 고령화/독거, 경제여력, 인지건강지원, 금융취약, 생활인프라</li>
-                        </ul>
-                    </div>
-                    <div class="text-block">
-                        <h3>Spatial Analysis & Proposal</h3>
-                        <p>Moran’s I로 공간적 핫스팟(HH)을 도출하고, KMeans로 위험군을 분류했습니다. 최종적으로 Tableau 대시보드를 통해 비전문가도 "어디에 예산을 투입해야 하는지" 한눈에 볼 수 있도록 시각화하여 설득력을 높였습니다.</p>
-                    </div>
-                    
-                    <!-- Tableau Button Here -->
-                    <div style="margin-top: 32px;">
-                        <a href="https://public.tableau.com/app/profile/.45103572/viz/_Tableau2_17560266784060/sheet0" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; height: 56px; text-decoration: none;">
-                            📊 Tableau 대시보드 바로가기 ↗
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Right: Visual Slots (Thumbnails) -->
-                <div class="visual-stack">
-                    <!-- Image Slot 1 -->
-                    <div class="slot-box" onclick="openModal('공간 분석 지도', 'Moran\'s I Hotspot Map', 'asset/heatmap.jpg')">
-                        <div class="slot-header">공간 분석 (Image)</div>
-                        <div class="slot-content">
-                            <img src="asset/heatmap.jpg" class="slot-thumbnail" alt="Spatial Analysis">
+                        <div style="margin-top: 32px;">
+                            <a href="https://public.tableau.com/app/profile/.45103572/viz/_Tableau2_17560266784060/sheet0" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center; height: 56px; text-decoration: none;">
+                                Tableau 대시보드 바로가기 ↗
+                            </a>
                         </div>
                     </div>
-                    <!-- Image Slot 2 -->
-                    <div class="slot-box" onclick="openModal('탐색 UI 화면', 'Factor Analysis Dashboard UI', 'asset/factor_danger.jpg')">
-                        <div class="slot-header">탐색 UI (Image)</div>
-                        <div class="slot-content">
-                            <img src="asset/factor_danger.jpg" class="slot-thumbnail" alt="Exploration UI">
+
+                    <!-- Right Visual Stack -->
+                    <div class="visual-stack">
+                        <div class="slot-box" onclick="openModal('공간 분석 지도', 'Moran\'s I Hotspot Map', 'asset/heatmap.jpg')">
+                            <div class="slot-header"><span>공간 분석 (Click to View)</span> <span class="slot-action">확대하기 ↗</span></div>
+                            <div class="slot-content">
+                                <img src="asset/heatmap.jpg" class="slot-thumbnail" alt="Spatial Analysis">
+                            </div>
                         </div>
-                    </div>
-                    <!-- PDF Slot -->
-                    <div class="slot-box">
-                        <div class="slot-header" onclick="openModal('발표 자료', 'PDF 전체 보기', null, 'asset/cheonan_presentation.pdf')">
-                            <span>발표 자료 (PDF)</span> <span>확대하기 ↗</span>
+                        <div class="slot-box" onclick="openModal('탐색 UI 화면', 'Factor Analysis Dashboard UI', 'asset/factor_danger.jpg')">
+                            <div class="slot-header"><span>탐색 UI (Click to View)</span> <span class="slot-action">확대하기 ↗</span></div>
+                            <div class="slot-content">
+                                <img src="asset/factor_danger.jpg" class="slot-thumbnail" alt="Exploration UI">
+                            </div>
                         </div>
-                        <div class="slot-content">
-                            <iframe src="asset/cheonan_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1" class="slot-thumbnail"></iframe>
+                        <div class="slot-box">
+                            <div class="slot-header" onclick="openModal('발표 자료', 'PDF 전체 보기', null, 'asset/cheonan_presentation.pdf')">
+                                <span>발표 자료 (PDF)</span> <span class="slot-action">확대하기 ↗</span>
+                            </div>
+                            <div class="slot-content">
+                                <iframe src="asset/cheonan_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1" class="slot-thumbnail"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -797,30 +1004,72 @@
         </div>
     </section>
 
-    <!-- Other Projects -->
-    <section id="other-projects">
+    <!-- Experience -->
+    <section id="experience">
         <div class="container">
-            <h2 class="section-title" style="margin-bottom: 40px;">Other Projects</h2>
-            <div class="other-grid">
-                <div class="other-card"><h4 class="other-title">Run-Trip 관광 정책 분석</h4><p class="other-desc">관광 데이터 기반 러닝 코스 추천 및 정책 제안</p></div>
-                <div class="other-card"><h4 class="other-title">Airbnb 가격 예측</h4><p class="other-desc">숙소 특성 데이터 기반 가격 책정 모델링</p></div>
-                <div class="other-card"><h4 class="other-title">Credit Card Default</h4><p class="other-desc">신용카드 연체 고객 예측 및 리스크 관리</p></div>
-                <div class="other-card"><h4 class="other-title">Novel Author NLP</h4><p class="other-desc">문체 분석을 통한 소설 작가 분류 모델</p></div>
-                <div class="other-card"><h4 class="other-title">Movie Audience Series</h4><p class="other-desc">시계열 분석을 통한 영화 관객수 예측</p></div>
+            <h2 class="section-title" style="display:block; text-align:center; margin-bottom: 60px;">Experience</h2>
+            <div class="exp-grid">
+                <div class="exp-card">
+                    <span class="exp-date">2025.07 ~ 현재</span>
+                    <h3 class="exp-title">Tobig’s 24기</h3>
+                    <p class="exp-role">인공지능·데이터 분석 연합동아리</p>
+                    <p class="exp-desc">기업 연계 프로젝트에 참여해 문제 정의부터 모델 구현, 최종 발표까지 전 과정을 경험했습니다. 추천 시스템 설계 과정에서 이론적 성능보다 실제 적용 가능성과 구조 설계에 집중했습니다.</p>
+                </div>
+                <div class="exp-card">
+                    <span class="exp-date">2024.09 ~ 2025.08</span>
+                    <h3 class="exp-title">ESAA</h3>
+                    <p class="exp-role">교내 통계 분석 학회<br>11기 YB → 12기 OB 겸 부회장</p>
+                    <p class="exp-desc">주 2회 세션과 프로젝트를 병행하는 학회에서 활동했으며, 12기에는 운영진으로서 커리큘럼 개편과 운영 구조 개선을 주도했습니다.</p>
+                </div>
+                <div class="exp-card">
+                    <span class="exp-date">2024.06 ~ 2024.08</span>
+                    <h3 class="exp-title">OUTTA</h3>
+                    <p class="exp-role">AI Bootcamp | 데이터반</p>
+                    <p class="exp-desc">데이터 수집부터 전처리, 모델링까지 분석의 전 과정을 실습 중심으로 경험했습니다. 짧은 기간이었지만 분석 흐름을 처음부터 끝까지 직접 수행하며 기본기를 다졌습니다.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer with Skills -->
     <footer id="contact">
         <div class="container">
-            <h3>Let's Connect</h3>
-            <p style="margin-top:16px; opacity: 0.8;">데이터로 문제를 정의하고 해결하는 과정에 대해 더 이야기 나누고 싶습니다.</p>
-            <div class="footer-links">
-                <a href="mailto:han.zinna@email.com">Email</a>
-                <a href="https://github.com/HanJaeHui-GitHub" target="_blank">Github</a>
+            <!-- Skills Section in Footer -->
+            <div class="skills-grid">
+                <div class="skill-col">
+                    <h4>Language</h4>
+                    <ul class="skill-list">
+                        <li>Python (Pandas, NumPy)</li>
+                        <li>R</li>
+                        <li>Markdown</li>
+                    </ul>
+                </div>
+                <div class="skill-col">
+                    <h4>Analysis</h4>
+                    <ul class="skill-list">
+                        <li>Factor Analysis</li>
+                        <li>Clustering (K-Means)</li>
+                        <li>GIS Spatial Analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-col">
+                    <h4>Visualization</h4>
+                    <ul class="skill-list">
+                        <li>Tableau</li>
+                        <li>Streamlit</li>
+                    </ul>
+                </div>
             </div>
-            <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">&copy; 2025 Han Jaehui. All rights reserved.</p>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 40px;">
+                <h3>Contact</h3>
+                <p style="margin-top:16px; opacity: 0.8;">데이터로 문제를 정의하고 해결하는 과정에 대해 더 이야기 나누고 싶습니다.</p>
+                <div class="footer-links">
+                    <a href="mailto:han.zinna@email.com">Email</a>
+                    <a href="https://github.com/HanJaeHui-GitHub" target="_blank">Github</a>
+                </div>
+                <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">&copy; 2025 Han Jaehui. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -829,53 +1078,58 @@
         <div class="modal-content">
             <div class="modal-close" onclick="closeModal()">✕</div>
             <h3 id="modalTitle" class="modal-title">Title</h3>
-            <div class="modal-body-container">
-                <!-- Content injected via JS -->
-            </div>
+            <div class="modal-body-container"></div>
         </div>
     </div>
 
     <!-- Modal Script -->
     <script>
+        // Toggle Logic for Project Details
+        function toggleDetails(elementId, btn) {
+            const el = document.getElementById(elementId);
+            if (el.classList.contains('active')) {
+                el.classList.remove('active');
+                btn.innerText = '상세 과정 보기 ▾';
+            } else {
+                el.classList.add('active');
+                btn.innerText = '상세 과정 접기 ▴';
+            }
+        }
+
+        // Modal Logic
         function openModal(title, desc, imagePath = null, url = null, isLinkOnly = false) {
             const modal = document.getElementById('visualModal');
             const mTitle = document.getElementById('modalTitle');
             const mBody = document.querySelector('.modal-body-container');
             
-            // Clean reset
-            mBody.innerHTML = ''; 
+            mBody.innerHTML = ''; // Reset
             mTitle.innerText = title;
 
-            // [수정] HuggingFace 등 링크 전용 모달 처리
+            // Link Only Modal
             if (isLinkOnly && url) {
-                // 설명 문구
-                const infoTitle = document.createElement('h3');
-                infoTitle.innerText = "서비스 데모"; // Fixed Title or pass via param
-                infoTitle.style.marginBottom = '16px';
-                infoTitle.style.color = '#00462A';
-
                 const infoDesc = document.createElement('p');
                 infoDesc.innerText = "보안 정책상 미리보기를 지원하지 않습니다.\n아래 버튼을 눌러 새 창에서 확인해주세요.";
                 infoDesc.style.textAlign = 'center';
-                infoDesc.style.marginBottom = '24px';
+                infoDesc.style.margin = '40px 0 20px';
                 infoDesc.style.color = '#4B5563';
-                infoDesc.style.lineHeight = '1.6';
 
-                // 버튼
-                const newWindowLink = document.createElement('a');
-                newWindowLink.href = url;
-                newWindowLink.target = '_blank';
-                newWindowLink.innerText = '새 창에서 실행하기 ↗';
-                newWindowLink.className = 'btn btn-primary'; // Primary style
-                newWindowLink.style.textDecoration = 'none';
+                const linkBtn = document.createElement('a');
+                linkBtn.href = url;
+                linkBtn.target = '_blank';
+                linkBtn.innerText = '새 창에서 실행하기 ↗';
+                linkBtn.className = 'btn btn-primary';
+                linkBtn.style.textDecoration = 'none';
                 
-                mBody.appendChild(infoTitle);
+                const centerDiv = document.createElement('div');
+                centerDiv.style.textAlign = 'center';
+                centerDiv.appendChild(linkBtn);
+
                 mBody.appendChild(infoDesc);
-                mBody.appendChild(newWindowLink);
+                mBody.appendChild(centerDiv);
 
             } else if (url) {
+                // Iframe (PDF)
                 const iframe = document.createElement('iframe');
-                // PDF Toolbar Hiding
                 if (url.toLowerCase().endsWith('.pdf') && !url.includes('#')) {
                     iframe.src = url + "#toolbar=0&navpanes=0&scrollbar=0"; 
                 } else {
@@ -884,47 +1138,30 @@
                 iframe.style.width = '100%';
                 iframe.style.height = '100%';
                 iframe.style.border = 'none';
-                
+                iframe.style.borderRadius = '8px';
                 mBody.appendChild(iframe);
-                
-                // Remove new window button for PDFs to discourage downloading
-                const isPdf = url.toLowerCase().endsWith('.pdf');
-                if (!isPdf) {
-                    const btnDiv = document.createElement('div');
-                    btnDiv.style.position = 'absolute';
-                    btnDiv.style.bottom = '20px';
-                    btnDiv.style.left = '50%';
-                    btnDiv.style.transform = 'translateX(-50%)';
-                    btnDiv.style.zIndex = '10';
-                    
-                    const newWindowLink = document.createElement('a');
-                    newWindowLink.href = url;
-                    newWindowLink.target = '_blank';
-                    newWindowLink.innerText = '새 창에서 열기 ↗';
-                    newWindowLink.className = 'btn btn-secondary';
-                    newWindowLink.style.backgroundColor = 'white';
-                    newWindowLink.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
-                    
-                    btnDiv.appendChild(newWindowLink);
-                    mBody.appendChild(btnDiv);
-                }
 
             } else if (imagePath) {
+                // Image
                 const img = document.createElement('img');
                 img.src = imagePath;
                 img.style.maxWidth = '100%';
-                img.style.maxHeight = '80vh';
+                img.style.maxHeight = '100%';
                 img.style.objectFit = 'contain';
-                
                 mBody.appendChild(img);
-                
-                if (desc) {
-                    const descP = document.createElement('p');
-                    descP.innerText = desc;
-                    descP.style.marginTop = '16px';
-                    descP.style.color = '#4B5563';
-                    mBody.appendChild(descP);
-                }
+            }
+
+            // Default Text for empty modals
+            if (mBody.innerHTML === '') {
+                 const placeholder = document.createElement('div');
+                 placeholder.className = 'media-placeholder';
+                 const iconBox = document.createElement('div');
+                 iconBox.className = 'media-icon-box';
+                 const text = document.createElement('p');
+                 text.innerText = desc || 'Content Not Available';
+                 placeholder.appendChild(iconBox);
+                 placeholder.appendChild(text);
+                 mBody.appendChild(placeholder);
             }
 
             modal.style.display = 'flex'; 
@@ -945,11 +1182,9 @@
         document.getElementById('visualModal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
-
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
     </script>
-
 </body>
 </html>
