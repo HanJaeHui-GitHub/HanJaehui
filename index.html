@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Han Jaehui | Data Analyst Portfolio</title>
 
-  <!-- Pretendard Font -->
+  <!-- Pretendard -->
   <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
   <style>
-    /* --- RESET & VARIABLES --- */
+    /* =========================
+      RESET & VARIABLES
+    ========================= */
     :root {
-      /* Restored Original Color System */
-      --primary: #00462A;      /* Deep Forest Green */
+      --primary: #00462A;
       --primary-dark: #00331F;
-      --accent: #C3E88D;       /* Lime Point */
+      --accent: #C3E88D;
 
       --bg-light: #F7F9FA;
       --bg-white: #FFFFFF;
@@ -29,13 +30,12 @@
       --radius: 12px;
       --container-width: 1100px;
 
-      /* (옵션) 섀도우 변수 보강: 기존 코드에서 var(--shadow-sm) 사용 중이었음 */
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-      --shadow-md: 0 10px 30px rgba(0,0,0,0.12);
+      /* Shadows */
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 12px 30px rgba(0,0,0,0.10);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
       color: var(--text-main);
@@ -43,12 +43,10 @@
       background-color: var(--bg-white);
       word-break: keep-all;
     }
-
     a { text-decoration: none; color: inherit; transition: color 0.2s; }
     ul { list-style: none; padding: 0; margin: 0; }
     img { max-width: 100%; display: block; }
 
-    /* --- UTILITIES --- */
     .container {
       max-width: var(--container-width);
       margin: 0 auto;
@@ -70,319 +68,656 @@
     }
     .text-accent { color: var(--accent); font-weight: 700; }
 
-    /* --- NAVIGATION --- */
+    /* =========================
+      NAV
+    ========================= */
     nav {
       position: fixed; top: 0; width: 100%;
-      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-      z-index: 1000; border-bottom: 1px solid var(--border);
-      height: 64px; display: flex; align-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+      display: flex;
+      align-items: center;
     }
     .nav-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      width: 100%; max-width: var(--container-width); margin: 0 auto; padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
     }
     .logo { font-weight: 800; font-size: 1.25rem; color: var(--primary); }
     .nav-links { display: flex; gap: 24px; }
     .nav-links a { font-size: 0.9rem; font-weight: 600; color: var(--text-sub); }
     .nav-links a:hover { color: var(--primary); }
 
-    /* --- HERO SECTION --- */
+    /* =========================
+      HERO
+    ========================= */
     #hero { padding: 140px 0 80px; background-color: var(--bg-white); }
-    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: center; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 80px;
+      align-items: center;
+    }
     .hero-text h1 {
-      font-size: 2.8rem; line-height: 1.3; font-weight: 800;
-      margin-bottom: 24px; color: var(--text-main); letter-spacing: -0.02em;
+      font-size: 2.8rem;
+      line-height: 1.3;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
     }
     .hero-text p {
-      font-size: 1.25rem; color: var(--text-sub); margin-bottom: 40px; max-width: 640px; font-weight: 500;
+      font-size: 1.25rem;
+      color: var(--text-sub);
+      margin-bottom: 40px;
+      max-width: 640px;
+      font-weight: 500;
     }
     .proof-strip { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
     .proof-item {
-      font-size: 0.9rem; font-weight: 700; color: var(--primary);
-      background: #F0FDF4; padding: 6px 14px; border-radius: 8px; border: 1px solid rgba(0, 70, 42, 0.2);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: #F0FDF4;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 70, 42, 0.2);
     }
     .cta-group { display: flex; gap: 12px; }
     .btn {
-      display: inline-flex; justify-content: center; align-items: center;
-      padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
-      transition: all 0.2s ease; cursor: pointer; border: 1px solid transparent; text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
     }
     .btn-primary { background-color: var(--primary); color: white; }
     .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-2px); }
     .btn-secondary { background-color: white; color: var(--primary); border: 1px solid var(--primary); }
     .btn-secondary:hover { background-color: rgba(0, 70, 42, 0.05); transform: translateY(-2px); }
 
+    /* ===== HERO VISUAL (CSS DRAWING) ===== */
     .hero-visual-card {
-      width: 100%; aspect-ratio: 4/5;
+      width: 100%;
+      aspect-ratio: 4/5;
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      border-radius: 24px; position: relative; overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 70, 42, 0.2); display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 70, 42, 0.2);
       padding: 32px;
     }
-    .collage-card {
-      position: absolute; border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12); border: 1px solid rgba(255,255,255,0.1);
-      background: white; overflow: hidden; transition: transform 0.3s ease;
+
+    /* subtle noise/shine */
+    .hero-visual-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.18), transparent 55%),
+        radial-gradient(circle at 80% 70%, rgba(195,232,141,0.14), transparent 60%);
+      transform: rotate(12deg);
+      pointer-events: none;
     }
-    .collage-card img { width: 100%; height: 100%; object-fit: cover; }
-    .card-1 { width: 280px; height: 180px; top: 20px; right: 20px; z-index: 1; transform: rotate(5deg); background: #f8f8f8; }
-    .card-2 { width: 300px; height: 200px; top: 80px; left: 40px; z-index: 2; transform: rotate(-3deg); background: #f0f0f0; }
-    .card-3 { width: 320px; height: 220px; bottom: 20px; right: 80px; z-index: 3; transform: rotate(2deg); background: white; }
+
+    /* “cards” drawn by CSS (no images) */
+    .collage-card {
+      position: absolute;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.92);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .card-1 { width: 280px; height: 180px; top: 22px; right: 18px; z-index: 1; transform: rotate(5deg); }
+    .card-2 { width: 300px; height: 200px; top: 88px; left: 36px; z-index: 2; transform: rotate(-3deg); }
+    .card-3 { width: 320px; height: 220px; bottom: 22px; right: 74px; z-index: 3; transform: rotate(2deg); }
+
     .hero-visual-card:hover .card-1 { transform: rotate(8deg) translate(10px, -10px); }
     .hero-visual-card:hover .card-2 { transform: rotate(-5deg) translate(-10px, 10px); }
     .hero-visual-card:hover .card-3 { transform: rotate(0deg) scale(1.05); z-index: 4; }
 
-    /* --- PROOF TEASER SECTION --- */
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      padding: 14px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.90));
+    }
+    .card-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .pill {
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(0,70,42,0.08);
+      color: var(--primary);
+      border: 1px solid rgba(0,70,42,0.14);
+    }
+
+    /* Card 1: “PPT thumb” look */
+    .ppt-mock {
+      height: calc(100% - 32px);
+      border-radius: 12px;
+      border: 1px solid rgba(15,23,42,0.08);
+      background:
+        linear-gradient(0deg, rgba(0,70,42,0.06), rgba(0,70,42,0.02)),
+        radial-gradient(circle at 20% 30%, rgba(195,232,141,0.5), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(0,70,42,0.25), transparent 55%),
+        #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+    .ppt-mock::after {
+      content: "";
+      position: absolute;
+      left: 14px; right: 14px;
+      top: 18px;
+      height: 10px;
+      border-radius: 8px;
+      background: rgba(15,23,42,0.12);
+      box-shadow:
+        0 18px 0 rgba(15,23,42,0.10),
+        0 36px 0 rgba(15,23,42,0.08),
+        0 54px 0 rgba(15,23,42,0.06);
+      opacity: 0.9;
+    }
+
+    /* Card 2: “Map / heat” look */
+    .map-mock {
+      height: calc(100% - 32px);
+      border-radius: 12px;
+      border: 1px solid rgba(15,23,42,0.08);
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-mock .grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(15,23,42,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15,23,42,0.05) 1px, transparent 1px);
+      background-size: 18px 18px;
+      opacity: 0.55;
+    }
+    .map-mock .blob {
+      position: absolute;
+      width: 140px; height: 110px;
+      border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+      filter: blur(0.2px);
+      opacity: 0.95;
+    }
+    .blob.red { background: #ef4444; right: 18px; top: 40px; }
+    .blob.orange { background: #f97316; right: 70px; top: 90px; transform: rotate(8deg); }
+    .blob.green { background: #22c55e; left: 40px; top: 70px; transform: rotate(-10deg); }
+
+    /* Card 3: “UI demo” look */
+    .ui-mock {
+      height: calc(100% - 32px);
+      border-radius: 12px;
+      border: 1px solid rgba(15,23,42,0.08);
+      background:
+        linear-gradient(180deg, rgba(0,70,42,0.08), rgba(0,70,42,0.02)),
+        #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+    .ui-mock .search {
+      position: absolute;
+      left: 16px; right: 16px; top: 16px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(15,23,42,0.10);
+    }
+    .ui-mock .bar {
+      position: absolute;
+      left: 16px; right: 16px; top: 62px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(239,68,68,0.85);
+    }
+    .ui-mock .cards {
+      position: absolute;
+      left: 16px; right: 16px; top: 88px; bottom: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .ui-mock .cards span {
+      border-radius: 12px;
+      border: 1px solid rgba(15,23,42,0.08);
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    /* =========================
+      PROOF TEASER
+    ========================= */
     #proof { padding-bottom: 80px; }
     .proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .teaser-card {
-      background: white; border: 1px solid var(--border); border-radius: 16px; padding: 32px;
-      transition: all 0.2s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.2s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 260px;
     }
-    .teaser-card:hover { border-color: var(--primary); box-shadow: var(--shadow-sm); transform: translateY(-4px); }
+    .teaser-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-4px);
+    }
     .teaser-meta { font-size: 0.8rem; color: var(--text-light); margin-bottom: 8px; font-weight: 600; }
     .teaser-title { font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px; line-height: 1.3; }
     .teaser-desc { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 24px; line-height: 1.6; }
     .teaser-footer { display: flex; justify-content: flex-end; }
     .btn-link { font-weight: 700; color: var(--primary); font-size: 0.9rem; }
 
-    /* --- ABOUT SECTION --- */
+    /* =========================
+      ABOUT
+    ========================= */
     #about { padding: 80px 0; background-color: var(--bg-light); }
-    .about-layout { display: grid; grid-template-columns: 240px 1fr; gap: 60px; }
-    .profile-side { text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 60px;
+    }
+    .profile-side {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .profile-img-slot {
-      width: 140px; height: 140px; background-color: #E2E8F0; border-radius: 50%;
-      margin: 0 auto 20px; overflow: hidden; border: 4px solid white; box-shadow: var(--shadow-sm);
+      width: 140px; height: 140px;
+      background-color: #E2E8F0;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      border: 4px solid white;
+      box-shadow: var(--shadow-sm);
     }
     .profile-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 16px; }
     .profile-links { display: flex; justify-content: center; gap: 8px; }
     .social-btn {
-      padding: 6px 14px; border-radius: 20px; background: white; border: 1px solid var(--border);
-      color: var(--text-sub); font-weight: 500; font-size: 0.85rem; transition: all 0.2s; text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      font-weight: 500;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      text-decoration: none;
     }
     .social-btn:hover { border-color: var(--primary); color: var(--primary); }
 
-    .profile-quote {
-      margin-top: 32px; padding: 24px; background-color: white;
-      border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-sm);
-      text-align: center; position: relative;
-    }
-    .profile-quote::before {
-      content: '“'; display: block; font-family: serif; font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: -10px;
-    }
-    .quote-text {
-      font-size: 0.95rem; color: var(--text-main); line-height: 1.6; word-break: keep-all; font-weight: 600; margin: 0;
-    }
-
+    /* About Text */
     .about-text-card {
-      background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--border);
-      display: flex; flex-direction: column; justify-content: center;
+      background: white;
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .keywords-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
     .keyword-card {
-      background: var(--bg-light); padding: 20px; border-radius: 16px; border: 1px solid var(--border);
-      transition: transform 0.2s; display: flex; flex-direction: column; box-shadow: var(--shadow-sm);
+      background: var(--bg-light);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
     }
     .keyword-card:hover { transform: translateY(-2px); border-color: var(--primary); }
     .hash { color: var(--primary); font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: 8px; }
     .desc { font-size: 0.9rem; color: var(--text-sub); line-height: 1.4; }
 
-    /* --- PROJECT DETAIL --- */
-    .project-section, .project-detail {
-      padding: 100px 0; border-top: 1px solid var(--border); background-color: var(--bg-white);
+    /* ✅ PROFILE QUOTE: 가로폭 확대 (그리드 밖으로 빼서 넓게) */
+    .profile-quote-wide {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+    }
+    .profile-quote {
+      width: 100%;
+      max-width: 840px; /* 여기로 “가로 폭” 조절 */
+      padding: 32px 40px;
+      background-color: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      position: relative;
+    }
+    .profile-quote::before {
+      content: '“';
+      display: block;
+      font-family: serif;
+      font-size: 2.6rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: -10px;
+    }
+    .quote-text {
+      font-size: 1rem;
+      color: var(--text-main);
+      line-height: 1.7;
+      word-break: keep-all;
+      font-weight: 650;
+      margin: 0;
     }
 
-    .pj-summary { margin-bottom: 40px; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto; }
-    .pj-date {
-      display: inline-block; font-size: 0.85rem; font-weight: 700; color: var(--primary);
-      background: rgba(0, 70, 42, 0.08); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
+    /* =========================
+      PROJECT COMMON
+    ========================= */
+    .project-section, .project-detail {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+      background-color: var(--bg-white);
     }
-    .pj-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; line-height: 1.3; word-break: keep-all; }
-    .pj-desc { font-size: 1.1rem; color: var(--text-sub); line-height: 1.6; max-width: 800px; margin: 0 auto; word-break: keep-all; font-weight: 500; }
+
+    .pj-summary {
+      margin-bottom: 40px;
+      text-align: center;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .pj-date {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: rgba(0, 70, 42, 0.08);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .pj-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.3;
+      word-break: keep-all;
+    }
+    .pj-desc {
+      font-size: 1.1rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      word-break: keep-all;
+      font-weight: 500;
+    }
     .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; justify-content: center; }
 
     .pj-info-grid {
-      display: flex; justify-content: center; gap: 32px; margin: 20px auto; text-align: left;
-      background: #F9FAFB; padding: 16px 24px; border-radius: 100px; border: 1px solid var(--border); width: fit-content;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin: 20px auto;
+      text-align: left;
+      background: #F9FAFB;
+      padding: 16px 24px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      width: fit-content;
+      flex-wrap: wrap;
     }
     .pj-info-item { display: flex; flex-direction: row; align-items: center; gap: 8px; }
-    .pj-info-item h5 { font-size: 0.8rem; color: var(--primary); margin: 0; text-transform: uppercase; font-weight: 800; min-width: 40px;}
+    .pj-info-item h5 {
+      font-size: 0.8rem;
+      color: var(--primary);
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 800;
+      min-width: 44px;
+    }
     .pj-info-item p { font-size: 0.9rem; color: var(--text-main); margin: 0; }
 
     /* Results Strip */
     .results-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
     .result-card {
-      background: #ffffff; border: 1px solid rgba(0, 70, 42, 0.15); border-radius: 12px; padding: 20px 16px;
-      display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03); transition: transform 0.2s; height: 100%;
+      background: #ffffff;
+      border: 1px solid rgba(0, 70, 42, 0.15);
+      border-radius: 12px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s;
+      height: 100%;
     }
     .result-card:hover { transform: translateY(-2px); border-color: var(--primary); }
-    .result-head { font-size: 0.8rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .result-head {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
     .result-text { font-size: 0.95rem; font-weight: 700; color: var(--text-main); line-height: 1.4; margin: 0; word-break: keep-all; }
     .highlight-num { display: block; font-size: 2rem; font-weight: 800; color: var(--primary); line-height: 1.1; margin-bottom: 6px; }
 
     /* Toggle Button */
     .btn-toggle-wrapper { text-align: center; margin-top: 30px; margin-bottom: 40px; }
     .btn-toggle-details {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 30px; border-radius: 30px; background-color: white; border: 1px solid var(--primary);
-      color: var(--primary); font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.2s;
-    }
-    .btn-toggle-details:hover { background-color: var(--primary); color: white; transform: translateY(-2px); }
-
-    /* --- COLLAPSIBLE DETAILS --- */
-    .project-details-wrapper {
-      display: none; margin-top: 40px; padding: 60px 40px; border-top: 1px dashed var(--border);
-      animation: fadeIn 0.4s ease; background-color: #F8F9FA; border-radius: 20px;
-    }
-    .project-details-wrapper.active { display: block; }
-
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* HTML에서 쓰는 내부 래퍼/스택이 CSS에 없어서 레이아웃이 불안정할 수 있음 */
-    .details-inner { width: 100%; }
-    .project-content-stack { display: flex; flex-direction: column; gap: 28px; }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .dashboard-col { display: flex; flex-direction: column; gap: 32px; }
-
-    /* Text Cards */
-    .text-card {
-      background: white; border: 1px solid var(--border); border-radius: 12px; padding: 32px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02); height: 100%;
-    }
-
-    /* Problem Definition - Full Width */
-    .full-width-card {
-      background: white; border: 1px solid var(--border); border-radius: 12px; padding: 32px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02); margin-bottom: 0;
-    }
-    .detail-h3 {
-      font-size: 1.25rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 20px;
-      display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f0f0f0; padding-bottom: 12px;
-    }
-
-    /* context-block / context-list */
-    .context-block { margin-top: 10px; }
-    .context-list { display: flex; flex-direction: column; gap: 10px; padding-left: 0; }
-    .context-list li {
-      font-size: 0.95rem; color: var(--text-sub);
-      position: relative; padding-left: 18px; line-height: 1.55;
-    }
-    .context-list li::before{
-      content: "•";
-      position: absolute; left: 0; top: 0;
-      color: var(--primary);
-      font-weight: 900;
-    }
-
-    /* phase-grid-2 기본 grid 정의 */
-    .phase-grid-2{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    /* Phase Wrapper (Box) */
-    .phase-wrapper {
-      background-color: var(--bg-light);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    /* phase-badge */
-    .phase-badge{
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: var(--primary);
-      color: #fff;
-      font-weight: 900;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
-    }
-
-    .phase-title {
-      font-size: 1.1rem; font-weight: 800; color: var(--primary); margin-bottom: 16px;
-    }
-    .phase-subtitle {
-      font-size: 0.95rem; color: var(--text-sub); margin-bottom: 20px; line-height: 1.5;
-    }
-
-    /* Segment Grid 2x2 */
-    .segment-grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .seg-card-mini {
-      background: #fff; padding: 14px; border-radius: 8px; border: 1px solid var(--border);
-      display: flex; flex-direction: column; height: 100%; box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-    }
-    .seg-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-    .seg-name { font-size: 0.95rem; font-weight: 800; color: var(--primary-dark); }
-    .seg-purpose {
-      font-size: 0.7rem;
-      color: var(--primary-dark);
-      background-color: rgba(195,232,141,0.75);
-      border: 1px solid rgba(0,70,42,0.15);
-      padding: 2px 6px;
-      border-radius: 6px;
-      font-weight: 800;
-    }
-
-    .seg-desc-mini { font-size: 0.85rem; color: var(--text-sub); margin-bottom: 8px; line-height: 1.4; }
-
-    /* formula-code */
-    .formula-code{
-      display: block;
-      margin-top: auto;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      padding: 10px;
-      border-radius: 8px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size: 0.75rem;
-      color: #334155;
-      line-height: 1.45;
-      white-space: normal;
-    }
-    .seg-vars { font-size: 0.75rem; color: #64748b; margin-top: 6px; }
-
-    /* Assetization 3-Card Stack */
-    .asset-stack { display: flex; flex-direction: column; gap: 10px; }
-    .asset-card {
-      display: flex; flex-direction: column;
-      gap: 6px;
-      background: #fff; padding: 14px; border-radius: 8px; border: 1px solid var(--border);
-    }
-    /* asset-head / asset-body */
-    .asset-head{
-      font-weight: 900;
-      color: var(--primary-dark);
-      font-size: 0.92rem;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      padding: 12px 30px;
+      border-radius: 30px;
+      background-color: white;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
     }
-    .asset-body{
-      font-size: 0.88rem;
+    .btn-toggle-details:hover { background-color: var(--primary); color: white; transform: translateY(-2px); }
+
+    /* Collapsible Details */
+    .project-details-wrapper {
+      display: none;
+      margin-top: 40px;
+      padding: 60px 40px;
+      border-top: 1px dashed var(--border);
+      animation: fadeIn 0.4s ease;
+      background-color: #F8F9FA;
+      border-radius: 20px;
+    }
+    .project-details-wrapper.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ✅ ThinkGood 상세 레이아웃/스타일 (누락된 것들 추가) */
+    .project-content-stack { display: flex; flex-direction: column; gap: 28px; }
+
+    .full-width-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .detail-h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .context-block { margin-top: 10px; }
+    .context-list { display: flex; flex-direction: column; gap: 10px; }
+    .context-list li {
+      position: relative;
+      padding-left: 14px;
       color: var(--text-sub);
-      line-height: 1.45;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      font-weight: 550;
+    }
+    .context-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(0,70,42,0.50);
+      transform: translateY(-50%);
     }
 
+    .phase-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .phase-wrapper {
+      background-color: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .phase-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      color: white;
+      background: var(--primary);
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .phase-title { font-size: 1.1rem; font-weight: 900; color: var(--primary); margin-bottom: 10px; }
+    .phase-subtitle { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 18px; line-height: 1.55; }
+
+    .segment-grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .seg-card-mini {
+      background: #fff;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .seg-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .seg-name { font-size: 0.95rem; font-weight: 900; color: var(--primary-dark); }
+    .seg-purpose {
+      font-size: 0.7rem;
+      color: var(--primary-dark);
+      background-color: rgba(195,232,141,0.55);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 1px solid rgba(0,70,42,0.14);
+    }
+    .seg-desc-mini { font-size: 0.86rem; color: var(--text-sub); margin-bottom: 8px; line-height: 1.4; font-weight: 650; }
+
+    .formula-code {
+      display: block;
+      margin-top: auto;
+      padding: 10px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(15,23,42,0.10);
+      background: rgba(0,70,42,0.04);
+      color: #0f172a;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      overflow-x: auto;
+    }
+    .seg-vars { font-size: 0.78rem; color: #64748b; margin-top: 6px; }
+
+    .asset-stack { display: flex; flex-direction: column; gap: 10px; }
+    .asset-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #fff;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .asset-head { display: block; font-size: 0.92rem; font-weight: 900; color: var(--primary-dark); margin-bottom: 4px; }
+    .asset-body { display: block; font-size: 0.88rem; color: var(--text-sub); line-height: 1.5; font-weight: 600; }
     .impact-highlight {
-      margin-top: 16px; background: #fff; border: 1px solid rgba(195,232,141,0.9);
-      border-radius: 10px; padding: 12px;
-      font-size: 0.9rem; color: var(--primary-dark); font-weight: 700; text-align: center;
+      margin-top: 14px;
+      background: #fff;
+      border: 1px solid rgba(0,70,42,0.18);
+      border-left-width: 6px;
+      border-left-color: var(--accent);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      color: var(--primary-dark);
+      font-weight: 750;
+      text-align: left;
+      box-shadow: var(--shadow-sm);
     }
 
-    /* Bottom Section */
+    /* Pie chart */
+    .pie-chart-visual {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(var(--primary) 0% 92%, #e5e7eb 92% 100%);
+      box-shadow: inset 0 0 0 10px rgba(255,255,255,0.65);
+      margin: 0 auto;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+    /* Bottom area: result + media */
     .bottom-result-area {
       background-color: #F8F9FA;
       padding: 60px 0;
@@ -390,125 +725,261 @@
       margin-left: calc(-50vw + 50%);
       margin-right: calc(-50vw + 50%);
       border-top: 1px solid var(--border);
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
     }
-
     .result-quote-box {
-      background: white; border: 1px solid rgba(195,232,141,0.9); border-left-width: 6px; border-radius: 8px;
-      padding: 24px; margin-bottom: 40px; box-shadow: var(--shadow-sm);
+      background: white;
+      border: 1px solid rgba(0,70,42,0.18);
+      border-left-width: 6px;
+      border-left-color: var(--accent);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 34px;
+      box-shadow: var(--shadow-sm);
     }
-    .result-text-main { font-size: 1.1rem; font-weight: 700; color: var(--primary-dark); line-height: 1.6; }
+    .result-text-main { font-size: 1.08rem; font-weight: 800; color: var(--primary-dark); line-height: 1.65; }
 
-    /* Media Grid 2 */
     .media-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .media-card {
-      background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
-      cursor: pointer; transition: transform 0.2s; box-shadow: var(--shadow-sm);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+      box-shadow: var(--shadow-sm);
     }
     .media-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: var(--shadow-md); }
     .media-header {
-      padding: 12px 16px; background: white; border-bottom: 1px solid #f3f4f6;
-      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px;
+      background: white;
+      border-bottom: 1px solid #f3f4f6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .media-title { font-size: 0.9rem; font-weight: 700; color: var(--text-main); }
-    .media-badge { font-size: 0.75rem; background: #F3F4F6; color: var(--text-sub); padding: 4px 8px; border-radius: 4px; }
+    .media-title { font-size: 0.9rem; font-weight: 800; color: var(--text-main); }
+    .media-badge { font-size: 0.75rem; background: #F3F4F6; color: var(--text-sub); padding: 4px 8px; border-radius: 6px; font-weight: 800; }
     .media-body {
-      background: #f8fafc; height: 240px; display: flex; align-items: center; justify-content: center; position: relative;
+      background: #f8fafc;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
     }
     .media-thumb { width: 100%; height: 100%; object-fit: contain; }
 
-    /* Pie Chart Helpers */
-    .pie-container { display: flex; align-items: center; gap: 32px; justify-content: center; height: 100%; }
-    .pie-chart { width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--primary) 0% 92%, #e5e7eb 92% 100%); }
-    .pie-legend div { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-
-    /* Pie-chart-visual */
-    .pie-chart-visual { width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--primary) 0% 92%, #e5e7eb 92% 100%); margin: 0 auto; }
+    /* =========================
+      CHEONAN DETAILS
+    ========================= */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .dashboard-col { display: flex; flex-direction: column; gap: 28px; }
+    .text-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .text-card h3 {
+      font-size: 1.12rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
 
     /* Policy Grid */
-    .policy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
-    .policy-card { background: #fff; padding: 16px; border: 1px solid var(--border); border-radius: 8px; text-align: center; }
-    .policy-badge { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 4px 8px; border-radius: 4px; margin-bottom: 8px; color: white; }
-    .policy-desc { font-size: 0.9rem; color: var(--text-sub); line-height: 1.4; }
-
-    /* Visual Stack (Cheonan) */
-    .visual-stack { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 100px; height: 100%; }
-    .slot-box {
-      background: white; border: 1px solid var(--border); border-radius: 12px;
-      overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer; position: relative;
+    .policy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+    .policy-card {
+      background: #fff;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-align: left;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     }
-    .slot-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary); }
-    .slot-header {
-      padding: 12px 18px; background: white; border-bottom: 1px solid var(--border);
-      font-size: 0.9rem; font-weight: 700; color: var(--text-main);
-      display: flex; align-items: center; justify-content: space-between;
+    .policy-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      color: white;
     }
-    .slot-action { font-size: 0.8rem; font-weight: 600; color: var(--text-light); background: #F3F4F6; padding: 4px 10px; border-radius: 4px; }
-    .slot-content { position: relative; background: #f3f4f6; aspect-ratio: 16/9; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .slot-thumbnail { width: 100%; height: 100%; object-fit: contain; object-position: center; pointer-events: auto; background-color: #f3f4f6; }
+    .policy-title {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+    .policy-explain {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      line-height: 1.45;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .policy-desc {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      line-height: 1.55;
+      font-weight: 650;
+    }
 
-    /* --- EXPERIENCE SECTION --- */
+    /* =========================
+      EXPERIENCE / FOOTER
+    ========================= */
     #experience { padding: 100px 0; background-color: var(--bg-light); }
     .exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .exp-card { background: white; padding: 40px 32px; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: transform 0.2s; }
+    .exp-card {
+      background: white;
+      padding: 40px 32px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s;
+    }
     .exp-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary); }
     .exp-date { display: block; font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; font-weight: 600; }
-    .exp-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; color: var(--primary); }
-    .exp-role { font-size: 1rem; font-weight: 600; color: var(--text-main); margin-bottom: 16px; }
-    .exp-desc { font-size: 0.9rem; color: var(--text-sub); line-height: 1.5; word-break: keep-all; }
+    .exp-title { font-size: 1.4rem; font-weight: 900; margin-bottom: 6px; color: var(--primary); }
+    .exp-role { font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; }
+    .exp-desc { font-size: 0.9rem; color: var(--text-sub); line-height: 1.6; word-break: keep-all; font-weight: 550; }
 
-    /* --- SKILLS SECTION --- */
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
-      margin-bottom: 60px; text-align: left;
+    footer {
+      padding: 80px 0;
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
     }
-    .skill-col h4 { font-size: 1.2rem; color: #fff; margin-bottom: 24px; border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 6px; }
-    .skill-list { list-style: none; padding: 0; }
-    .skill-list li { margin-bottom: 12px; color: rgba(255,255,255,0.9); font-size: 0.95rem; font-weight: 500; }
-
-    /* FOOTER */
-    footer { padding: 80px 0; background: var(--primary-dark); color: rgba(255,255,255,0.8); text-align: center; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+      text-align: left;
+    }
+    .skill-col h4 {
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 18px;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 6px;
+      font-weight: 900;
+    }
+    .skill-list li { margin-bottom: 10px; color: rgba(255,255,255,0.9); font-size: 0.95rem; font-weight: 550; }
     .footer-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
     .footer-links a { border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
     .footer-links a:hover { color: var(--accent); border-color: var(--accent); }
 
-    /* MODAL */
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+    /* =========================
+      MODAL
+    ========================= */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
     .modal-overlay.active { display: flex; }
-    .modal-content { background: white; width: 90%; max-width: 1100px; height: 90vh; border-radius: 16px; padding: 32px; position: relative; box-shadow: var(--shadow-md); animation: modalFadeIn 0.2s ease; display: flex; flex-direction: column; }
-    .modal-close { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-sub); z-index: 20; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #F3F4F6; }
+    .modal-content {
+      background: white;
+      width: 92%;
+      max-width: 1100px;
+      height: 90vh;
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      animation: modalFadeIn 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    @keyframes modalFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-sub);
+      z-index: 20;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #F3F4F6;
+    }
     .modal-close:hover { background: #E5E7EB; color: var(--text-main); }
-    .modal-body-container { flex: 1; margin-top: 20px; width: 100%; height: 100%; background: #F3F4F6; border-radius: 12px; display: flex; align-items: center; justify-content: flex-start; flex-direction: column; border: 1px solid var(--border); overflow-y: auto; overflow-x: hidden; position: relative; padding-top: 40px; }
-    .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; padding-right: 40px; }
-    .modal-desc { font-size: 1rem; color: var(--text-sub); margin-bottom: 8px; max-width: 90%; text-align: center; }
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 6px;
+      padding-right: 44px;
+    }
+    .modal-desc {
+      font-size: 1rem;
+      color: var(--text-sub);
+      margin-bottom: 14px;
+      max-width: 95%;
+      text-align: left;
+      font-weight: 600;
+    }
+    .modal-body-container {
+      flex: 1;
+      width: 100%;
+      background: #F3F4F6;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
 
-    @keyframes modalFadeIn { from{opacity:0; transform: translateY(8px);} to{opacity:1; transform: translateY(0);} }
-
-    /* MEDIA QUERIES */
+    /* =========================
+      RESPONSIVE
+    ========================= */
     @media (max-width: 1024px) {
       .results-strip { grid-template-columns: 1fr; gap: 12px; }
       .result-card { text-align: left; align-items: flex-start; }
-      .pj-info-grid { grid-template-columns: 1fr; }
       .dashboard-grid { grid-template-columns: 1fr; }
       .phase-grid-2 { grid-template-columns: 1fr; }
       .media-grid-2 { grid-template-columns: 1fr; }
-      .segment-grid-2x2, .policy-grid, .asset-list-cards { grid-template-columns: 1fr; }
+      .segment-grid-2x2, .policy-grid { grid-template-columns: 1fr; }
       .full-width-card > div { flex-direction: column; align-items: flex-start; gap: 20px; }
-      .visual-stack { position: static; order: -1; margin-bottom: 30px; }
+      .proof-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .hero-grid, .about-layout, .exp-grid, .skills-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-text { order: 2; text-align: center; }
+      .cta-group { justify-content: center; }
       .hero-visual-card { order: 1; aspect-ratio: 16/9; max-height: 320px; }
       .nav-links { display: none; }
       .project-details-wrapper { padding: 32px 20px; }
+      .profile-quote { padding: 28px 22px; }
+      .card-1, .card-2, .card-3 { transform: none; }
     }
   </style>
 </head>
 
 <body>
-
   <!-- Sticky Nav -->
   <nav>
     <div class="nav-inner">
@@ -522,7 +993,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <header id="hero">
     <div class="container">
       <div class="hero-grid">
@@ -540,16 +1011,53 @@
           </div>
         </div>
 
-        <div class="hero-visual-card">
-          <div class="collage-card card-1"><img src="asset/thinkgood_ppt_thumb.png" alt="PPT Thumbnail" style="background:#f5f5f5; object-fit:cover;"></div>
-          <div class="collage-card card-2"><img src="asset/heatmap.jpg" alt="Map" style="background:#e0e0e0;"></div>
-          <div class="collage-card card-3"><img src="asset/thinkgood%20demo.PNG" alt="Demo" style="background:#dcdcdc;"></div>
+        <!-- ✅ CSS로 그린 콜라주(이미지 제거) -->
+        <div class="hero-visual-card" aria-label="CSS Visual Collage">
+          <div class="collage-card card-1">
+            <div class="card-inner">
+              <div class="card-topline">
+                <span>PPT Thumbnail</span><span class="pill">Deck</span>
+              </div>
+              <div class="ppt-mock"></div>
+            </div>
+          </div>
+
+          <div class="collage-card card-2">
+            <div class="card-inner">
+              <div class="card-topline">
+                <span>Heat Map</span><span class="pill">GIS</span>
+              </div>
+              <div class="map-mock">
+                <div class="grid"></div>
+                <div class="blob red"></div>
+                <div class="blob orange"></div>
+                <div class="blob green"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="collage-card card-3">
+            <div class="card-inner">
+              <div class="card-topline">
+                <span>Service Demo</span><span class="pill">UI</span>
+              </div>
+              <div class="ui-mock">
+                <div class="search"></div>
+                <div class="bar"></div>
+                <div class="cards">
+                  <span></span><span></span><span></span>
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </header>
 
-  <!-- Proof Teaser -->
+  <!-- Proof teaser -->
   <section id="proof">
     <div class="container">
       <div class="proof-grid">
@@ -557,8 +1065,10 @@
           <div>
             <div class="teaser-meta">2025.10 - 2026.01</div>
             <h3 class="teaser-title">ThinkGood:<br>공모전 추천 시스템</h3>
-            <p class="teaser-desc">현업 Attach 추천 모델 구현: 15년치 데이터 정비 및 비전문가 설득을 위한 XAI 설계</p>
-            <div class="teaser-tags"><span class="badge">Cold Start</span><span class="badge">Rule-based</span></div>
+            <p class="teaser-desc">현업 적용 추천 모델 구현: 데이터 정비 및 비전문가 설득을 위한 XAI 구조 설계</p>
+            <div class="teaser-tags">
+              <span class="badge">Cold Start</span><span class="badge">Rule-based</span><span class="badge">Segment</span>
+            </div>
           </div>
           <div class="teaser-footer"><span class="btn-link">View Project →</span></div>
         </a>
@@ -567,8 +1077,10 @@
           <div>
             <div class="teaser-meta">2025.07 - 2025.08</div>
             <h3 class="teaser-title">Cheonan:<br>복지 사각지대 분석</h3>
-            <p class="teaser-desc">통계적 타당성(KMO/Moran's I) 검증을 기반으로 한 행정동별 예산 배정 우선순위 도출</p>
-            <div class="teaser-tags"><span class="badge">GIS</span><span class="badge">Factor Analysis</span></div>
+            <p class="teaser-desc">통계 검증(KMO/Moran's I) 기반으로 행정동별 위험 요인을 구조화하고 정책 우선순위를 제안</p>
+            <div class="teaser-tags">
+              <span class="badge">GIS</span><span class="badge">Factor Analysis</span><span class="badge">Clustering</span>
+            </div>
           </div>
           <div class="teaser-footer"><span class="btn-link">View Project →</span></div>
         </a>
@@ -576,24 +1088,20 @@
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- About -->
   <section id="about">
     <div class="container">
       <h2 class="section-title" style="display:block; text-align:center; margin-bottom:60px;">About Me</h2>
+
       <div class="about-layout">
         <div class="profile-side">
-          <div class="profile-img-slot"><img src="asset/photo.jpg" alt="Profile" style="width:100%; height:100%; object-fit:cover;"></div>
+          <div class="profile-img-slot">
+            <img src="asset/photo.jpg" alt="Profile" style="width:100%; height:100%; object-fit:cover;">
+          </div>
           <h3 class="profile-name">Han Jaehui</h3>
           <div class="profile-links">
             <a href="mailto:han.zinna@email.com" class="social-btn">Email</a>
             <a href="https://github.com/HanJaeHui-GitHub" target="_blank" class="social-btn">Github</a>
-          </div>
-          <div class="profile-quote">
-            <p class="quote-text">
-              데이터와 비즈니스 환경을 함께 고려하여,<br>
-              주어진 상황에서 가장 실행 가능한 최적의 구조를 설계합니다.<br>
-              단순 분석을 넘어 의사결정을 이끄는 단단한 근거를 만듭니다.
-            </p>
           </div>
         </div>
 
@@ -607,12 +1115,26 @@
           </div>
         </div>
       </div>
+
+      <!-- ✅ 가로 넓힌 인용 카드 (그리드 아래) -->
+      <div class="profile-quote-wide">
+        <div class="profile-quote">
+          <p class="quote-text">
+            데이터와 비즈니스 환경을 함께 고려하여,<br>
+            주어진 상황에서 가장 실행 가능한 최적의 구조를 설계합니다.<br>
+            단순 분석을 넘어 의사결정을 이끄는 단단한 근거를 만듭니다.
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <div id="projects"></div>
 
-  <!-- Project 1 (ThinkGood) -->
+  <!-- =========================
+    Project 1 (ThinkGood)
+  ========================= -->
   <section id="project-1" class="project-detail thinkgood">
     <div class="container">
       <div class="pj-summary">
@@ -622,26 +1144,35 @@
 
         <div class="pj-info-grid">
           <div class="pj-info-item"><h5>Role</h5><p>데이터 전처리, 세그먼트 알고리즘 설계, DB 스키마 제안, Streamlit 데모</p></div>
-          <div class="pj-info-item"><h5>Tech Stack</h5><p>Python, Pandas, Streamlit, Scikit-learn</p></div>
+          <div class="pj-info-item"><h5>Tech</h5><p>Python, Pandas, Streamlit, Scikit-learn</p></div>
         </div>
 
         <div class="project-tags">
-          <span class="badge accent">Cold Start</span><span class="badge">Rule-based</span><span class="badge">Segment</span><span class="badge">DB Proposal</span>
+          <span class="badge">Cold Start</span><span class="badge">Rule-based</span><span class="badge">Segment</span><span class="badge">DB Proposal</span>
         </div>
       </div>
 
       <div class="results-strip">
         <div class="result-card">
           <h4 class="result-head">Challenge</h4>
-          <p class="result-text"><span class="highlight-num">92%</span> Cold Start<br><span style="font-size:0.85rem; font-weight:400; color:var(--text-sub);">노출·클릭 로그 부재 → 접수만 존재</span></p>
+          <p class="result-text">
+            <span class="highlight-num">92%</span> Cold Start<br>
+            <span style="font-size:0.85rem; font-weight:500; color:var(--text-sub);">노출·클릭 로그 부재 → 접수만 존재</span>
+          </p>
         </div>
         <div class="result-card">
           <h4 class="result-head">Solution</h4>
-          <p class="result-text"><span class="highlight-num">Segment</span> Strategy<br><span style="font-size:0.85rem; font-weight:400; color:var(--text-sub);">4 세그먼트 하이브리드 추천 설계</span></p>
+          <p class="result-text">
+            <span class="highlight-num">Segment</span> Strategy<br>
+            <span style="font-size:0.85rem; font-weight:500; color:var(--text-sub);">4 세그먼트 하이브리드 추천 설계</span>
+          </p>
         </div>
         <div class="result-card">
           <h4 class="result-head">Impact</h4>
-          <p class="result-text"><span class="highlight-num">XAI</span> Dashboard<br><span style="font-size:0.85rem; font-weight:400; color:var(--text-sub);">근거 시각화 → 검증·조정 가능한 운영형 추천</span></p>
+          <p class="result-text">
+            <span class="highlight-num">XAI</span> Dashboard<br>
+            <span style="font-size:0.85rem; font-weight:500; color:var(--text-sub);">근거 시각화 → 검증·조정 가능한 운영형 추천</span>
+          </p>
         </div>
       </div>
 
@@ -650,46 +1181,46 @@
       </div>
     </div>
 
-    <!-- Collapsible Content -->
+    <!-- Details -->
     <div id="pj1-details" class="project-details-wrapper">
       <div class="details-inner">
         <div class="project-content-stack">
 
-          <!-- 1. Problem (Full Width) -->
           <div class="full-width-card">
             <div class="detail-h3">Problem Definition: Data Reality</div>
+
             <div style="display:flex; gap:40px; align-items:center; flex-wrap:wrap;">
               <div style="flex:1; min-width:300px;">
                 <div class="context-block" style="margin:0;">
                   <ul class="context-list">
-                    <li>추천을 위한 행동 로그(Click/View) 부재, 오직 '접수' 데이터만 존재</li>
-                    <li>추천의 목적을 “정교한 개인화”보다 <strong>"탐색 비용을 줄여 이탈을 막는다"</strong>는 비즈니스 목표로 문제 재정의</li>
-                    <li>따라서 ‘개인화 모델’이 아닌, 데이터 밀도에 따라 목표가 다른 세그먼트 전략이 최적</li>
+                    <li>추천을 위한 행동 로그(Click/View) 부재, 오직 <strong>‘접수’</strong> 데이터만 존재</li>
+                    <li>목표를 “정교한 개인화”가 아니라 <strong>“탐색 비용을 줄여 이탈을 막는 것”</strong>으로 재정의</li>
                   </ul>
                 </div>
               </div>
+
               <div style="flex:0 0 200px; text-align:center;">
                 <div class="pie-chart-visual"></div>
-                <div class="pie-legend">
-                  <div style="font-size:0.85rem; color:var(--text-sub); margin-top:8px;"><span class="dot" style="background:var(--primary); display:inline-block; margin-right:4px;"></span>92% 비회원</div>
-                  <div style="font-size:0.85rem; color:var(--text-sub);"><span class="dot" style="background:#e5e7eb; display:inline-block; margin-right:4px;"></span>8% 회원</div>
+                <div class="pie-legend" style="margin-top:10px;">
+                  <div style="font-size:0.85rem; color:var(--text-sub); margin-top:8px;">
+                    <span class="dot" style="background:var(--primary); margin-right:6px;"></span>92% 비회원
+                  </div>
+                  <div style="font-size:0.85rem; color:var(--text-sub);">
+                    <span class="dot" style="background:#e5e7eb; margin-right:6px;"></span>8% 회원
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 2. Phase 1 & 2 (2 Columns) -->
           <div class="phase-grid-2">
-
-            <!-- Left: Phase 1 (Segment) -->
+            <!-- Phase 1 -->
             <div class="phase-wrapper">
               <div class="phase-badge">PHASE 1</div>
               <div class="phase-title">Segment Strategy</div>
-              <p class="phase-subtitle">마케터가 이해하고 운영할 수 있는 '설명 가능한 로직'으로 즉시 도입 가능한 모델을 구현했습니다.</p>
-              <p class="phase-subtitle">세그먼트별 목표를 ‘탐색 유도–재진입–취향 학습–정밀 개인화’로 분리해, 동일한 데이터 현실에서도 추천이 작동하도록 설계했습니다.</p>
+              <p class="phase-subtitle">마케터가 이해하고 운영할 수 있는 ‘설명 가능한 로직’으로 즉시 도입 가능한 모델을 구현했습니다.</p>
 
               <div class="segment-grid-2x2">
-                <!-- GUEST -->
                 <div class="seg-card-mini">
                   <div class="seg-head">
                     <span class="seg-name">GUEST (92%)</span>
@@ -700,7 +1231,6 @@
                   <div class="seg-vars">Pop=최근 N일 인기, RecencyDecay=exp(-d/τ)</div>
                 </div>
 
-                <!-- DORMANT -->
                 <div class="seg-card-mini">
                   <div class="seg-head">
                     <span class="seg-name">DORMANT (7.7%)</span>
@@ -711,7 +1241,6 @@
                   <div class="seg-vars">EASY=[네이밍, 사진, 퀴즈]</div>
                 </div>
 
-                <!-- LIGHT -->
                 <div class="seg-card-mini">
                   <div class="seg-head">
                     <span class="seg-name">LIGHT (소수)</span>
@@ -722,7 +1251,6 @@
                   <div class="seg-vars">match=관심사 일치(0/1)</div>
                 </div>
 
-                <!-- POWER -->
                 <div class="seg-card-mini">
                   <div class="seg-head">
                     <span class="seg-name">POWER (0.18%)</span>
@@ -735,7 +1263,7 @@
               </div>
             </div>
 
-            <!-- Right: Phase 2 (Assetization) -->
+            <!-- Phase 2 -->
             <div class="phase-wrapper">
               <div class="phase-badge">PHASE 2</div>
               <div class="phase-title">Data Assetization</div>
@@ -743,27 +1271,31 @@
 
               <div class="asset-stack">
                 <div class="asset-card">
-                  <span class="asset-head">👤 식별 (Identity)</span>
-                  <span class="asset-body">회원/비회원 통합 PK 체계(NM25_...)로 사용자 단위 데이터 연결</span>
+                  <div>
+                    <span class="asset-head">👤 식별 (Identity)</span>
+                    <span class="asset-body">회원/비회원 통합 PK 체계(NM25_...)로 사용자 단위 데이터 연결</span>
+                  </div>
                 </div>
                 <div class="asset-card">
-                  <span class="asset-head">⚡ 신호 (Signal)</span>
-                  <span class="asset-body">접수(Result)뿐 아니라 노출/클릭 등 과정(Process) 로그 축적 파이프라인</span>
+                  <div>
+                    <span class="asset-head">⚡ 신호 (Signal)</span>
+                    <span class="asset-body">접수(Result)뿐 아니라 노출/클릭 등 과정(Process) 로그 축적 파이프라인</span>
+                  </div>
                 </div>
                 <div class="asset-card">
-                  <span class="asset-head">📏 표준 (Standard)</span>
-                  <span class="asset-body">입력값·용어를 코드(Code)로 통일해 데이터 품질을 구조적으로 보장</span>
+                  <div>
+                    <span class="asset-head">📏 표준 (Standard)</span>
+                    <span class="asset-body">입력값·용어를 코드(Code)로 통일해 데이터 품질을 구조적으로 보장</span>
+                  </div>
                 </div>
               </div>
 
               <div class="impact-highlight">
-                💡 Impact: Result 중심 → Process 중심으로 추후 ML/DL 확장 가능한 데이터 인프라 전환
+                💡 Impact: Result 중심 → Process 중심으로 확장 가능한 데이터 인프라 전환
               </div>
             </div>
-
           </div>
 
-          <!-- 3. Result & Media (Bottom) -->
           <div class="bottom-result-area">
             <div class="container">
               <div class="result-quote-box">
@@ -780,17 +1312,27 @@
                     <span class="media-badge">View ↗</span>
                   </div>
                   <div class="media-body">
-                    <iframe src="asset/thinkgood_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1" class="media-thumb" style="pointer-events:none;"></iframe>
+                    <iframe src="asset/thinkgood_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1"
+                            class="media-thumb" style="pointer-events:none;"></iframe>
                   </div>
                 </div>
 
-                <div class="media-card" onclick="openModal('서비스 데모', 'Hugging Face Space', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System', true)">
+                <div class="media-card"
+                     onclick="openModal('서비스 데모', 'Hugging Face Space', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System', true)">
                   <div class="media-header">
                     <span class="media-title">▶️ 서비스 데모</span>
                     <span class="media-badge">Open ↗</span>
                   </div>
-                  <div class="media-body">
-                    <img src="asset/thinkgood%20demo.PNG" class="media-thumb">
+                  <div class="media-body" style="padding:18px;">
+                    <div style="text-align:center; max-width:520px;">
+                      <div style="font-weight:900; color:var(--primary-dark); margin-bottom:10px;">Demo (Link)</div>
+                      <div style="color:var(--text-sub); font-weight:600; line-height:1.6;">
+                        Hugging Face Space에서 추천 흐름과 XAI 화면을 확인할 수 있습니다.
+                      </div>
+                      <div style="margin-top:16px;">
+                        <span class="badge">Streamlit</span><span class="badge">Explainability</span><span class="badge">Segment</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -803,34 +1345,47 @@
     </div>
   </section>
 
-  <!-- Project 2 (Cheonan) -->
+  <!-- =========================
+    Project 2 (Cheonan) - ✅ 재구성 반영
+  ========================= -->
   <section id="project-2" class="project-detail">
     <div class="container">
       <div class="pj-summary">
         <span class="pj-date">2025.07 ~ 2025.08</span>
         <h2 class="pj-title">천안시 노인 복지 사각지대 분석 및 맞춤형 정책 제안</h2>
-        <p class="pj-desc">"5만 건의 좌표 데이터와 통계적 검증으로 찾아낸<br>'설명 가능한' 복지 사각지대"</p>
+        <p class="pj-desc">"좌표 데이터 정밀 가공 + 통계적 검증으로<br>‘왜 위험한지 설명 가능한’ 위험 유형과 정책 우선순위를 도출"</p>
+
         <div class="pj-info-grid">
-          <div class="pj-info-item"><h5>Role</h5><p>GIS 데이터 가공, 인자 분석(Factor Analysis), Tableau 시각화, 정책 제안</p></div>
-          <div class="pj-info-item"><h5>Tech Stack</h5><p>Python, QGIS, Tableau, Factor Analyzer</p></div>
+          <div class="pj-info-item"><h5>Role</h5><p>GIS 데이터 가공, 인자 분석, 공간 분석, 군집화, 시각화/정책 제안</p></div>
+          <div class="pj-info-item"><h5>Tech</h5><p>Python, QGIS, Tableau, Factor Analyzer</p></div>
         </div>
+
         <div class="project-tags">
-          <span class="badge accent">GIS</span><span class="badge">Factor Analysis</span><span class="badge">Moran's I</span><span class="badge">Tableau</span>
+          <span class="badge">GIS</span><span class="badge">Factor Analysis</span><span class="badge">Moran's I</span><span class="badge">K-Means</span>
         </div>
       </div>
 
       <div class="results-strip">
         <div class="result-card">
           <h4 class="result-head">Data Integrity</h4>
-          <p class="result-text"><span class="highlight-num">5.7만</span> 좌표 변환<br><span style="font-size:0.85rem; font-weight:400; color:var(--text-sub);">정밀 매핑 데이터 구축</span></p>
+          <p class="result-text">
+            <span class="highlight-num">5.7만</span> 좌표 변환<br>
+            <span style="font-size:0.85rem; font-weight:500; color:var(--text-sub);">주소→위경도 + 행정동 정밀 매핑</span>
+          </p>
         </div>
         <div class="result-card">
           <h4 class="result-head">Logical Evidence</h4>
-          <p class="result-text"><span class="highlight-num">14→5</span> 인자 구조화<br><span style="font-size:0.85rem; font-weight:400; color:var(--text-sub);">통계적 타당성 검증 (KMO)</span></p>
+          <p class="result-text">
+            <span class="highlight-num">14→5</span> 인자 구조화<br>
+            <span style="font-size:0.85rem; font-weight:500; color:var(--text-sub);">KMO 0.6078 검증</span>
+          </p>
         </div>
         <div class="result-card">
-          <h4 class="result-head">Actionable Insight</h4>
-          <p class="result-text"><span class="highlight-num">Policy</span> 맞춤형 제안<br><span style="font-size:0.85rem; font-weight:400; color:var(--text-sub);">위험군별 복지 서비스 매칭</span></p>
+          <h4 class="result-head">Actionable Policy</h4>
+          <p class="result-text">
+            <span class="highlight-num">3유형</span> 위험 분류<br>
+            <span style="font-size:0.85rem; font-weight:500; color:var(--text-sub);">유형별로 정책을 “왜 필요한지” 연결</span>
+          </p>
         </div>
       </div>
 
@@ -838,79 +1393,119 @@
         <button class="btn-toggle-details" onclick="toggleDetails('pj2-details', this)">상세 과정 보기 ▾</button>
       </div>
 
+      <!-- Details -->
       <div id="pj2-details" class="project-details-wrapper" style="padding-bottom:0; background-color:#F8F9FA;">
         <div class="details-inner">
           <div class="dashboard-grid">
 
+            <!-- Left: Logic & Framework -->
             <div class="dashboard-col">
               <div class="text-card">
-                <h3>1. Problem & Logic</h3>
-                <div class="context-block">
-                  <ul class="context-list">
-                    <li>단순히 "위험하다"는 결과보다 <strong>"왜 위험한가?"</strong>를 설명할 수 있는 근거가 필수적이었습니다.</li>
-                    <li><strong>GIS 정밀 가공:</strong> 주소 데이터 57,790건을 위경도로 변환하고, GeoJSON 매핑 함수를 직접 구현하여 행정동 단위의 데이터 정확도를 확보했습니다.</li>
-                  </ul>
-                </div>
+                <h3>1) Problem & Logic</h3>
+                <ul class="context-list">
+                  <li>단순히 “위험하다”는 결과가 아니라, <strong>“왜 위험한가?”를 설명할 수 있는 근거</strong>가 정책 설득의 핵심이었습니다.</li>
+                  <li><strong>GIS 정밀 가공:</strong> 주소 데이터 57,790건을 위경도로 변환하고, GeoJSON 매핑 함수를 직접 구현해 <strong>행정동 단위 정확도</strong>를 확보했습니다.</li>
+                </ul>
               </div>
 
               <div class="text-card">
-                <h3>2. Analysis Framework</h3>
+                <h3>2) Analysis Framework</h3>
                 <ul class="context-list">
-                  <li><strong>인자 분석 (Factor Analysis):</strong> 14개의 파생 지표를 ①고령화/독거 ②경제력 ③인지건강 ④금융취약 ⑤생활인프라 등 5개의 해석 가능한 핵심 인자로 압축했습니다. (KMO 0.6078 검증)</li>
-                  <li><strong>공간 분석 (Spatial Analysis):</strong> Moran's I를 통해 위험 지역의 공간적 군집(Hot Spot)을 도출하여 관리의 우선순위를 정했습니다.</li>
-                  <li><strong>군집화 (K-Means):</strong> 3가지 위험 유형(복합 결핍, 인프라 결핍, 소득 결핍)으로 분류했습니다.</li>
+                  <li><strong>인자 분석(Factor Analysis):</strong> 14개 파생 지표를 ①고령화/독거 ②경제력 ③인지건강 ④금융취약 ⑤생활인프라 등 <strong>5개 해석 가능한 인자</strong>로 압축 (KMO 0.6078).</li>
+                  <li><strong>공간 분석(Spatial):</strong> Moran's I로 위험 지역의 군집(Hot Spot)을 도출해 <strong>관리 우선순위</strong>를 설정.</li>
+                  <li><strong>군집화(K-Means):</strong> 행정동을 <strong>3가지 위험 유형</strong>(복합 결핍 / 인프라 결핍 / 소득 결핍)으로 분류해 정책을 “유형별 처방”으로 연결.</li>
+                </ul>
+              </div>
+
+              <div class="text-card">
+                <h3>3) 3가지 위험 유형 정의</h3>
+                <ul class="context-list">
+                  <li><strong>복합 결핍형:</strong> 건강·경제·인지·인프라가 동시에 취약해 <strong>단일 서비스로는 개선이 어려운</strong> 구조입니다.</li>
+                  <li><strong>인프라 결핍형:</strong> 경제력보다 <strong>이동/접근성·고립</strong>이 문제라 “갈 수 있게/연결되게” 만드는 정책이 우선입니다.</li>
+                  <li><strong>소득 결핍형:</strong> 생활 인프라는 비교적 괜찮지만 <strong>소득/지원 접근</strong>이 취약해 “현금성·일자리” 처방이 효과적입니다.</li>
                 </ul>
               </div>
             </div>
 
+            <!-- Right: Result & Policy Proposal -->
             <div class="dashboard-col">
               <div class="text-card">
-                <h3>3. Result & Policy Proposal</h3>
+                <h3>4) Result & Policy Proposal</h3>
+
                 <div class="policy-grid">
                   <div class="policy-card" style="border-top: 4px solid #EF4444;">
                     <span class="policy-badge" style="background:#EF4444;">🔴 고위험군</span>
-                    <p class="policy-desc"><strong>복합 결핍</strong><br>이동식 의료/목욕 차량<br>ICT 안전 서비스</p>
+                    <div class="policy-title">복합 결핍</div>
+                    <div class="policy-explain">여러 취약 요인이 동시에 존재하므로, <strong>방문형·통합형</strong> 서비스가 가장 빠르게 체감 효과를 만듭니다.</div>
+                    <div class="policy-desc">
+                      • 이동식 의료/목욕 차량<br>
+                      • ICT 안전 서비스
+                    </div>
                   </div>
+
                   <div class="policy-card" style="border-top: 4px solid #F97316;">
                     <span class="policy-badge" style="background:#F97316;">🟠 중위험군</span>
-                    <p class="policy-desc"><strong>인프라 부족/고립</strong><br>마을 커뮤니티 강화<br>셔틀버스 확충</p>
+                    <div class="policy-title">인프라 부족/고립</div>
+                    <div class="policy-explain">핵심은 “지원이 있어도 <strong>접근이 안 되는 구조</strong>”라서, 이동/연결 인프라가 정책 레버리지입니다.</div>
+                    <div class="policy-desc">
+                      • 마을 커뮤니티 강화<br>
+                      • 셔틀버스 확충
+                    </div>
                   </div>
+
                   <div class="policy-card" style="border-top: 4px solid #22C55E;">
                     <span class="policy-badge" style="background:#22C55E;">🟢 저위험군</span>
-                    <p class="policy-desc"><strong>소득 부족</strong><br>노인 일자리 매칭<br>지역 화폐 바우처</p>
+                    <div class="policy-title">소득 부족</div>
+                    <div class="policy-explain">생활 기반은 유지되지만 소득이 취약해 <strong>지속 가능한 현금흐름</strong>을 만드는 정책이 적합합니다.</div>
+                    <div class="policy-desc">
+                      • 노인 일자리 매칭<br>
+                      • 지역 화폐 바우처
+                    </div>
                   </div>
                 </div>
 
-                <div class="media-grid-2" style="margin-top:32px;">
-                  <div class="media-card" onclick="openModal('공간 분석 지도', 'Heatmap', 'asset/heatmap.jpg')">
+                <div class="media-grid-2" style="margin-top:28px;">
+                  <div class="media-card" onclick="openModal('공간 분석 지도', 'Hot Spot 중심 위험 지역 분포를 한눈에 확인', 'asset/heatmap.jpg')">
                     <div class="media-header">
                       <span class="media-title">🗺️ 분석 지도 보기</span>
+                      <span class="media-badge">View</span>
                     </div>
                     <div class="media-body" style="height:200px;">
-                      <img src="asset/heatmap.jpg" class="media-thumb">
+                      <img src="asset/heatmap.jpg" class="media-thumb" alt="heatmap">
                     </div>
                   </div>
 
-                  <div class="media-card" onclick="openModal('탐색 UI', 'Dashboard', 'asset/factor_danger.jpg')">
+                  <div class="media-card" onclick="openModal('탐색 UI', '인자/유형별로 행정동을 비교 탐색하는 UI', 'asset/factor_danger.jpg')">
                     <div class="media-header">
                       <span class="media-title">🖼️ 탐색 UI 보기</span>
+                      <span class="media-badge">View</span>
                     </div>
                     <div class="media-body" style="height:200px;">
-                      <img src="asset/factor_danger.jpg" class="media-thumb">
+                      <img src="asset/factor_danger.jpg" class="media-thumb" alt="ui">
                     </div>
                   </div>
                 </div>
 
                 <div class="media-grid-2" style="margin-top:16px;">
-                  <a href="https://public.tableau.com/app/profile/.45103572/viz/_Tableau2_17560266784060/sheet0" target="_blank" class="media-card" style="text-decoration:none;">
-                    <div class="media-header"><span class="media-title">📊 Tableau 대시보드</span> <span class="media-badge">Link ↗</span></div>
-                    <div class="media-body" style="height:120px; background:#f0f9ff; color:#0369a1; font-weight:700;">Click to Open</div>
+                  <a href="https://public.tableau.com/app/profile/.45103572/viz/_Tableau2_17560266784060/sheet0"
+                     target="_blank" class="media-card" style="text-decoration:none;">
+                    <div class="media-header">
+                      <span class="media-title">📊 Tableau 대시보드</span>
+                      <span class="media-badge">Link ↗</span>
+                    </div>
+                    <div class="media-body" style="height:120px; background:#f0f9ff; color:#0369a1; font-weight:900;">
+                      Click to Open
+                    </div>
                   </a>
 
-                  <div class="media-card" onclick="openModal('발표 자료', 'PDF View', null, 'asset/cheonan_presentation.pdf')">
-                    <div class="media-header"><span class="media-title">📄 발표 자료 (PDF)</span> <span class="media-badge">View ↗</span></div>
+                  <div class="media-card" onclick="openModal('발표 자료', 'Cheonan 발표 자료 PDF', null, 'asset/cheonan_presentation.pdf')">
+                    <div class="media-header">
+                      <span class="media-title">📄 발표 자료 (PDF)</span>
+                      <span class="media-badge">View ↗</span>
+                    </div>
                     <div class="media-body" style="height:120px;">
-                      <iframe src="asset/cheonan_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1" class="media-thumb" style="pointer-events:none;"></iframe>
+                      <iframe src="asset/cheonan_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1"
+                              class="media-thumb" style="pointer-events:none;"></iframe>
                     </div>
                   </div>
                 </div>
@@ -956,18 +1551,39 @@
   <footer id="contact">
     <div class="container">
       <div class="skills-grid">
-        <div class="skill-col"><h4>Language</h4><ul><li>Python (Pandas, NumPy)</li><li>R</li><li>Markdown</li></ul></div>
-        <div class="skill-col"><h4>Analysis</h4><ul><li>Factor Analysis</li><li>Clustering (K-Means)</li><li>GIS Spatial Analysis</li></ul></div>
-        <div class="skill-col"><h4>Visualization</h4><ul><li>Tableau</li><li>Streamlit</li></ul></div>
+        <div class="skill-col">
+          <h4>Language</h4>
+          <ul class="skill-list">
+            <li>Python (Pandas, NumPy)</li>
+            <li>R</li>
+            <li>Markdown</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Analysis</h4>
+          <ul class="skill-list">
+            <li>Factor Analysis</li>
+            <li>Clustering (K-Means)</li>
+            <li>GIS Spatial Analysis</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h4>Visualization</h4>
+          <ul class="skill-list">
+            <li>Tableau</li>
+            <li>Streamlit</li>
+          </ul>
+        </div>
       </div>
+
       <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
-        <h3>Contact</h3>
-        <p style="opacity:0.8; margin-bottom:20px;">데이터로 문제를 정의하고 해결하는 과정을 함께하고 싶습니다.</p>
+        <h3 style="color:white; font-weight:900;">Contact</h3>
+        <p style="opacity:0.85; margin-bottom:20px; font-weight:600;">데이터로 문제를 정의하고 해결하는 과정을 함께하고 싶습니다.</p>
         <div class="footer-links">
           <a href="mailto:han.zinna@email.com">Email</a>
           <a href="https://github.com/HanJaeHui-GitHub" target="_blank">Github</a>
         </div>
-        <p style="margin-top:40px; font-size:0.8rem; opacity:0.5;">&copy; 2026 Han Jaehui. All rights reserved.</p>
+        <p style="margin-top:40px; font-size:0.8rem; opacity:0.55;">&copy; 2026 Han Jaehui. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -977,6 +1593,7 @@
     <div class="modal-content">
       <div class="modal-close" onclick="closeModal()">✕</div>
       <h3 id="modalTitle" class="modal-title">Title</h3>
+      <p id="modalDesc" class="modal-desc"></p>
       <div class="modal-body-container"></div>
     </div>
   </div>
@@ -997,21 +1614,35 @@
       const modal = document.getElementById('visualModal');
       const container = document.querySelector('.modal-body-container');
       const mTitle = document.getElementById('modalTitle');
+      const mDesc = document.getElementById('modalDesc');
 
       container.innerHTML = '';
-      mTitle.innerText = title;
-      modal.style.display = 'flex';
+      mTitle.innerText = title || '';
+      mDesc.innerText = desc || '';
+
+      modal.classList.add('active');
 
       if (isLinkOnly && url) {
-        container.innerHTML = `<div style="text-align:center; padding:40px;"><a href="${url}" target="_blank" class="btn btn-primary" style="text-decoration:none;">새 창에서 열기 ↗</a></div>`;
-      } else if (url) {
+        container.innerHTML =
+          `<div style="text-align:center; padding:40px;">
+            <a href="${url}" target="_blank" class="btn btn-primary" style="text-decoration:none;">
+              새 창에서 열기 ↗
+            </a>
+          </div>`;
+        return;
+      }
+
+      if (url) {
         const iframe = document.createElement('iframe');
         iframe.src = url;
         iframe.style.width = '100%';
         iframe.style.height = '100%';
         iframe.style.border = 'none';
         container.appendChild(iframe);
-      } else if (imagePath) {
+        return;
+      }
+
+      if (imagePath) {
         const img = document.createElement('img');
         img.src = imagePath;
         img.style.maxWidth = '100%';
@@ -1022,13 +1653,15 @@
     }
 
     function closeModal() {
-      document.getElementById('visualModal').style.display = 'none';
+      document.getElementById('visualModal').classList.remove('active');
     }
 
     document.getElementById('visualModal').addEventListener('click', (e) => {
       if (e.target === e.currentTarget) closeModal();
     });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
   </script>
 </body>
 </html>
