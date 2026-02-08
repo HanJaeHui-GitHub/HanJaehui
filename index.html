@@ -283,7 +283,7 @@
     .profile-quote::before{
       content:"“";
       position:absolute;
-      top:-40px;
+      top:-50px;
       left:10px;
       font-family: Georgia, "Times New Roman", serif;
       font-size:110px;
@@ -820,19 +820,43 @@
       box-shadow: var(--shadow-sm);
       padding:14px;
     }
-    .summary-title{font-weight:800;color:var(--text-main);margin-bottom:10px;}
+    
+    /* 타이틀 */
+    .summary-title{
+      font-size:.92rem;
+      font-weight:800;
+      color:var(--text-main);
+      margin-bottom:10px;
+    }
+    
     .summary-row{
       display:flex;gap:10px;align-items:flex-start;
       padding:8px 0;
       border-top:1px dashed rgba(17,24,39,.10);
     }
     .summary-row:first-of-type{border-top:0;}
-    .summary-type{font-weight:800;color:var(--text-main);min-width:140px;}
-    .summary-one{color:var(--text-sub);line-height:1.45;}
+    
+    /* 왼쪽 Type 라벨 */
+    .summary-type{
+      font-size:.88rem;
+      font-weight:800;
+      color:var(--text-main);
+      min-width:140px;
+    }
+    
+    /* 오른쪽 설명 */
+    .summary-one{
+      font-size:.86rem;
+      font-weight:500;
+      color:var(--text-sub);
+      line-height:1.45;
+    }
+    
     .dot{width:10px;height:10px;border-radius:999px;display:inline-block;margin-top:6px;}
     .dot.red{background:#ef4444;}
     .dot.orange{background:#f59e0b;}
     .dot.green{background:#22c55e;}
+    
     
     /* Accordions */
     .risk-accordion{display:flex;flex-direction:column;gap:10px;}
@@ -853,11 +877,12 @@
     }
     .rp-sum::-webkit-details-marker{display:none;}
     
+    /* 배지 */
     .rp .badge{
-      padding:7px 10px;
+      padding:6px 9px;
       border-radius:999px;
       font-weight:800;
-      font-size:.82rem;
+      font-size:.78rem;
       border:1px solid rgba(17,24,39,.10);
       background:#F7F9FA;
     }
@@ -865,19 +890,42 @@
     .rp .badge.risk-orange{background:rgba(245,158,11,.10); color:#b45309;}
     .rp .badge.risk-green{background:rgba(34,197,94,.10); color:#15803d;}
     
-    .rp-title{font-weight:900;color:var(--text-main);}
-    .rp-hint{margin-left:auto;font-size:.85rem;color:var(--text-light);font-weight:600;}
+    /* 제목 */
+    .rp-title{
+      font-size:.90rem;
+      font-weight:800;
+      color:var(--text-main);
+    }
+    
+    .rp-hint{
+      margin-left:auto;
+      font-size:.82rem;   
+      color:var(--text-light);
+      font-weight:600;
+    }
+    
     .rp-body{padding:0 12px 12px;}
-    .rp-desc{margin:8px 0 10px;color:var(--text-sub);line-height:1.55;font-weight:500;}
+    
+    /* 설명 */
+    .rp-desc{
+      margin:8px 0 10px;
+      font-size:.86rem;
+      color:var(--text-sub);
+      line-height:1.55;
+      font-weight:500;
+    }
+    
     .rp-chips{display:flex;flex-wrap:wrap;gap:8px;}
+    
+    /* 칩 */
     .chip{
-      padding:8px 10px;
+      padding:7px 9px;
       border-radius:999px;
       background:#F7F9FA;
       border:1px solid rgba(17,24,39,.08);
       color:var(--text-main);
-      font-weight:600;
-      font-size:.88rem;
+      font-weight:650;
+      font-size:.84rem;
     }
     
     /* Mobile */
