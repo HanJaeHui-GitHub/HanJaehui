@@ -276,23 +276,42 @@
       border-radius:14px;
       box-shadow:var(--shadow-sm);
       position:relative;
+      overflow:hidden;
     }
+    /* 워터마크 큰 따옴표(좌상단) */
     .profile-quote::before{
-      content:'“';
-      display:block;
-      font-family:serif;
-      font-size:2.05rem;
-      color:var(--accent);
+      content:"“";
+      position:absolute;
+      top:-26px;
+      left:14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:120px;
       line-height:1;
-      margin-bottom:-10px;
-      text-align:center;
+      color:rgba(0,70,42,.08); 
+      pointer-events:none;
     }
+    
+    /* 워터마크 큰 따옴표(우하단) */
+    .profile-quote::after{
+      content:"”";
+      position:absolute;
+      bottom:-60px;
+      right:14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:140px;
+      line-height:1;
+      color:rgba(0,70,42,.06);
+      pointer-events:none;
+    }
+    
     .quote-text{
       font-size:.92rem;
       color:var(--text-main);
       font-weight:500;
       line-height:1.7;
       margin:0;
+      position:relative;
+      z-index:1;
     }
 
     .about-text-card{
