@@ -76,16 +76,16 @@
     .nav-links a:hover{color:var(--primary);}
 
     /* HERO */
-    #hero{padding:100px 0 60px;background:var(--bg-white);}
+    #hero{padding:100px 0 80px;background:var(--bg-white);}
     .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;}
     .hero-text h1{
       font-size:2.6rem;line-height:1.2;font-weight:800;
       margin-bottom:14px;letter-spacing:-0.02em;
     }
-    .proof-strip{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+    .proof-strip{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
     .proof-item{
-      font-size:.9rem;font-weight:600;color:var(--primary);
-      background:#F0FDF4;padding:6px 14px;border-radius:999px;
+      font-size:.82rem;font-weight:600;color:var(--primary);
+      background:#F0FDF4;padding:5px 12px;border-radius:999px;
       border:1px solid rgba(0,70,42,.14);
     }
     .hero-text p{
@@ -95,7 +95,7 @@
     .cta-group{display:flex;gap:12px;}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;
-      padding:12px 28px;border-radius:10px;
+      padding:14px 30px;border-radius:10px;
       font-weight:700;font-size:.95rem;
       transition:transform .2s ease,background-color .2s ease,border-color .2s ease;
       border:1px solid transparent;cursor:pointer;
@@ -107,7 +107,7 @@
 
     /* HERO VISUAL (NO TEXT, ONLY SHAPES) */
     .hero-visual-card{
-      width:100%;aspect-ratio:1/1;
+      width:94%;margin:0 auto;aspect-ratio:1/1;
       border-radius:26px;
       position:relative;overflow:hidden;
       background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
@@ -218,7 +218,11 @@
     .bp .cap.w50{width:50%;}
 
     /* PROOF TEASER */
-    #proof{padding-bottom:80px;}
+    #proof{
+      padding-top:60px;
+      padding-bottom:80px;
+      border-top:1px solid #F3F4F6;
+    }
     .proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
     .teaser-card{
       background:#fff;border:1px solid var(--border);
@@ -237,7 +241,7 @@
     /* ABOUT */
     #about{padding:80px 0;background:var(--bg-light);}
     .section-title{
-      font-size:1.55rem;font-weight:800;letter-spacing:-0.02em;color:var(--text-main);
+      font-size:1.55rem;font-weight:750;letter-spacing:-0.02em;color:var(--text-main);
     }
     .about-layout{
       display:grid;
@@ -252,16 +256,16 @@
       box-shadow:var(--shadow-sm);background:#E2E8F0;margin-bottom:16px;
     }
     .profile-img-slot img{width:100%;height:100%;object-fit:cover;}
-    .profile-name{font-size:1.35rem;font-weight:800;margin-bottom:14px;}
+    .profile-name{font-size:1.35rem;font-weight:750;margin-bottom:14px;}
     .profile-links{display:flex;gap:8px;justify-content:center;}
     .social-btn{
       padding:8px 16px;border-radius:999px;background:#fff;
-      border:1px solid var(--border);font-weight:700;font-size:.85rem;color:var(--text-sub);
+      border:1px solid var(--border);font-weight:600;font-size:.85rem;color:var(--text-sub);
       transition:transform .2s,border-color .2s,color .2s;
     }
     .social-btn:hover{transform:translateY(-2px);border-color:rgba(0,70,42,.25);color:var(--primary);}
 
-    /* 인용구: 가로 조금 더 넓게 체감 + (요청대로) 그대로 profile-side 안(Email/Github 아래) */
+    /* 인용구 */
     .profile-quote{
       width:100%;
       margin-top:18px;
@@ -285,8 +289,8 @@
     .quote-text{
       font-size:.92rem;
       color:var(--text-main);
-      font-weight:600;
-      line-height:1.65;
+      font-weight:500;
+      line-height:1.7;
       margin:0;
     }
 
@@ -295,13 +299,13 @@
       border:1px solid var(--border);
       border-radius:18px;
       box-shadow:var(--shadow-sm);
-      padding:34px;
+      padding:30px;
     }
     /* 키워드 카드 3x2 */
     .keywords-grid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
+      gap:14px;
     }
     .keyword-card{
       background:#F7F9FA;
@@ -311,7 +315,7 @@
       box-shadow:0 1px 2px rgba(17,24,39,.04);
       transition:transform .2s,border-color .2s;
     }
-    .keyword-card:hover{transform:translateY(-2px);border-color:rgba(0,70,42,.18);}
+    .keyword-card:hover{transform:translateY(-2px);border-color:rgba(0,70,42,.16);}
     .hash{color:var(--primary);font-weight:800;font-size:1.02rem;display:block;margin-bottom:6px;}
     .desc{font-size:.9rem;color:var(--text-sub);font-weight:500;line-height:1.45;}
 
@@ -467,7 +471,8 @@
       display:flex;flex-direction:column;gap:6px;
     }
     .asset-head{font-weight:800;color:var(--primary-dark);font-size:1.0rem;}
-    .asset-body{font-size:.92rem;color:var(--text-sub);font-weight:550;line-height:1.5;}
+    /* Modified font-weight from 550 to 500 for better contrast with title */
+    .asset-body{font-size:.92rem;color:var(--text-sub);font-weight:500;line-height:1.5;}
     
     /* MODIFIED: Impact Highlight (Lighter style) */
     .impact-highlight{
@@ -565,19 +570,33 @@
       margin-bottom:12px;
     }
 
-    /* Risk-Policy Grid (New Combined) */
-    .risk-policy-grid{
+    /* NEW: Result Split Layout (Image Left / Cards Right) */
+    .result-split-row{
       display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:14px;
-      margin-top:12px;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 24px;
+      margin-top: 16px;
+      align-items: start;
     }
+    .heatmap-container{
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(17,24,39,.1);
+      background:#F3F4F6;
+    }
+    .risk-policy-stack{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
     .risk-policy-card{
       background:#fff;
       border:1px solid rgba(17,24,39,.10);
       border-radius:14px;
       padding:16px;
-      display:flex;flex-direction:column;
+      display:flex;
+      flex-direction:column;
       box-shadow:0 1px 2px rgba(17,24,39,.05);
     }
     .rp-header{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
@@ -737,7 +756,7 @@
       .phase-grid-vertical{grid-template-columns:1fr;}
       .segment-grid-4{grid-template-columns:1fr 1fr;} /* Mobile: 2x2 */
       .asset-grid-3{grid-template-columns:1fr;} /* Mobile: 1 col */
-      .risk-policy-grid{grid-template-columns:1fr;} /* Mobile: 1 col */
+      .result-split-row{grid-template-columns:1fr;} /* Mobile: Stacked */
       .media-grid-2{grid-template-columns:1fr;}
       .exp-grid{grid-template-columns:1fr;}
       .skills-grid{grid-template-columns:1fr;}
@@ -1196,63 +1215,67 @@
 
           <div class="text-card">
             <h3>3. Result & Policy Proposal</h3>
-            <p style="margin-bottom:14px; font-size:.95rem; color:var(--text-sub); font-weight:500;">
+            <p style="margin-bottom:4px; font-size:.95rem; color:var(--text-sub); font-weight:500;">
               위험도를 단일 지표로 보지 않고, 취약의 “구조”를 유형화해 정책 처방으로 연결했습니다.
             </p>
             
-            <div style="margin-bottom:20px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; overflow:hidden; border:1px solid rgba(17,24,39,.1);">
-              <img src="asset/heatmap.jpg" alt="Analysis Heatmap" style="width:100%; display:block;">
-            </div>
-
-            <div class="risk-policy-grid">
-              <!-- Type 1 / High Risk -->
-              <div class="risk-policy-card">
-                <div class="rp-header">
-                  <span class="badge-risk risk-red">🔴 고위험군 (Type 1)</span>
-                  <span class="rp-title">복합 결핍형</span>
-                </div>
-                <p class="rp-desc">건강·경제·인지·인프라 동시 취약으로 단일 서비스 개선이 어려운 구조</p>
-                <div class="rp-divider"></div>
-                <div class="rp-solution">
-                  <span class="rp-label">💡 제안 정책</span>
-                  <ul class="rp-list">
-                    <li>이동식 의료/목욕 차량</li>
-                    <li>ICT 안전 서비스</li>
-                  </ul>
-                </div>
+            <div class="result-split-row">
+              <!-- Left: Map Image -->
+              <div class="heatmap-container" onclick="openModalImage('분석 지도', 'asset/heatmap.jpg')" style="cursor:pointer;">
+                <img src="asset/heatmap.jpg" alt="Analysis Heatmap" style="width:100%; height:auto; display:block;">
               </div>
 
-              <!-- Type 2 / Medium Risk -->
-              <div class="risk-policy-card">
-                <div class="rp-header">
-                  <span class="badge-risk risk-orange">🟠 중위험군 (Type 2)</span>
-                  <span class="rp-title">인프라 결핍형</span>
+              <!-- Right: Risk Cards Stack -->
+              <div class="risk-policy-stack">
+                <!-- Type 1 / High Risk -->
+                <div class="risk-policy-card">
+                  <div class="rp-header">
+                    <span class="badge-risk risk-red">🔴 고위험군 (Type 1)</span>
+                    <span class="rp-title">복합 결핍형</span>
+                  </div>
+                  <p class="rp-desc">건강·경제·인지·인프라 동시 취약으로 단일 서비스 개선이 어려운 구조</p>
+                  <div class="rp-divider"></div>
+                  <div class="rp-solution">
+                    <span class="rp-label">💡 제안 정책</span>
+                    <ul class="rp-list">
+                      <li>이동식 의료/목욕 차량</li>
+                      <li>ICT 안전 서비스</li>
+                    </ul>
+                  </div>
                 </div>
-                <p class="rp-desc">경제력 대비 이동/접근성·고립 문제 심화로 연결성 강화 정책 우선</p>
-                <div class="rp-divider"></div>
-                <div class="rp-solution">
-                  <span class="rp-label">💡 제안 정책</span>
-                  <ul class="rp-list">
-                    <li>마을 커뮤니티 강화</li>
-                    <li>셔틀버스 확충</li>
-                  </ul>
-                </div>
-              </div>
 
-              <!-- Type 3 / Low Risk -->
-              <div class="risk-policy-card">
-                <div class="rp-header">
-                  <span class="badge-risk risk-green">🟢 저위험군 (Type 3)</span>
-                  <span class="rp-title">소득 결핍형</span>
+                <!-- Type 2 / Medium Risk -->
+                <div class="risk-policy-card">
+                  <div class="rp-header">
+                    <span class="badge-risk risk-orange">🟠 중위험군 (Type 2)</span>
+                    <span class="rp-title">인프라 결핍형</span>
+                  </div>
+                  <p class="rp-desc">경제력 대비 이동/접근성·고립 문제 심화로 연결성 강화 정책 우선</p>
+                  <div class="rp-divider"></div>
+                  <div class="rp-solution">
+                    <span class="rp-label">💡 제안 정책</span>
+                    <ul class="rp-list">
+                      <li>마을 커뮤니티 강화</li>
+                      <li>셔틀버스 확충</li>
+                    </ul>
+                  </div>
                 </div>
-                <p class="rp-desc">생활 인프라 양호하나 소득/지원 접근 취약으로 현금성·일자리 처방 효과적</p>
-                <div class="rp-divider"></div>
-                <div class="rp-solution">
-                  <span class="rp-label">💡 제안 정책</span>
-                  <ul class="rp-list">
-                    <li>노인 일자리 매칭</li>
-                    <li>지역 화폐 바우처</li>
-                  </ul>
+
+                <!-- Type 3 / Low Risk -->
+                <div class="risk-policy-card">
+                  <div class="rp-header">
+                    <span class="badge-risk risk-green">🟢 저위험군 (Type 3)</span>
+                    <span class="rp-title">소득 결핍형</span>
+                  </div>
+                  <p class="rp-desc">생활 인프라 양호하나 소득/지원 접근 취약으로 현금성·일자리 처방 효과적</p>
+                  <div class="rp-divider"></div>
+                  <div class="rp-solution">
+                    <span class="rp-label">💡 제안 정책</span>
+                    <ul class="rp-list">
+                      <li>노인 일자리 매칭</li>
+                      <li>지역 화폐 바우처</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
