@@ -283,8 +283,8 @@
     .profile-quote::before{
       content:"“";
       position:absolute;
-      top:-10px;
-      left:12px;
+      top:-18px;
+      left:6px;
       font-family: Georgia, "Times New Roman", serif;
       font-size:118px;
       line-height:1;
@@ -296,8 +296,8 @@
     .profile-quote::after{
       content:"”";
       position:absolute;
-      bottom:-70px;
-      right:12px;
+      bottom:-86px;
+      right:6px;
       font-family: Georgia, "Times New Roman", serif;
       font-size:118px;
       line-height:1;
@@ -313,6 +313,7 @@
       margin:0;
       position:relative;
       z-index:1;
+      padding:0 14px;
     }
 
     .about-text-card{
@@ -360,8 +361,16 @@
     }
     .pj-info-item{display:flex;align-items:center;gap:10px;}
     .pj-info-item h5{font-size:.72rem;color:var(--primary);font-weight:800;text-transform:uppercase;letter-spacing:.08em;}
-    .pj-info-item p{font-size:.88rem;color:var(--text-main);font-weight:600;}
+    .pj-info-item p{font-size:.88rem;color:var(--text-main);font-weight:500;}
     .project-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px;}
+    .pj-info-grid.clientline{
+      margin-top:10px;
+      padding:10px 16px;
+      border-radius:999px;
+    }
+    .pj-info-grid.clientline .pj-info-item p{
+      font-weight:650;
+    }
 
     .results-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 auto 34px;}
     .result-card{
@@ -1172,7 +1181,7 @@
           <div class="pj-info-item"><h5>Tech</h5><p>Python, Pandas, Streamlit, Scikit-learn</p></div>
         </div>
 
-        <div class="pj-info-grid" style="margin-top:10px;">
+        <div class="pj-info-grid clientline" style="justify-content:center;">
           <div class="pj-info-item">
             <h5>Client / Service</h5>
             <p>ThinkGood(씽굿)</p>
