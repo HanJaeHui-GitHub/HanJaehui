@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Han Jaehui | Data Analyst Portfolio</title>
 
-  <!-- Pretendard Font -->
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
@@ -15,1135 +14,749 @@
       --primary-dark:#00331F;
       --accent:#C3E88D;
 
-      --bg-white:#FFFFFF;
       --bg-light:#F7F9FA;
-      --bg-gray:#FAFAFA;
+      --bg-white:#FFFFFF;
 
       --text-main:#111827;
       --text-sub:#374151;
       --text-light:#6B7280;
-
       --border:#E5E7EB;
 
-      --radius:14px;
+      --radius:12px;
       --container-width:1100px;
 
-      --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
-      --shadow-md: 0 12px 30px rgba(0,0,0,0.10);
+      --shadow-sm:0 2px 10px rgba(17,24,39,.06);
+      --shadow-md:0 14px 36px rgba(17,24,39,.12);
     }
 
     *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
     body{
-      font-family:'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      font-family:'Pretendard',-apple-system,BlinkMacSystemFont,system-ui,Roboto,sans-serif;
       color:var(--text-main);
-      background:var(--bg-white);
       line-height:1.6;
-      font-weight:400;
+      background:var(--bg-white);
       word-break:keep-all;
     }
-    a{color:inherit;text-decoration:none;transition:all .2s ease;}
+    a{text-decoration:none;color:inherit;transition:color .2s;}
     img{max-width:100%;display:block;}
     ul{list-style:none;padding:0;margin:0;}
+    strong{font-weight:700;color:var(--text-main);}
 
-    .container{
-      max-width:var(--container-width);
-      margin:0 auto;
-      padding:0 24px;
+    .container{max-width:var(--container-width);margin:0 auto;padding:0 24px;}
+
+    .badge{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:600;
+      background:rgba(0,70,42,.07);
+      color:var(--primary);
+      border:1px solid rgba(0,70,42,.10);
     }
 
     /* NAV */
     nav{
       position:fixed;top:0;left:0;width:100%;
-      background:rgba(255,255,255,.92);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--border);
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(10px);
       z-index:1000;
+      border-bottom:1px solid var(--border);
       height:64px;
-      display:flex;
-      align-items:center;
+      display:flex;align-items:center;
     }
     .nav-inner{
-      width:100%;
-      max-width:var(--container-width);
-      margin:0 auto;
-      padding:0 24px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
+      display:flex;justify-content:space-between;align-items:center;
+      width:100%;max-width:var(--container-width);
+      margin:0 auto;padding:0 24px;
     }
-    .logo{
-      font-weight:800;
-      font-size:1.15rem;
-      color:var(--primary);
-      letter-spacing:-0.02em;
-    }
-    .nav-links{
-      display:flex;
-      gap:22px;
-      align-items:center;
-    }
-    .nav-links a{
-      font-size:.9rem;
-      font-weight:600;
-      color:var(--text-sub);
-    }
+    .logo{font-weight:800;font-size:1.25rem;color:var(--primary);}
+    .nav-links{display:flex;gap:24px;}
+    .nav-links a{font-size:.9rem;font-weight:600;color:var(--text-sub);}
     .nav-links a:hover{color:var(--primary);}
-
-    /* BADGES / BUTTONS */
-    .badge{
-      display:inline-block;
-      padding:4px 10px;
-      border-radius:999px;
-      font-size:.78rem;
-      font-weight:600;
-      background:rgba(0,70,42,0.08);
-      color:var(--primary);
-      border:1px solid rgba(0,70,42,0.12);
-      white-space:nowrap;
-    }
-    .btn{
-      display:inline-flex;
-      justify-content:center;
-      align-items:center;
-      gap:8px;
-      padding:12px 26px;
-      border-radius:10px;
-      font-weight:700;
-      font-size:.95rem;
-      cursor:pointer;
-      border:1px solid transparent;
-      transition:all .2s ease;
-    }
-    .btn-primary{background:var(--primary);color:#fff;}
-    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);}
-    .btn-secondary{background:#fff;color:var(--primary);border-color:rgba(0,70,42,.35);}
-    .btn-secondary:hover{background:rgba(0,70,42,.06);transform:translateY(-2px);}
-    .btn-ghost{
-      background:#fff;
-      border:1px solid var(--border);
-      color:var(--text-sub);
-      font-weight:700;
-      border-radius:12px;
-      padding:12px 18px;
-    }
-    .btn-ghost:hover{border-color:rgba(0,70,42,.35);color:var(--primary);transform:translateY(-1px);}
 
     /* HERO */
     #hero{padding:140px 0 80px;background:var(--bg-white);}
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:60px;
-      align-items:center;
-    }
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:center;}
     .hero-text h1{
-      font-size:2.7rem;
-      line-height:1.25;
-      font-weight:850;
-      letter-spacing:-0.02em;
-      margin-bottom:20px;
+      font-size:2.8rem;line-height:1.25;font-weight:800;
+      margin-bottom:18px;letter-spacing:-0.02em;
     }
     .proof-strip{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
     .proof-item{
-      font-size:.9rem;
-      font-weight:700;
-      color:var(--primary);
-      background:#F0FDF4;
-      border:1px solid rgba(0,70,42,.18);
-      padding:6px 14px;
-      border-radius:999px;
+      font-size:.9rem;font-weight:600;color:var(--primary);
+      background:#F0FDF4;padding:6px 14px;border-radius:999px;
+      border:1px solid rgba(0,70,42,.14);
     }
     .hero-text p{
-      font-size:1.18rem;
-      color:var(--text-sub);
-      font-weight:500;
-      max-width:640px;
-      margin-bottom:28px;
+      font-size:1.12rem;color:var(--text-sub);
+      margin-bottom:26px;max-width:640px;font-weight:500;
     }
-    .cta-group{display:flex;gap:12px;flex-wrap:wrap;}
+    .cta-group{display:flex;gap:12px;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 28px;border-radius:10px;
+      font-weight:700;font-size:.95rem;
+      transition:transform .2s ease,background-color .2s ease,border-color .2s ease;
+      border:1px solid transparent;cursor:pointer;
+    }
+    .btn-primary{background:var(--primary);color:#fff;}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);}
+    .btn-secondary{background:#fff;color:var(--primary);border-color:rgba(0,70,42,.65);}
+    .btn-secondary:hover{background:rgba(0,70,42,.05);transform:translateY(-2px);}
 
-    /* HERO VISUAL (pure CSS illustration) */
+    /* HERO VISUAL (NO TEXT, ONLY SHAPES) */
     .hero-visual-card{
-      width:100%;
-      aspect-ratio: 4 / 5;
+      width:100%;aspect-ratio:4/5;
       border-radius:26px;
-      background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      position:relative;
-      overflow:hidden;
-      box-shadow: 0 18px 40px rgba(0,70,42,.18);
-      padding:22px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      position:relative;overflow:hidden;
+      background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+      box-shadow:0 12px 36px rgba(0,70,42,.22);
+      padding:26px;
     }
-    .dash-window{
-      width:100%;
-      height:100%;
-      border-radius:20px;
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(10px);
-      padding:14px;
-      position:relative;
-    }
-    .dash-top{
-      height:34px;
-      border-radius:14px;
-      background:rgba(0,0,0,.10);
-      border:1px solid rgba(255,255,255,.14);
-      display:flex;
-      align-items:center;
-      padding:0 12px;
-      gap:10px;
-      color:rgba(255,255,255,.92);
-      font-weight:700;
-      font-size:.86rem;
-      letter-spacing:-0.01em;
-    }
-    .traffic{
-      display:flex;gap:6px;margin-right:6px;
-    }
-    .dotx{width:10px;height:10px;border-radius:50%;}
-    .dotx.r{background:#FF5F57;}
-    .dotx.y{background:#FEBB2E;}
-    .dotx.g{background:#28C840;}
-    .dash-title{opacity:.95;}
-    .dash-body{
-      margin-top:12px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      grid-template-rows:auto 1fr;
-      gap:12px;
-      height:calc(100% - 46px);
-    }
-    .mini-card{
+    .collage-card{
+      position:absolute;
       border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.92);
-      border:1px solid rgba(255,255,255,.5);
-      box-shadow:0 12px 26px rgba(0,0,0,.10);
-      padding:14px;
-      position:relative;
+      box-shadow:0 18px 40px rgba(0,0,0,.16);
       overflow:hidden;
+      transition:transform .25s ease;
+      backdrop-filter:blur(6px);
     }
-    .mini-card h4{
-      font-size:.92rem;
-      font-weight:800;
-      color:var(--primary-dark);
-      margin-bottom:10px;
-    }
-    .mini-sub{
-      font-size:.82rem;
-      color:var(--text-sub);
-      font-weight:500;
-      line-height:1.35;
-    }
-    .bars{
-      margin-top:10px;
-      height:48px;
-      border-radius:12px;
-      background:#F3F4F6;
-      display:flex;
-      align-items:flex-end;
-      gap:8px;
-      padding:10px;
-    }
-    .bar{
-      width:16%;
-      border-radius:8px 8px 4px 4px;
-      background:rgba(0,70,42,.22);
-    }
-    .bar:nth-child(1){height:30%}
-    .bar:nth-child(2){height:55%}
-    .bar:nth-child(3){height:40%}
-    .bar:nth-child(4){height:72%}
-    .bar:nth-child(5){height:48%}
+    .hero-visual-card:hover .collage-card{transform:translateY(-6px) rotate(0deg) scale(1.01);}
+    .card-a{width:78%;height:46%;top:18px;right:18px;transform:rotate(4deg);}
+    .card-b{width:82%;height:48%;top:90px;left:18px;transform:rotate(-3deg);}
+    .card-c{width:86%;height:44%;bottom:18px;left:32px;transform:rotate(2deg);}
 
-    .flow{
-      margin-top:10px;
-      height:48px;
-      border-radius:12px;
-      background:#F3F4F6;
-      position:relative;
+    .mini-window{
+      width:100%;height:100%;
+      display:flex;flex-direction:column;
+      padding:14px;
+    }
+    .win-top{
+      display:flex;align-items:center;justify-content:flex-start;
+      gap:8px;margin-bottom:10px;padding-bottom:10px;
+      border-bottom:1px solid rgba(17,24,39,.08);
+    }
+    .dotx{width:10px;height:10px;border-radius:999px;background:rgba(17,24,39,.14);}
+    .dotx.g{background:rgba(0,70,42,.18);}
+    .dotx.y{background:rgba(195,232,141,.55);}
+
+    .shape-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;}
+    .panel{
+      border-radius:14px;border:1px solid rgba(17,24,39,.08);
+      background:#fff;padding:12px;
+      display:flex;flex-direction:column;gap:10px;
+    }
+    .skeleton-line{height:10px;border-radius:999px;background:rgba(17,24,39,.06);}
+    .skeleton-line.w70{width:70%;}
+    .skeleton-line.w55{width:55%;}
+    .skeleton-line.w80{width:80%;}
+    .skeleton-line.w45{width:45%;}
+
+    .bars{display:flex;align-items:flex-end;gap:8px;height:58px;}
+    .bar{width:14px;border-radius:7px 7px 3px 3px;background:rgba(0,70,42,.16);}
+    .bar.h18{height:18px;}
+    .bar.h30{height:30px;}
+    .bar.h44{height:44px;background:rgba(0,70,42,.28);}
+    .bar.h26{height:26px;}
+    .bar.h36{height:36px;}
+    .bar.h52{height:52px;background:rgba(0,70,42,.24);}
+
+    .nodes{
+      position:relative;flex:1;
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(0,70,42,.06), rgba(0,70,42,.02));
+      border:1px solid rgba(0,70,42,.10);
       overflow:hidden;
+      min-height:110px;
     }
     .node{
-      position:absolute;
-      width:12px;height:12px;border-radius:50%;
-      background:rgba(0,70,42,.75);
-      top:18px;
+      position:absolute;width:42px;height:42px;border-radius:14px;
+      background:#fff;border:1px solid rgba(0,70,42,.14);
+      box-shadow:0 10px 20px rgba(17,24,39,.08);
     }
-    .node:nth-child(1){left:16px}
-    .node:nth-child(2){left:62px}
-    .node:nth-child(3){left:108px}
-    .node:nth-child(4){left:154px}
-    .edge{
-      position:absolute;
-      height:3px;border-radius:3px;
-      background:rgba(0,70,42,.35);
-      top:22px;left:20px;right:18px;
+    .node::after{
+      content:'';
+      position:absolute;inset:11px;
+      border-radius:10px;background:rgba(0,70,42,.10);
     }
-    .mini-card.big{
-      grid-column:1 / span 2;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+    .node.n1{top:18px;left:18px;}
+    .node.n2{top:18px;right:18px;}
+    .node.n3{bottom:18px;left:50%;transform:translateX(-50%);}
+    .link{
+      position:absolute;height:3px;border-radius:999px;background:rgba(0,70,42,.18);
+      top:39px;left:60px;right:60px;
     }
-    .pill-row{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      margin-top:10px;
+    .link2{
+      position:absolute;width:3px;border-radius:999px;background:rgba(0,70,42,.18);
+      top:60px;left:50%;bottom:60px;transform:translateX(-50%);
     }
-    .pill{
-      background:#F3F4F6;
-      border:1px solid #E5E7EB;
-      border-radius:14px;
-      padding:10px 10px;
-      text-align:center;
-      font-weight:800;
-      color:var(--primary-dark);
-      font-size:.86rem;
+
+    .blueprint{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
     }
-    .pill small{
-      display:block;
-      margin-top:4px;
-      font-weight:600;
-      color:var(--text-sub);
-      font-size:.76rem;
+    .bp{
+      background:#F8FAFC;border:1px solid rgba(17,24,39,.08);
+      border-radius:14px;padding:12px;text-align:center;
     }
-    .dash-foot{
-      margin-top:10px;
-      font-size:.82rem;
-      font-weight:700;
-      color:rgba(255,255,255,.92);
-      opacity:.92;
+    .icon{
+      width:26px;height:26px;border-radius:10px;margin:0 auto 8px;
+      background:rgba(0,70,42,.10);
+      border:1px solid rgba(0,70,42,.12);
+      position:relative;
     }
+    .icon::after{
+      content:'';
+      position:absolute;inset:7px;border-radius:7px;
+      background:rgba(0,70,42,.18);
+    }
+    .bp .cap{height:10px;border-radius:999px;background:rgba(17,24,39,.06);margin:0 auto;}
+    .bp .cap.w60{width:60%;}
+    .bp .cap.w70{width:70%;}
+    .bp .cap.w50{width:50%;}
 
     /* PROOF TEASER */
     #proof{padding-bottom:80px;}
     .proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
     .teaser-card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:30px;
+      background:#fff;border:1px solid var(--border);
+      border-radius:16px;padding:32px;
       box-shadow:var(--shadow-sm);
-      transition:all .2s ease;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+      transition:transform .2s,border-color .2s,box-shadow .2s;
       min-height:250px;
+      display:flex;flex-direction:column;justify-content:space-between;
     }
-    .teaser-card:hover{border-color:rgba(0,70,42,.28);transform:translateY(-4px);}
-    .teaser-meta{font-size:.82rem;color:var(--text-light);font-weight:600;margin-bottom:8px;}
-    .teaser-title{font-size:1.25rem;font-weight:850;line-height:1.25;margin-bottom:10px;}
-    .teaser-desc{font-size:.95rem;color:var(--text-sub);font-weight:500;line-height:1.55;margin-bottom:18px;}
-    .teaser-tags{display:flex;gap:8px;flex-wrap:wrap;}
-    .teaser-footer{display:flex;justify-content:flex-end;}
-    .btn-link{font-weight:800;color:var(--primary);}
+    .teaser-card:hover{transform:translateY(-4px);border-color:rgba(0,70,42,.25);box-shadow:var(--shadow-md);}
+    .teaser-meta{font-size:.8rem;color:var(--text-light);margin-bottom:8px;font-weight:600;}
+    .teaser-title{font-size:1.28rem;font-weight:800;line-height:1.25;margin-bottom:10px;}
+    .teaser-desc{font-size:.95rem;color:var(--text-sub);font-weight:500;margin-bottom:16px;}
+    .btn-link{font-weight:700;color:var(--primary);font-size:.9rem;}
 
     /* ABOUT */
-    #about{padding:90px 0;background:var(--bg-light);}
+    #about{padding:80px 0;background:var(--bg-light);}
     .section-title{
-      font-size:1.7rem;
-      font-weight:850;
-      text-align:center;
-      margin-bottom:52px;
-      letter-spacing:-0.02em;
+      font-size:1.55rem;font-weight:800;letter-spacing:-0.02em;color:var(--text-main);
     }
     .about-layout{
       display:grid;
-      grid-template-columns:260px 1fr;
-      gap:54px;
+      grid-template-columns:320px 1fr;
+      gap:60px;
       align-items:start;
     }
-    .profile-side{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-    }
+    .profile-side{display:flex;flex-direction:column;align-items:center;text-align:center;}
     .profile-img-slot{
       width:140px;height:140px;border-radius:50%;
-      background:#E2E8F0;
-      border:4px solid #fff;
-      box-shadow:var(--shadow-sm);
-      overflow:hidden;
-      margin-bottom:18px;
+      overflow:hidden;border:4px solid #fff;
+      box-shadow:var(--shadow-sm);background:#E2E8F0;margin-bottom:16px;
     }
-    .profile-name{font-size:1.35rem;font-weight:850;margin-bottom:14px;}
-    .profile-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
+    .profile-img-slot img{width:100%;height:100%;object-fit:cover;}
+    .profile-name{font-size:1.35rem;font-weight:800;margin-bottom:14px;}
+    .profile-links{display:flex;gap:8px;justify-content:center;}
     .social-btn{
-      padding:7px 14px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid var(--border);
-      color:var(--text-sub);
-      font-weight:700;
-      font-size:.86rem;
-      transition:all .2s ease;
+      padding:8px 16px;border-radius:999px;background:#fff;
+      border:1px solid var(--border);font-weight:700;font-size:.85rem;color:var(--text-sub);
+      transition:transform .2s,border-color .2s,color .2s;
     }
-    .social-btn:hover{border-color:rgba(0,70,42,.28);color:var(--primary);transform:translateY(-1px);}
+    .social-btn:hover{transform:translateY(-2px);border-color:rgba(0,70,42,.25);color:var(--primary);}
 
+    /* 인용구: 가로 조금 더 넓게 체감 + (요청대로) 그대로 profile-side 안(Email/Github 아래) */
     .profile-quote{
       width:100%;
-      max-width:320px;
-      margin-top:10px;
-      padding:26px 26px;
+      margin-top:18px;
+      padding:18px 22px;
       background:#fff;
       border:1px solid var(--border);
-      border-radius:16px;
+      border-radius:14px;
       box-shadow:var(--shadow-sm);
       position:relative;
     }
     .profile-quote::before{
-      content:"“";
+      content:'“';
       display:block;
       font-family:serif;
-      font-size:2.2rem;
-      line-height:1;
+      font-size:2.05rem;
       color:var(--accent);
-      margin-bottom:-4px;
-      opacity:.95;
+      line-height:1;
+      margin-bottom:-10px;
+      text-align:center;
     }
     .quote-text{
-      font-size:.93rem;
+      font-size:.92rem;
       color:var(--text-main);
       font-weight:600;
-      line-height:1.55;
+      line-height:1.65;
+      margin:0;
     }
 
     .about-text-card{
       background:#fff;
-      padding:36px;
-      border-radius:18px;
       border:1px solid var(--border);
+      border-radius:18px;
       box-shadow:var(--shadow-sm);
+      padding:34px;
     }
+    /* 키워드 카드 3x2 */
     .keywords-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
     }
     .keyword-card{
-      background:var(--bg-light);
-      border:1px solid var(--border);
+      background:#F7F9FA;
+      border:1px solid rgba(17,24,39,.08);
       border-radius:16px;
-      padding:18px 18px;
-      box-shadow:0 1px 0 rgba(0,0,0,0.02);
-      transition:all .2s ease;
-      min-height:118px;
+      padding:18px;
+      box-shadow:0 1px 2px rgba(17,24,39,.04);
+      transition:transform .2s,border-color .2s;
     }
-    .keyword-card:hover{transform:translateY(-2px);border-color:rgba(0,70,42,.24);}
-    .hash{
-      display:block;
-      font-weight:850;
-      color:var(--primary);
-      margin-bottom:8px;
-      font-size:1.02rem;
-      letter-spacing:-0.01em;
-    }
-    .desc{
-      font-size:.88rem;
-      color:var(--text-sub);
-      font-weight:500;
-      line-height:1.45;
-    }
+    .keyword-card:hover{transform:translateY(-2px);border-color:rgba(0,70,42,.18);}
+    .hash{color:var(--primary);font-weight:800;font-size:1.02rem;display:block;margin-bottom:6px;}
+    .desc{font-size:.9rem;color:var(--text-sub);font-weight:500;line-height:1.45;}
 
-    /* PROJECT SECTIONS */
-    .project-detail{
-      padding:100px 0;
-      border-top:1px solid var(--border);
-      background:#fff;
-    }
-    .pj-summary{
-      text-align:center;
-      max-width:920px;
-      margin:0 auto 36px;
-    }
+    /* PROJECT */
+    .project-detail{padding:100px 0;border-top:1px solid var(--border);background:var(--bg-white);}
+    .pj-summary{text-align:center;max-width:920px;margin:0 auto 40px;}
     .pj-date{
       display:inline-block;
-      font-size:.82rem;
-      font-weight:800;
-      color:var(--primary);
-      background:rgba(0,70,42,0.08);
-      padding:5px 12px;
-      border-radius:999px;
-      margin-bottom:12px;
+      font-size:.82rem;font-weight:700;color:var(--primary);
+      background:rgba(0,70,42,.07);
+      padding:5px 14px;border-radius:999px;margin-bottom:10px;
     }
-    .pj-title{
-      font-size:1.8rem;
-      font-weight:900;
-      line-height:1.25;
-      letter-spacing:-0.02em;
-      margin-bottom:10px;
-    }
-    .pj-desc{
-      font-size:1.08rem;
-      color:var(--text-sub);
-      font-weight:500;
-      line-height:1.6;
-    }
+    .pj-title{font-size:1.75rem;font-weight:800;line-height:1.25;margin-bottom:10px;}
+    .pj-desc{font-size:1.05rem;color:var(--text-sub);font-weight:500;line-height:1.55;max-width:860px;margin:0 auto;}
     .pj-info-grid{
-      display:flex;
-      gap:28px;
-      justify-content:center;
+      display:flex;justify-content:center;gap:26px;
+      margin:18px auto 8px;
+      background:#F9FAFB;border:1px solid var(--border);
+      padding:12px 18px;border-radius:999px;width:fit-content;
       flex-wrap:wrap;
-      margin:18px auto 0;
-      background:#F9FAFB;
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:12px 18px;
-      width:fit-content;
-      max-width:100%;
     }
     .pj-info-item{display:flex;align-items:center;gap:10px;}
-    .pj-info-item h5{
-      font-size:.78rem;
-      font-weight:900;
-      color:var(--primary);
-      text-transform:uppercase;
-      letter-spacing:.06em;
-    }
-    .pj-info-item p{
-      font-size:.9rem;
-      color:var(--text-main);
-      font-weight:500;
-    }
-    .project-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+    .pj-info-item h5{font-size:.72rem;color:var(--primary);font-weight:800;text-transform:uppercase;letter-spacing:.08em;}
+    .pj-info-item p{font-size:.88rem;color:var(--text-main);font-weight:600;}
+    .project-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px;}
 
-    .results-strip{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      margin:22px 0 34px;
-    }
+    .results-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 auto 34px;}
     .result-card{
-      background:#fff;
-      border:1px solid rgba(0,70,42,0.14);
-      border-radius:14px;
-      padding:20px 16px;
-      box-shadow:0 2px 10px rgba(0,0,0,.03);
-      text-align:center;
-      transition:all .2s ease;
+      background:#fff;border:1px solid rgba(0,70,42,.14);
+      border-radius:14px;padding:18px 14px;text-align:center;
+      box-shadow:var(--shadow-sm);
+      transition:transform .2s,border-color .2s;
     }
-    .result-card:hover{transform:translateY(-2px);border-color:rgba(0,70,42,.26);}
-    .result-head{
-      font-size:.78rem;
-      font-weight:900;
-      color:var(--text-light);
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:6px;
-    }
-    .result-text{
-      font-size:.95rem;
-      font-weight:600;
-      color:var(--text-main);
-      line-height:1.4;
-    }
-    .highlight-num{
-      display:block;
-      font-size:1.9rem;
-      font-weight:900;
-      color:var(--primary);
-      line-height:1.1;
-      margin-bottom:6px;
-    }
+    .result-card:hover{transform:translateY(-2px);border-color:rgba(0,70,42,.22);}
+    .result-head{font-size:.74rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+    .result-text{font-size:.95rem;font-weight:600;color:var(--text-main);line-height:1.35;}
+    .highlight-num{display:block;font-size:1.9rem;font-weight:800;color:var(--primary);line-height:1.05;margin-bottom:4px;}
 
-    .btn-toggle-wrapper{text-align:center;margin:16px 0 0;}
+    .btn-toggle-wrapper{text-align:center;margin:18px 0 10px;}
     .btn-toggle-details{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 26px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid rgba(0,70,42,.35);
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 26px;border-radius:999px;
+      background:#fff;border:1px solid rgba(0,70,42,.65);
       color:var(--primary);
-      font-weight:800;
+      font-weight:700;
       cursor:pointer;
-      transition:all .2s ease;
+      transition:transform .2s,background-color .2s,color .2s;
     }
-    .btn-toggle-details:hover{background:var(--primary);color:#fff;transform:translateY(-2px);}
+    .btn-toggle-details:hover{transform:translateY(-2px);background:var(--primary);color:#fff;}
 
-    /* DETAILS WRAPPER (less cramped) */
     .project-details-wrapper{
       display:none;
-      margin-top:34px;
+      margin-top:28px;
+      padding:46px 34px;
+      border-top:1px dashed var(--border);
       background:#F8F9FA;
-      border:1px dashed var(--border);
       border-radius:22px;
-      padding:44px 34px;
       animation:fadeIn .35s ease;
     }
     .project-details-wrapper.active{display:block;}
-    .details-inner{
-      max-width:1020px;
-      margin:0 auto;
-    }
-    @keyframes fadeIn{
-      from{opacity:0;transform:translateY(8px);}
-      to{opacity:1;transform:translateY(0);}
-    }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
     .detail-h3{
-      font-size:1.18rem;
-      font-weight:900;
-      color:var(--primary-dark);
-      margin-bottom:14px;
-      padding-bottom:12px;
-      border-bottom:2px solid rgba(0,0,0,.04);
-      letter-spacing:-0.01em;
+      font-size:1.18rem;font-weight:800;color:var(--primary-dark);
+      margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid rgba(17,24,39,.06);
     }
-
     .full-width-card{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:26px;
+      background:#fff;border:1px solid var(--border);
+      border-radius:14px;padding:26px;
       box-shadow:var(--shadow-sm);
       margin-bottom:18px;
     }
-
     .context-list{display:flex;flex-direction:column;gap:10px;}
     .context-list li{
-      position:relative;
-      padding-left:18px;
-      font-size:.95rem;
-      color:var(--text-sub);
-      font-weight:500;
-      line-height:1.55;
+      font-size:.95rem;color:var(--text-sub);
+      font-weight:500;line-height:1.55;
+      position:relative;padding-left:16px;
     }
     .context-list li::before{
-      content:"•";
-      position:absolute;
-      left:0;top:0;
-      color:rgba(0,70,42,.55);
-      font-weight:900;
+      content:'';
+      width:6px;height:6px;border-radius:999px;
+      background:rgba(0,70,42,.30);
+      position:absolute;left:0;top:.62em;
     }
 
-    .pie-wrap{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      justify-content:flex-end;
-      width:240px;
-    }
-    .pie-chart-visual{
+    /* PIE */
+    .pie-wrap{display:flex;align-items:center;gap:16px;justify-content:center;}
+    .pie-chart{
       width:110px;height:110px;border-radius:50%;
-      background:conic-gradient(var(--primary) 0% 92%, #E5E7EB 92% 100%);
-      box-shadow: inset 0 0 0 10px rgba(255,255,255,.9);
-      border:1px solid rgba(0,0,0,.05);
+      background:conic-gradient(var(--primary) 0% 92%, #e5e7eb 92% 100%);
+      box-shadow:0 6px 16px rgba(17,24,39,.10);
+      border:6px solid #fff;
     }
-    .pie-legend{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      font-size:.86rem;
-      color:var(--text-sub);
-      font-weight:600;
-    }
-    .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle;}
-    .dot.p{background:var(--primary);}
-    .dot.g{background:#E5E7EB;}
+    .pie-legend{display:flex;flex-direction:column;gap:6px;}
+    .legend-item{display:flex;align-items:center;gap:8px;color:var(--text-sub);font-weight:600;font-size:.88rem;}
+    .dot{width:10px;height:10px;border-radius:999px;display:inline-block;}
 
-    /* THINKGOOD PHASE LAYOUT (horizontal, wide) */
-    .phase-row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px;
-      margin-bottom:16px;
-    }
-    .phase-block{
-      background:#fff;
+    /* THINKGOOD: PHASE 1/2 */
+    .phase-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px;}
+    .phase-wrapper{
+      background:var(--bg-light);
       border:1px solid var(--border);
       border-radius:16px;
       padding:22px;
-      box-shadow:var(--shadow-sm);
-    }
-    .phase-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:12px;
     }
     .phase-badge{
-      font-size:.78rem;
-      font-weight:900;
-      color:#fff;
+      display:inline-block;
+      font-size:.72rem;font-weight:800;color:#fff;
       background:var(--primary);
-      padding:6px 12px;
-      border-radius:999px;
+      padding:6px 12px;border-radius:999px;margin-bottom:12px;
       letter-spacing:.08em;
     }
-    .phase-title{
-      font-size:1.12rem;
-      font-weight:900;
-      color:var(--primary-dark);
-      letter-spacing:-0.01em;
-    }
-    .phase-subtitle{
-      font-size:.93rem;
-      color:var(--text-sub);
-      font-weight:500;
-      line-height:1.55;
-      margin-bottom:14px;
-    }
+    .phase-title{font-size:1.15rem;font-weight:800;color:var(--primary);margin-bottom:10px;}
+    .phase-subtitle{font-size:.95rem;color:var(--text-sub);font-weight:500;line-height:1.5;margin-bottom:16px;}
 
-    .seg-grid-4{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:12px;
-    }
-    .seg-card{
+    .segment-grid-2x2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .seg-card-mini{
       background:#fff;
-      border:1px solid var(--border);
+      border:1px solid rgba(17,24,39,.10);
       border-radius:14px;
-      padding:14px 14px;
-      box-shadow:0 1px 0 rgba(0,0,0,.02);
-      display:flex;
-      flex-direction:column;
-      min-height:210px;
+      padding:14px;
+      box-shadow:0 1px 2px rgba(17,24,39,.05);
+      display:flex;flex-direction:column;gap:10px;
     }
-    .seg-head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:8px;
-    }
-    .seg-name{
-      font-size:.95rem;
-      font-weight:900;
-      color:var(--primary-dark);
-      line-height:1.2;
-    }
+    .seg-head{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+    .seg-name{font-size:1.02rem;font-weight:800;color:var(--primary-dark);}
     .seg-purpose{
-      font-size:.74rem;
-      font-weight:800;
-      background:rgba(195,232,141,.55);
-      color:var(--primary-dark);
-      border:1px solid rgba(0,70,42,.12);
-      padding:4px 8px;
-      border-radius:999px;
-      white-space:nowrap;
+      font-size:.74rem;font-weight:700;color:#1f2937;
+      background:rgba(195,232,141,.9);
+      border:1px solid rgba(0,70,42,.14);
+      padding:6px 10px;border-radius:999px;white-space:nowrap;
     }
-    .seg-desc{
-      font-size:.86rem;
-      color:var(--text-sub);
-      font-weight:600;
-      margin-bottom:10px;
-    }
-    .formula{
-      margin-top:auto;
+    .seg-desc-mini{font-size:.9rem;color:var(--text-sub);font-weight:600;}
+    .formula-code{
+      display:block;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size:.82rem;color:#0f172a;
       background:#F8FAFC;
-      border:1px solid #E2E8F0;
+      border:1px solid rgba(17,24,39,.10);
       border-radius:12px;
-      padding:10px 10px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size:.78rem;
-      color:#1F2937;
+      padding:12px;
       line-height:1.45;
-      white-space:pre-wrap;
+      font-weight:500;
     }
-    .seg-vars{
-      margin-top:8px;
-      font-size:.78rem;
-      color:#64748B;
-      font-weight:600;
-      line-height:1.4;
-    }
+    .seg-vars{font-size:.82rem;color:rgba(55,65,81,.80);font-weight:550;}
 
-    /* PHASE 2: 3-column + impact full width */
-    .asset-grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:10px;
-    }
+    .asset-stack{display:flex;flex-direction:column;gap:12px;}
     .asset-card{
       background:#fff;
-      border:1px solid var(--border);
+      border:1px solid rgba(17,24,39,.10);
       border-radius:14px;
       padding:16px;
-      box-shadow:0 1px 0 rgba(0,0,0,.02);
-      min-height:102px;
+      display:flex;flex-direction:column;gap:6px;
     }
-    .asset-head{
-      font-size:.95rem;
-      font-weight:900;
-      color:var(--primary-dark);
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:6px;
-    }
-    .asset-body{
-      font-size:.9rem;
-      color:var(--text-sub);
-      font-weight:500;
-      line-height:1.5;
-    }
-    .impact-wide{
-      margin-top:12px;
-      background:rgba(195,232,141,.22);
-      border:1px solid rgba(0,70,42,.18);
-      border-left:6px solid rgba(195,232,141,.95);
-      border-radius:14px;
-      padding:14px 14px;
-      font-weight:700;
-      color:var(--primary-dark);
-      font-size:.92rem;
-    }
-
-    /* QUOTE + MEDIA */
-    .result-quote-box{
-      margin-top:16px;
+    .asset-head{font-weight:800;color:var(--primary-dark);font-size:1.0rem;}
+    .asset-body{font-size:.92rem;color:var(--text-sub);font-weight:550;line-height:1.5;}
+    .impact-highlight{
+      margin-top:14px;
       background:#fff;
-      border:1px solid rgba(195,232,141,.9);
+      border:1px solid rgba(195,232,141,.95);
       border-left:6px solid rgba(195,232,141,.95);
       border-radius:14px;
-      padding:18px 18px;
-      box-shadow:var(--shadow-sm);
+      padding:14px;
+      font-weight:650;
       color:var(--primary-dark);
-      font-weight:600;
-      font-size:1rem;
-      line-height:1.6;
     }
 
-    .media-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px;}
+    .bottom-result-area{
+      margin-top:18px;
+      background:#F8F9FA;
+      border-top:1px solid rgba(17,24,39,.08);
+      border-radius:18px;
+      padding:22px;
+    }
+    .result-quote-box{
+      background:#fff;
+      border:1px solid rgba(195,232,141,.95);
+      border-left:6px solid rgba(195,232,141,.95);
+      border-radius:14px;
+      padding:18px;
+      box-shadow:var(--shadow-sm);
+      margin-bottom:16px;
+    }
+    .result-text-main{
+      font-size:1.0rem;
+      font-weight:600;
+      color:var(--primary-dark);
+      line-height:1.65;
+    }
+
+    .media-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
     .media-card{
       background:#fff;
-      border:1px solid var(--border);
-      border-radius:16px;
+      border:1px solid rgba(17,24,39,.10);
+      border-radius:14px;
       overflow:hidden;
       box-shadow:var(--shadow-sm);
       cursor:pointer;
-      transition:all .2s ease;
+      transition:transform .2s,border-color .2s,box-shadow .2s;
     }
-    .media-card:hover{transform:translateY(-2px);border-color:rgba(0,70,42,.26);}
+    .media-card:hover{transform:translateY(-3px);border-color:rgba(0,70,42,.20);box-shadow:var(--shadow-md);}
     .media-header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
       padding:12px 14px;
-      border-bottom:1px solid rgba(0,0,0,.04);
       background:#fff;
+      border-bottom:1px solid rgba(17,24,39,.06);
+      display:flex;justify-content:space-between;align-items:center;
     }
-    .media-title{font-size:.92rem;font-weight:800;color:var(--text-main);}
+    .media-title{font-size:.92rem;font-weight:700;color:var(--text-main);}
     .media-badge{
       font-size:.75rem;
-      font-weight:800;
       background:#F3F4F6;
       color:var(--text-sub);
       padding:4px 10px;
       border-radius:999px;
-      white-space:nowrap;
+      font-weight:700;
     }
     .media-body{
-      height:240px;
       background:#F3F4F6;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
+      height:240px;
+      display:flex;align-items:center;justify-content:center;
+      position:relative;
     }
     .media-thumb{
       width:100%;
       height:100%;
-      object-fit:contain; /* no cropping */
-      background:#F3F4F6;
+      object-fit:cover;
+      display:block;
     }
-    .pdf-thumb{
-      width:100%;
-      height:100%;
-      border:0;
-      pointer-events:none;
-      background:#F3F4F6;
-    }
+    .media-thumb.contain{object-fit:contain;background:#F3F4F6;}
 
-    /* CHEONAN DETAILS: 2-column, vertical 1/2 on left, 3+map on right */
-    .cheonan-grid{
-      display:grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap:16px;
-      align-items:start;
-    }
+    /* CHEONAN: details vertical 1/2/3, and 3 includes map preview */
+    .cheonan-stack{display:flex;flex-direction:column;gap:14px;}
     .text-card{
       background:#fff;
       border:1px solid var(--border);
-      border-radius:16px;
+      border-radius:14px;
       padding:22px;
       box-shadow:var(--shadow-sm);
     }
     .text-card h3{
       font-size:1.05rem;
-      font-weight:900;
+      font-weight:800;
       color:var(--primary-dark);
       margin-bottom:12px;
-      letter-spacing:-0.01em;
     }
 
-    .result-map-card{
+    .type-cards{display:flex;flex-direction:column;gap:10px;margin-top:12px;}
+    .type-card{
+      border:1px solid rgba(17,24,39,.10);
+      border-radius:14px;
+      padding:14px;
       background:#fff;
-      border:1px solid var(--border);
-      border-radius:16px;
-      box-shadow:var(--shadow-sm);
-      overflow:hidden;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
     }
-    .result-map-head{
-      padding:18px 18px 12px;
-      border-bottom:1px solid rgba(0,0,0,.04);
-    }
-    .result-map-head h3{
-      font-size:1.05rem;
-      font-weight:900;
-      color:var(--primary-dark);
-      letter-spacing:-0.01em;
+    .type-card .t-title{
+      font-weight:800;
+      color:var(--text-main);
       margin-bottom:6px;
     }
-    .result-map-head p{
-      font-size:.92rem;
+    .type-card .t-desc{
       color:var(--text-sub);
       font-weight:500;
-      line-height:1.55;
-    }
-    .result-map-body{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:0;
-      min-height:360px;
-    }
-    .policy-side{
-      padding:16px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-    .risk-policy-card{
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:12px 12px;
-      background:#fff;
-    }
-    .rpc-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:8px;
-    }
-    .rpc-title{
-      font-weight:900;
-      color:var(--text-main);
-      font-size:.95rem;
-      letter-spacing:-0.01em;
-    }
-    .rpc-badge{
-      font-size:.72rem;
-      font-weight:900;
-      padding:4px 10px;
-      border-radius:999px;
-      color:#fff;
-      white-space:nowrap;
-    }
-    .rpc-badge.red{background:#EF4444;}
-    .rpc-badge.org{background:#F97316;}
-    .rpc-badge.grn{background:#22C55E;}
-    .rpc-def{
-      font-size:.86rem;
-      font-weight:500;
-      color:var(--text-sub);
       line-height:1.5;
-      margin-bottom:8px;
+      font-size:.92rem;
     }
-    .rpc-pol{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:6px;
-    }
-    .rpc-pol span{
-      font-size:.78rem;
-      font-weight:700;
-      color:var(--primary-dark);
-      background:rgba(0,70,42,.06);
-      border:1px solid rgba(0,70,42,.10);
+    .type-pill{
+      font-size:.75rem;
+      font-weight:800;
       padding:6px 10px;
       border-radius:999px;
-    }
-
-    .map-side{
-      border-left:1px solid rgba(0,0,0,.04);
       background:#F3F4F6;
-      display:flex;
-      flex-direction:column;
-      min-height:360px;
-    }
-    .map-side .map-wrap{
-      flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px;
-      overflow:hidden;
-    }
-    .map-side img{
-      width:100%;
-      height:100%;
-      object-fit:contain; /* no cropping */
-      background:#F3F4F6;
-    }
-    .map-caption{
-      padding:10px 12px;
-      border-top:1px solid rgba(0,0,0,.04);
-      background:#fff;
-      font-size:.82rem;
-      font-weight:600;
       color:var(--text-sub);
+      white-space:nowrap;
     }
 
-    .cheonan-media-3{
+    .policy-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;}
+    .policy-card{
+      background:#fff;
+      border:1px solid rgba(17,24,39,.10);
+      border-radius:14px;
+      padding:14px;
+      box-shadow:0 1px 2px rgba(17,24,39,.05);
+    }
+    .policy-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+    .badge-risk{
+      font-size:.78rem;font-weight:800;color:#fff;
+      padding:6px 10px;border-radius:999px;
+    }
+    .risk-red{background:#EF4444;}
+    .risk-orange{background:#F97316;}
+    .risk-green{background:#22C55E;}
+    .policy-card b{display:block;font-weight:800;margin-bottom:6px;color:var(--text-main);}
+    .policy-card p{margin:0;font-weight:500;color:var(--text-sub);font-size:.92rem;line-height:1.45;}
+
+    .result-map-row{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin-top:14px;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:stretch;
+      margin-top: 12px;
     }
-    .cta-row{
-      margin-top:12px;
-      display:flex;
+    .map-preview{
+      border:1px solid rgba(17,24,39,.10);
+      border-radius:14px;
+      overflow:hidden;
+      background:#F3F4F6;
+      box-shadow:0 1px 2px rgba(17,24,39,.05);
+      min-height: 240px;
+    }
+    .map-preview img{width:100%;height:100%;object-fit:contain;background:#F3F4F6;}
+
+    .media-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;}
+    .btn-wide{
+      width:100%;
+      justify-content:center;
       gap:10px;
-      flex-wrap:wrap;
+      border-radius:14px;
+      padding:12px 14px;
+      font-weight:800;
+      border:1px solid rgba(0,70,42,.22);
+      background:#fff;
+      color:var(--primary);
+      box-shadow:var(--shadow-sm);
+      transition:transform .2s, background-color .2s, color .2s;
     }
+    .btn-wide:hover{transform:translateY(-2px);background:var(--primary);color:#fff;}
 
     /* MODAL */
     .modal-overlay{
       position:fixed;top:0;left:0;width:100%;height:100%;
-      background:rgba(0,0,0,.72);
+      background:rgba(0,0,0,.7);
+      z-index:2000;
       display:none;
-      align-items:center;
       justify-content:center;
-      z-index:2500;
-      backdrop-filter: blur(6px);
+      align-items:center;
+      backdrop-filter:blur(5px);
     }
     .modal-overlay.active{display:flex;}
     .modal-content{
+      background:#fff;
       width:92%;
       max-width:1100px;
       height:90vh;
-      background:#fff;
-      border-radius:18px;
-      box-shadow:var(--shadow-md);
+      border-radius:16px;
+      padding:24px;
       position:relative;
-      padding:26px;
+      box-shadow:var(--shadow-md);
       display:flex;
       flex-direction:column;
     }
     .modal-close{
       position:absolute;top:16px;right:16px;
-      width:34px;height:34px;border-radius:50%;
-      background:#F3F4F6;border:1px solid var(--border);
+      font-size:1.3rem;
+      cursor:pointer;
+      color:var(--text-sub);
+      width:36px;height:36px;
       display:flex;align-items:center;justify-content:center;
-      cursor:pointer;color:var(--text-sub);font-weight:900;
+      border-radius:50%;
+      background:#F3F4F6;
+      z-index:20;
     }
     .modal-close:hover{background:#E5E7EB;color:var(--text-main);}
     .modal-title{
-      font-size:1.4rem;
-      font-weight:900;
-      color:var(--primary);
-      margin-bottom:8px;
-      padding-right:42px;
-    }
-    .modal-desc{
-      font-size:.98rem;
-      color:var(--text-sub);
-      font-weight:500;
+      font-size:1.25rem;font-weight:800;color:var(--primary);
       margin-bottom:10px;
-      text-align:center;
+      padding-right:46px;
     }
     .modal-body-container{
       flex:1;
       width:100%;
       background:#F3F4F6;
+      border-radius:12px;
       border:1px solid var(--border);
-      border-radius:14px;
       overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
     }
     .modal-iframe{
       width:100%;
       height:100%;
       border:0;
+    }
+    .modal-img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
       background:#F3F4F6;
+      display:block;
     }
 
-    /* EXPERIENCE */
-    #experience{padding:100px 0;background:var(--bg-light);border-top:1px solid var(--border);}
-    .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    /* EXPERIENCE + FOOTER */
+    #experience{padding:100px 0;background:var(--bg-light);}
+    .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
     .exp-card{
-      background:#fff;border:1px solid var(--border);
-      border-radius:18px;padding:34px 26px;
+      background:#fff;padding:36px 28px;border-radius:16px;
+      border:1px solid var(--border);
       box-shadow:var(--shadow-sm);
-      transition:all .2s ease;
+      transition:transform .2s, box-shadow .2s, border-color .2s;
     }
-    .exp-card:hover{transform:translateY(-3px);border-color:rgba(0,70,42,.24);}
-    .exp-date{font-size:.84rem;color:var(--text-light);font-weight:600;margin-bottom:10px;}
-    .exp-title{font-size:1.25rem;font-weight:900;color:var(--primary);margin-bottom:6px;}
-    .exp-role{font-size:1rem;font-weight:700;color:var(--text-main);margin-bottom:12px;}
+    .exp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(0,70,42,.18);}
+    .exp-date{display:block;font-size:.85rem;color:var(--text-light);margin-bottom:10px;font-weight:600;}
+    .exp-title{font-size:1.35rem;font-weight:800;margin-bottom:6px;color:var(--primary);}
+    .exp-role{font-size:1rem;font-weight:650;color:var(--text-main);margin-bottom:12px;}
     .exp-desc{font-size:.92rem;color:var(--text-sub);font-weight:500;line-height:1.55;}
 
-    /* FOOTER */
     footer{padding:80px 0;background:var(--primary-dark);color:rgba(255,255,255,.86);text-align:center;}
-    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-bottom:50px;text-align:left;}
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:52px;text-align:left;}
     .skill-col h4{
-      font-size:1.12rem;font-weight:900;color:#fff;
+      font-size:1.1rem;
+      font-weight:800;
+      color:#fff;
+      margin-bottom:18px;
       border-bottom:3px solid var(--accent);
-      display:inline-block;padding-bottom:6px;margin-bottom:18px;
+      display:inline-block;
+      padding-bottom:6px;
     }
-    .skill-list li{margin-bottom:10px;font-size:.92rem;font-weight:500;color:rgba(255,255,255,.86);}
-    .footer-links{margin-top:18px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
-    .footer-links a{
-      border-bottom:1px solid rgba(255,255,255,.28);
-      padding-bottom:2px;
-    }
+    .skill-list li{margin-bottom:10px;color:rgba(255,255,255,.88);font-size:.95rem;font-weight:500;}
+    .footer-links{margin-top:18px;display:flex;justify-content:center;gap:20px;}
+    .footer-links a{border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;}
     .footer-links a:hover{color:var(--accent);border-color:var(--accent);}
 
     /* RESPONSIVE */
-    @media (max-width: 1100px){
-      .seg-grid-4{grid-template-columns:repeat(2,1fr);}
-      .asset-grid-3{grid-template-columns:1fr;}
-      .phase-row{grid-template-columns:1fr;}
-      .cheonan-grid{grid-template-columns:1fr;}
-      .result-map-body{grid-template-columns:1fr;}
-      .map-side{border-left:0;border-top:1px solid rgba(0,0,0,.04);}
-    }
     @media (max-width: 1024px){
       .hero-grid{grid-template-columns:1fr;gap:40px;}
       .hero-text{text-align:center;}
       .cta-group{justify-content:center;}
       .proof-grid{grid-template-columns:1fr;}
-      .about-layout{grid-template-columns:1fr;gap:28px;}
-      .profile-quote{max-width:520px;}
+      .about-layout{grid-template-columns:1fr;gap:30px;}
+      .profile-side{max-width:420px;margin:0 auto;}
       .results-strip{grid-template-columns:1fr;}
+      .phase-grid-2{grid-template-columns:1fr;}
       .media-grid-2{grid-template-columns:1fr;}
-      .cheonan-media-3{grid-template-columns:1fr;}
       .exp-grid{grid-template-columns:1fr;}
       .skills-grid{grid-template-columns:1fr;}
+      .keywords-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .result-map-row{grid-template-columns:1fr;}
+      .media-grid-3{grid-template-columns:1fr;}
+      .policy-grid-3{grid-template-columns:1fr;}
     }
-    @media (max-width: 720px){
+    @media (max-width: 768px){
       .nav-links{display:none;}
+      .hero-visual-card{aspect-ratio:16/9;}
       .project-details-wrapper{padding:30px 18px;}
       .keywords-grid{grid-template-columns:1fr;}
-      .seg-grid-4{grid-template-columns:1fr;}
-      .asset-grid-3{grid-template-columns:1fr;}
-      .hero-text h1{font-size:2.1rem;}
     }
   </style>
 </head>
@@ -1168,70 +781,109 @@
       <div class="hero-grid">
         <div class="hero-text">
           <h1>복잡한 데이터를 정리해,<br>선택 가능한 구조로<br>만듭니다.</h1>
-
           <div class="proof-strip">
             <span class="proof-item">#Problem_Solver</span>
             <span class="proof-item">#Data_Assetization</span>
             <span class="proof-item">#Logical_Thinking</span>
           </div>
-
           <p>데이터와 비즈니스 사이를 연결하는 데이터 분석가 한재희입니다.</p>
-
           <div class="cta-group">
             <a href="#project-1" class="btn btn-primary">Projects</a>
             <a href="mailto:han.zinna@email.com" class="btn btn-secondary">Contact</a>
           </div>
         </div>
 
-        <!-- PURE CSS illustration -->
-        <div class="hero-visual-card" aria-label="Data to decision dashboard illustration">
-          <div class="dash-window">
-            <div class="dash-top">
-              <div class="traffic">
-                <span class="dotx r"></span><span class="dotx y"></span><span class="dotx g"></span>
+        <!-- RIGHT: pure-graphic illustration (NO TEXT) -->
+        <div class="hero-visual-card" aria-label="Data to Structure illustration">
+          <div class="collage-card card-a">
+            <div class="mini-window">
+              <div class="win-top">
+                <span class="dotx"></span><span class="dotx y"></span><span class="dotx g"></span>
               </div>
-              <div class="dash-title">Data → Structure → Decision</div>
+              <div class="shape-grid-2">
+                <div class="panel">
+                  <div class="skeleton-line w70"></div>
+                  <div class="bars">
+                    <span class="bar h18"></span>
+                    <span class="bar h30"></span>
+                    <span class="bar h44"></span>
+                    <span class="bar h26"></span>
+                    <span class="bar h36"></span>
+                    <span class="bar h52"></span>
+                  </div>
+                  <div class="skeleton-line w55"></div>
+                </div>
+                <div class="panel">
+                  <div class="skeleton-line w80"></div>
+                  <div class="nodes">
+                    <div class="node n1"></div>
+                    <div class="node n2"></div>
+                    <div class="node n3"></div>
+                    <div class="link"></div>
+                    <div class="link2"></div>
+                  </div>
+                  <div class="skeleton-line w45"></div>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <div class="dash-body">
-              <div class="mini-card">
-                <h4>Signal Coverage</h4>
-                <div class="mini-sub">Cold Start 환경에서도<br>운영 가능한 신호 재구성</div>
-                <div class="bars" aria-hidden="true">
-                  <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                </div>
+          <div class="collage-card card-b">
+            <div class="mini-window">
+              <div class="win-top">
+                <span class="dotx"></span><span class="dotx y"></span><span class="dotx g"></span>
               </div>
-
-              <div class="mini-card">
-                <h4>Recommendation Flow</h4>
-                <div class="mini-sub">“정교함”보다 이탈 방지<br>목표로 설계</div>
-                <div class="flow" aria-hidden="true">
-                  <div class="edge"></div>
-                  <div class="node"></div><div class="node"></div><div class="node"></div><div class="node"></div>
+              <div class="panel" style="flex:1;">
+                <div class="skeleton-line w70"></div>
+                <div class="blueprint">
+                  <div class="bp"><div class="icon"></div><div class="cap w60"></div></div>
+                  <div class="bp"><div class="icon"></div><div class="cap w70"></div></div>
+                  <div class="bp"><div class="icon"></div><div class="cap w50"></div></div>
                 </div>
+                <div class="skeleton-line w80"></div>
+                <div class="skeleton-line w55"></div>
               </div>
+            </div>
+          </div>
 
-              <div class="mini-card big">
-                <div>
-                  <h4>Assetization Blueprint</h4>
-                  <div class="mini-sub">운영 DB를 학습 가능한 자산으로</div>
-                  <div class="pill-row" aria-hidden="true">
-                    <div class="pill">Identity<small>통합 PK</small></div>
-                    <div class="pill">Signal<small>노출·클릭</small></div>
-                    <div class="pill">Standard<small>코드화</small></div>
+          <div class="collage-card card-c">
+            <div class="mini-window">
+              <div class="win-top">
+                <span class="dotx"></span><span class="dotx y"></span><span class="dotx g"></span>
+              </div>
+              <div class="panel" style="flex:1;">
+                <div class="skeleton-line w80"></div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                  <div class="panel" style="padding:12px;">
+                    <div class="skeleton-line w70"></div>
+                    <div class="bars" style="height:46px;">
+                      <span class="bar h26"></span><span class="bar h44"></span><span class="bar h30"></span><span class="bar h52"></span>
+                    </div>
+                    <div class="skeleton-line w55"></div>
+                  </div>
+                  <div class="panel" style="padding:12px;">
+                    <div class="skeleton-line w60"></div>
+                    <div class="nodes" style="min-height:86px;">
+                      <div class="node n1" style="top:14px;left:14px;"></div>
+                      <div class="node n2" style="top:14px;right:14px;"></div>
+                      <div class="node n3" style="bottom:14px;left:50%;transform:translateX(-50%);"></div>
+                      <div class="link" style="top:32px;"></div>
+                      <div class="link2" style="top:48px;bottom:48px;"></div>
+                    </div>
+                    <div class="skeleton-line w45"></div>
                   </div>
                 </div>
-                <div class="dash-foot">운영 DB를 “학습 가능한 자산”으로 전환</div>
+                <div class="skeleton-line w70"></div>
               </div>
             </div>
           </div>
         </div>
-        <!-- /illustration -->
+
       </div>
     </div>
   </header>
 
-  <!-- PROOF TEASER -->
+  <!-- Proof Teaser -->
   <section id="proof">
     <div class="container">
       <div class="proof-grid">
@@ -1239,28 +891,28 @@
           <div>
             <div class="teaser-meta">2025.10 - 2026.01</div>
             <h3 class="teaser-title">ThinkGood:<br>공모전 추천 시스템</h3>
-            <p class="teaser-desc">Cold Start 환경에서 운영 가능한 세그먼트 추천 설계와, 데이터 자산화(DB 고도화) 제안을 연결했습니다.</p>
-            <div class="teaser-tags">
+            <p class="teaser-desc">Cold Start 환경에서 즉시 운영 가능한 세그먼트 전략과 데이터 자산화 설계를 제안했습니다.</p>
+            <div style="margin-top:6px;">
               <span class="badge">Cold Start</span>
               <span class="badge">Rule-based</span>
               <span class="badge">DB Proposal</span>
             </div>
           </div>
-          <div class="teaser-footer"><span class="btn-link">View Project →</span></div>
+          <div style="display:flex;justify-content:flex-end;"><span class="btn-link">View Project →</span></div>
         </a>
 
         <a href="#project-2" class="teaser-card">
           <div>
             <div class="teaser-meta">2025.07 - 2025.08</div>
             <h3 class="teaser-title">Cheonan:<br>복지 사각지대 분석</h3>
-            <p class="teaser-desc">좌표 데이터와 통계적 검증으로 “왜 위험한가”를 설명하고, 위험군 유형에 맞춘 정책을 제안했습니다.</p>
-            <div class="teaser-tags">
+            <p class="teaser-desc">좌표 데이터 정밀 가공과 통계 검증으로 행정동별 정책 우선순위를 도출했습니다.</p>
+            <div style="margin-top:6px;">
               <span class="badge">GIS</span>
               <span class="badge">Factor Analysis</span>
               <span class="badge">Moran's I</span>
             </div>
           </div>
-          <div class="teaser-footer"><span class="btn-link">View Project →</span></div>
+          <div style="display:flex;justify-content:flex-end;"><span class="btn-link">View Project →</span></div>
         </a>
       </div>
     </div>
@@ -1269,56 +921,35 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
+      <h2 class="section-title" style="text-align:center;margin-bottom:60px;">About Me</h2>
       <div class="about-layout">
         <div class="profile-side">
           <div class="profile-img-slot">
-            <img src="asset/photo.jpg" alt="Profile" style="width:100%;height:100%;object-fit:cover;">
+            <img src="asset/photo.jpg" alt="Profile" />
           </div>
           <h3 class="profile-name">Han Jaehui</h3>
-
           <div class="profile-links">
-            <a class="social-btn" href="mailto:han.zinna@email.com">Email</a>
-            <a class="social-btn" href="https://github.com/HanJaeHui-GitHub" target="_blank" rel="noopener">Github</a>
+            <a href="mailto:han.zinna@email.com" class="social-btn">Email</a>
+            <a href="https://github.com/HanJaeHui-GitHub" target="_blank" class="social-btn">Github</a>
           </div>
 
-          <!-- Quote under Email/Github -->
           <div class="profile-quote">
             <p class="quote-text">
               데이터와 비즈니스 환경을 함께 고려하여,<br>
-              주어진 상황에서 실행 가능한 최적의 구조를 설계합니다.<br>
-              단순 분석을 넘어 의사결정을 이끄는 근거를 만듭니다.
+              주어진 상황에서 가장 실행 가능한 최적의 구조를 설계합니다.<br>
+              단순 분석을 넘어 의사결정을 이끄는 단단한 근거를 만듭니다.
             </p>
           </div>
         </div>
 
         <div class="about-text-card">
-          <!-- 3x2 -->
           <div class="keywords-grid">
-            <div class="keyword-card">
-              <span class="hash">#문제정의</span>
-              <p class="desc">수치 뒤 맥락을 읽고,<br>무엇을 풀어야 하는지부터 다시 정의합니다.</p>
-            </div>
-            <div class="keyword-card">
-              <span class="hash">#설명력</span>
-              <p class="desc">결과를 기준과 근거로 정리해,<br>선택 가능한 언어로 바꿉니다.</p>
-            </div>
-            <div class="keyword-card">
-              <span class="hash">#구조설계</span>
-              <p class="desc">모델보다 먼저,<br>데이터와 서비스가 함께 굴러갈 구조를 설계합니다.</p>
-            </div>
-            <div class="keyword-card">
-              <span class="hash">#협업</span>
-              <p class="desc">팀이 같은 기준 위에서 논의하도록<br>기준을 맞추고 앞으로 움직입니다.</p>
-            </div>
-            <div class="keyword-card">
-              <span class="hash">#실행력</span>
-              <p class="desc">아이디어를 검증 가능한 형태로 구현해<br>의사결정까지 연결합니다.</p>
-            </div>
-            <div class="keyword-card">
-              <span class="hash">#에너지</span>
-              <p class="desc">충분히 고민해 근거를 세우고,<br>팀이 나아갈 방향을 제안합니다.</p>
-            </div>
+            <div class="keyword-card"><span class="hash">#문제정의</span><p class="desc">수치 뒤 맥락을 읽고,<br>무엇을 풀어야 하는지부터 다시 정의합니다.</p></div>
+            <div class="keyword-card"><span class="hash">#설명력</span><p class="desc">결과를 기준과 근거로 정리해,<br>선택할 수 있는 언어로 바꿉니다.</p></div>
+            <div class="keyword-card"><span class="hash">#구조설계</span><p class="desc">모델보다 먼저,<br>데이터와 서비스가 함께 굴러갈 구조를 설계합니다.</p></div>
+            <div class="keyword-card"><span class="hash">#협업</span><p class="desc">팀이 같은 기준 위에서 논의하도록<br>기준을 맞추고 앞으로 움직입니다.</p></div>
+            <div class="keyword-card"><span class="hash">#실행력</span><p class="desc">아이디어를 검증 가능한 형태로 구현해<br>의사결정까지 연결합니다.</p></div>
+            <div class="keyword-card"><span class="hash">#에너지</span><p class="desc">충분히 고민해 근거를 세우고,<br>팀이 나아갈 방향을 제안합니다.</p></div>
           </div>
         </div>
       </div>
@@ -1327,8 +958,8 @@
 
   <div id="projects"></div>
 
-  <!-- PROJECT 1: ThinkGood -->
-  <section id="project-1" class="project-detail thinkgood">
+  <!-- PROJECT 1: THINKGOOD -->
+  <section id="project-1" class="project-detail">
     <div class="container">
       <div class="pj-summary">
         <span class="pj-date">2025.10 ~ 2026.01</span>
@@ -1341,25 +972,28 @@
         </div>
 
         <div class="project-tags">
-          <span class="badge">Cold Start</span>
-          <span class="badge">Rule-based</span>
-          <span class="badge">Segment</span>
-          <span class="badge">DB Proposal</span>
+          <span class="badge">Cold Start</span><span class="badge">Rule-based</span><span class="badge">Segment</span><span class="badge">DB Proposal</span>
         </div>
       </div>
 
       <div class="results-strip">
         <div class="result-card">
           <h4 class="result-head">Challenge</h4>
-          <p class="result-text"><span class="highlight-num">92%</span> Cold Start<br><span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">노출·클릭 로그 부재 → 접수만 존재</span></p>
+          <p class="result-text"><span class="highlight-num">92%</span> Cold Start<br>
+            <span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">노출·클릭 로그 부재 → 접수만 존재</span>
+          </p>
         </div>
         <div class="result-card">
           <h4 class="result-head">Solution</h4>
-          <p class="result-text"><span class="highlight-num">Segment</span> Strategy<br><span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">4 세그먼트 하이브리드 추천 설계</span></p>
+          <p class="result-text"><span class="highlight-num">Segment</span> Strategy<br>
+            <span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">4 세그먼트 하이브리드 추천 설계</span>
+          </p>
         </div>
         <div class="result-card">
           <h4 class="result-head">Impact</h4>
-          <p class="result-text"><span class="highlight-num">XAI</span> Dashboard<br><span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">근거 시각화 → 검증·조정 가능한 운영형 추천</span></p>
+          <p class="result-text"><span class="highlight-num">XAI</span> Dashboard<br>
+            <span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">근거 시각화 → 검증·조정 가능한 운영형 추천</span>
+          </p>
         </div>
       </div>
 
@@ -1367,189 +1001,178 @@
         <button class="btn-toggle-details" onclick="toggleDetails('pj1-details', this)">상세 과정 보기 ▾</button>
       </div>
 
-      <!-- Details -->
       <div id="pj1-details" class="project-details-wrapper">
-        <div class="details-inner">
+        <div class="full-width-card">
+          <div class="detail-h3">Problem Definition: Data Reality</div>
+          <div style="display:flex; gap:26px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+            <div style="flex:1; min-width: 280px;">
+              <ul class="context-list">
+                <li>추천을 위한 행동 로그(Click/View) 부재, 오직 ‘접수’ 데이터만 존재</li>
+                <li>추천의 목적을 “정교한 개인화”보다 <strong>“탐색 비용을 줄여 이탈을 막는다”</strong>로 재정의</li>
+                <li><strong>데이터 밀도 차이를 그대로 반영</strong>하기 위해, 모든 유저에 동일 모델이 아닌 <strong>세그먼트별 전략</strong>으로 설계</li>
+              </ul>
+            </div>
 
-          <!-- 1. Problem -->
-          <div class="full-width-card">
-            <div class="detail-h3">Problem Definition: Data Reality</div>
-
-            <div style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
-              <div style="flex:1;min-width:280px;">
-                <ul class="context-list">
-                  <li>추천을 위한 행동 로그(Click/View) 부재로, 신호는 사실상 ‘접수’에 집중되어 있었습니다.</li>
-                  <li>추천의 목적을 “정교한 개인화”보다 “탐색 비용을 줄여 이탈을 막는다”로 재정의했습니다.</li>
-                  <li>데이터 밀도가 다른 사용자를 하나의 모델로 처리하기보다, 세그먼트별로 목적과 전략을 분리하는 편이 운영에 적합했습니다.</li>
-                </ul>
-              </div>
-
-              <div class="pie-wrap" style="flex:0 0 auto;">
-                <div class="pie-chart-visual" aria-label="92 percent non-member"></div>
+            <div style="flex:0 0 240px;">
+              <div class="pie-wrap">
+                <div class="pie-chart"></div>
                 <div class="pie-legend">
-                  <div><span class="dot p"></span>92% 비회원</div>
-                  <div><span class="dot g"></span>8% 회원</div>
+                  <div class="legend-item"><span class="dot" style="background:var(--primary)"></span>92% 비회원</div>
+                  <div class="legend-item"><span class="dot" style="background:#e5e7eb"></span>8% 회원</div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- 2. PHASES (horizontal wide) -->
-          <div class="phase-row">
-            <!-- PHASE 1 -->
-            <div class="phase-block">
-              <div class="phase-top">
-                <span class="phase-badge">PHASE 1</span>
-                <div class="phase-title">Segment Strategy</div>
-              </div>
-              <p class="phase-subtitle">마케터가 이해하고 운영할 수 있는 설명 가능한 로직으로, 즉시 도입 가능한 모델을 구현했습니다.</p>
+        <div class="phase-grid-2">
+          <div class="phase-wrapper">
+            <div class="phase-badge">PHASE 1</div>
+            <div class="phase-title">Segment Strategy</div>
+            <p class="phase-subtitle">마케터가 이해하고 운영할 수 있는 ‘설명 가능한 로직’으로, 즉시 도입 가능한 모델을 구현했습니다.</p>
 
-              <!-- 4 columns -->
-              <div class="seg-grid-4">
-                <div class="seg-card">
-                  <div class="seg-head">
-                    <div class="seg-name">GUEST (92%)</div>
-                    <div class="seg-purpose">탐색 유도</div>
-                  </div>
-                  <div class="seg-desc">인기 + 최신성 반영</div>
-                  <div class="formula">Score = 0.7 · Norm(log(1 + Pop)) + 0.3 · Norm(RecencyDecay)</div>
-                  <div class="seg-vars">Pop=최근 N일 인기<br>RecencyDecay=exp(-d/τ)</div>
+            <div class="segment-grid-2x2">
+              <div class="seg-card-mini">
+                <div class="seg-head">
+                  <span class="seg-name">GUEST (92%)</span>
+                  <span class="seg-purpose">탐색 유도</span>
                 </div>
-
-                <div class="seg-card">
-                  <div class="seg-head">
-                    <div class="seg-name">DORMANT (7.7%)</div>
-                    <div class="seg-purpose">장벽 완화</div>
-                  </div>
-                  <div class="seg-desc">EASY 공모전 가중치</div>
-                  <div class="formula">Score = Norm(Pop) · EasyWeight</div>
-                  <div class="seg-vars">EASY=[네이밍, 사진, 퀴즈]</div>
-                </div>
-
-                <div class="seg-card">
-                  <div class="seg-head">
-                    <div class="seg-name">LIGHT (소수)</div>
-                    <div class="seg-purpose">취향 매칭</div>
-                  </div>
-                  <div class="seg-desc">관심사 기반 CBF</div>
-                  <div class="formula">Score = Norm(Σ (IDF(tag) · match(tag)))</div>
-                  <div class="seg-vars">match=관심사 일치(0/1)</div>
-                </div>
-
-                <div class="seg-card">
-                  <div class="seg-head">
-                    <div class="seg-name">POWER (0.18%)</div>
-                    <div class="seg-purpose">정밀 개인화</div>
-                  </div>
-                  <div class="seg-desc">이력 기반 Hybrid</div>
-                  <div class="formula">Score = 1.5 · Norm(SimilarityCF) + 1.0 · Norm(Σ (IDF(tag) · match(tag)))</div>
-                  <div class="seg-vars">Sim=Cosine<br>Interest=Tag Match</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- PHASE 2 -->
-            <div class="phase-block">
-              <div class="phase-top">
-                <span class="phase-badge">PHASE 2</span>
-                <div class="phase-title">Data Assetization</div>
-              </div>
-              <p class="phase-subtitle">AI 고도화의 병목을 데이터 구조로 정의하고, 운영 DB를 학습 가능한 자산으로 전환하는 설계를 역제안했습니다.</p>
-
-              <!-- 3 columns -->
-              <div class="asset-grid-3">
-                <div class="asset-card">
-                  <div class="asset-head">👤 식별 (Identity)</div>
-                  <div class="asset-body">회원/비회원 통합 PK 체계(NM25_...)로 사용자 단위 데이터 연결</div>
-                </div>
-                <div class="asset-card">
-                  <div class="asset-head">⚡ 신호 (Signal)</div>
-                  <div class="asset-body">접수(Result)뿐 아니라 노출/클릭 등 과정(Process) 로그 축적 파이프라인</div>
-                </div>
-                <div class="asset-card">
-                  <div class="asset-head">📏 표준 (Standard)</div>
-                  <div class="asset-body">입력값·용어를 코드(Code)로 통일해 데이터 품질을 구조적으로 보장</div>
-                </div>
+                <div class="seg-desc-mini">인기 + 최신성 반영</div>
+                <code class="formula-code">Score = 0.7 · Norm(log(1 + Pop)) + 0.3 · Norm(RecencyDecay)</code>
+                <div class="seg-vars">Pop=최근 N일 인기, RecencyDecay=exp(-d/τ)</div>
               </div>
 
-              <!-- impact full width -->
-              <div class="impact-wide">💡 Impact: Result 중심 → Process 중심으로 확장 가능한 데이터 인프라 전환</div>
+              <div class="seg-card-mini">
+                <div class="seg-head">
+                  <span class="seg-name">DORMANT (7.7%)</span>
+                  <span class="seg-purpose">장벽 완화</span>
+                </div>
+                <div class="seg-desc-mini">EASY 공모전 가중치</div>
+                <code class="formula-code">Score = Norm(Pop) · EasyWeight</code>
+                <div class="seg-vars">EASY=[네이밍, 사진, 퀴즈]</div>
+              </div>
+
+              <div class="seg-card-mini">
+                <div class="seg-head">
+                  <span class="seg-name">LIGHT (소수)</span>
+                  <span class="seg-purpose">취향 매칭</span>
+                </div>
+                <div class="seg-desc-mini">관심사 기반 CBF</div>
+                <code class="formula-code">Score = Norm(Σ (IDF(tag) · match(tag)))</code>
+                <div class="seg-vars">match=관심사 일치(0/1)</div>
+              </div>
+
+              <div class="seg-card-mini">
+                <div class="seg-head">
+                  <span class="seg-name">POWER (0.18%)</span>
+                  <span class="seg-purpose">정밀 개인화</span>
+                </div>
+                <div class="seg-desc-mini">이력 기반 Hybrid</div>
+                <code class="formula-code">Score = 1.5 · Norm(SimilarityCF) + 1.0 · Norm(Σ (IDF(tag) · match(tag)))</code>
+                <div class="seg-vars">Sim=Cosine, Interest=Tag Match</div>
+              </div>
             </div>
           </div>
 
-          <!-- 3. Result quote + Media -->
+          <div class="phase-wrapper">
+            <div class="phase-badge">PHASE 2</div>
+            <div class="phase-title">Data Assetization</div>
+            <p class="phase-subtitle">AI 고도화의 병목을 데이터 구조로 정의하고, 운영 DB를 ‘학습 가능한 자산’으로 전환하는 설계를 역제안했습니다.</p>
+
+            <div class="asset-stack">
+              <div class="asset-card">
+                <span class="asset-head">👤 식별 (Identity)</span>
+                <span class="asset-body">회원/비회원 통합 PK 체계(NM25_...)로 사용자 단위 데이터 연결</span>
+              </div>
+              <div class="asset-card">
+                <span class="asset-head">⚡ 신호 (Signal)</span>
+                <span class="asset-body">접수(Result)뿐 아니라 노출/클릭 등 과정(Process) 로그 축적 파이프라인</span>
+              </div>
+              <div class="asset-card">
+                <span class="asset-head">📏 표준 (Standard)</span>
+                <span class="asset-body">입력값·용어를 코드(Code)로 통일해 데이터 품질을 구조적으로 보장</span>
+              </div>
+            </div>
+
+            <div class="impact-highlight">💡 Impact: Result 중심 → Process 중심으로 확장 가능한 데이터 인프라 전환</div>
+          </div>
+        </div>
+
+        <div class="bottom-result-area">
           <div class="result-quote-box">
-            추천의 판단 근거(예: 이력 기반 적합도)를 웹 데모로 시각화해 운영자가 검증·설명·조정 가능한 상태로 만들었고,
-            AI를 단순 기능이 아닌 운영 인프라 관점으로 연결했습니다.
+            <div class="result-text-main">
+              “추천의 판단 근거(예: 이력 기반 적합도)를 웹 데모로 시각화해 운영자가 검증·설명·조정 가능한 상태로 만들었고,<br>
+              AI를 단순 기능이 아닌 <strong>운영 인프라 관점</strong>으로 연결했습니다.”
+            </div>
           </div>
 
           <div class="media-grid-2">
-            <div class="media-card" onclick="openModal('발표 자료', 'PDF Viewer', null, 'asset/thinkgood_presentation.pdf')">
+            <div class="media-card" onclick="openModal('발표 자료 (PDF)', 'asset/thinkgood_presentation.pdf')">
               <div class="media-header">
                 <span class="media-title">📄 발표 자료 (PDF)</span>
                 <span class="media-badge">View ↗</span>
               </div>
               <div class="media-body">
                 <iframe
-                  class="pdf-thumb"
                   src="asset/thinkgood_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1"
-                  title="ThinkGood PDF Preview"
-                  sandbox="allow-scripts allow-same-origin"
-                ></iframe>
+                  class="media-thumb contain"
+                  style="pointer-events:none;width:100%;height:100%;border:0;">
+                </iframe>
               </div>
             </div>
 
-            <div class="media-card"
-              onclick="openModal('서비스 데모', 'Hugging Face Space', null, 'https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System', true)">
+            <div class="media-card" onclick="openLink('https://huggingface.co/spaces/HanJaeHui/ThinkGood_Recommendation_System')">
               <div class="media-header">
                 <span class="media-title">▶️ 서비스 데모</span>
                 <span class="media-badge">Open ↗</span>
               </div>
               <div class="media-body">
-                <img src="asset/thinkgood%20demo.PNG" class="media-thumb" alt="ThinkGood Demo Screenshot">
+                <img src="asset/thinkgood%20demo.PNG" class="media-thumb contain" alt="Demo Preview">
               </div>
             </div>
           </div>
-
         </div>
+
       </div>
-      <!-- /details -->
     </div>
   </section>
 
-  <!-- PROJECT 2: Cheonan -->
+  <!-- PROJECT 2: CHEONAN -->
   <section id="project-2" class="project-detail">
     <div class="container">
       <div class="pj-summary">
         <span class="pj-date">2025.07 ~ 2025.08</span>
         <h2 class="pj-title">천안시 노인 복지 사각지대 분석 및 맞춤형 정책 제안</h2>
-        <p class="pj-desc">"좌표 데이터와 통계적 검증으로 ‘왜 위험한가’를 설명하고,<br>위험 유형별로 납득 가능한 정책 처방을 제안"</p>
+        <p class="pj-desc">"5만 건의 좌표 데이터와 통계적 검증으로 찾아낸<br>‘설명 가능한’ 복지 사각지대"</p>
 
         <div class="pj-info-grid">
-          <div class="pj-info-item"><h5>Role</h5><p>GIS 데이터 가공, 인자 분석, 공간 분석, 군집화, 정책 제안</p></div>
+          <div class="pj-info-item"><h5>Role</h5><p>GIS 데이터 가공, 인자 분석, Tableau 시각화, 정책 제안</p></div>
           <div class="pj-info-item"><h5>Tech</h5><p>Python, QGIS, Tableau, Factor Analyzer</p></div>
         </div>
 
         <div class="project-tags">
-          <span class="badge">GIS</span>
-          <span class="badge">Factor Analysis</span>
-          <span class="badge">Moran's I</span>
-          <span class="badge">Tableau</span>
+          <span class="badge">GIS</span><span class="badge">Factor Analysis</span><span class="badge">Moran's I</span><span class="badge">Clustering</span>
         </div>
       </div>
 
       <div class="results-strip">
         <div class="result-card">
           <h4 class="result-head">Data Integrity</h4>
-          <p class="result-text"><span class="highlight-num">5.7만</span> 좌표 변환<br><span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">정밀 매핑 데이터 구축</span></p>
+          <p class="result-text"><span class="highlight-num">5.7만</span> 좌표 변환<br>
+            <span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">정밀 매핑 데이터 구축</span>
+          </p>
         </div>
         <div class="result-card">
           <h4 class="result-head">Logical Evidence</h4>
-          <p class="result-text"><span class="highlight-num">14→5</span> 인자 구조화<br><span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">KMO 0.6078 검증</span></p>
+          <p class="result-text"><span class="highlight-num">14→5</span> 인자 구조화<br>
+            <span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">KMO 0.6078 검증</span>
+          </p>
         </div>
         <div class="result-card">
           <h4 class="result-head">Actionable Insight</h4>
-          <p class="result-text"><span class="highlight-num">Policy</span> 맞춤형 제안<br><span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">위험 유형별 처방 연결</span></p>
+          <p class="result-text"><span class="highlight-num">Policy</span> 맞춤형 제안<br>
+            <span style="font-size:.85rem;font-weight:500;color:var(--text-sub);">위험군별 서비스 매칭</span>
+          </p>
         </div>
       </div>
 
@@ -1557,146 +1180,138 @@
         <button class="btn-toggle-details" onclick="toggleDetails('pj2-details', this)">상세 과정 보기 ▾</button>
       </div>
 
-      <!-- Details -->
       <div id="pj2-details" class="project-details-wrapper">
-        <div class="details-inner">
+        <div class="cheonan-stack">
 
-          <div class="cheonan-grid">
-            <!-- Left col: 1,2 stacked -->
-            <div style="display:flex;flex-direction:column;gap:16px;">
-              <div class="text-card">
-                <h3>1. Problem & Logic</h3>
-                <ul class="context-list">
-                  <li>단순히 “위험하다”는 결과보다 “왜 위험한가?”를 설명할 근거가 필요했습니다.</li>
-                  <li>주소 데이터 57,790건을 위경도로 변환하고, GeoJSON 매핑 함수를 직접 구현해 행정동 단위 정확도를 확보했습니다.</li>
-                </ul>
-              </div>
+          <div class="text-card">
+            <h3>1. Problem & Logic</h3>
+            <ul class="context-list">
+              <li>단순히 “위험하다”는 결과보다 <strong>“왜 위험한가?”</strong>를 설명할 근거가 필수였습니다.</li>
+              <li><strong>GIS 정밀 가공:</strong> 주소 데이터 57,790건을 위경도로 변환하고, GeoJSON 매핑 함수를 직접 구현해 행정동 단위 정확도를 확보했습니다.</li>
+            </ul>
+          </div>
 
-              <div class="text-card">
-                <h3>2. Analysis Framework</h3>
-                <ul class="context-list">
-                  <li>14개의 파생 지표를 5개의 해석 가능한 인자(고령화/독거, 경제력, 인지건강, 금융취약, 생활인프라)로 압축했습니다. (KMO 0.6078)</li>
-                  <li>Moran’s I로 공간적 군집(Hot Spot)을 확인해 관리 우선순위를 설정했습니다.</li>
-                  <li>K-Means로 3가지 위험 유형(복합 결핍/인프라 결핍/소득 결핍)으로 분류했습니다.</li>
-                </ul>
-              </div>
-            </div>
+          <div class="text-card">
+            <h3>2. Analysis Framework</h3>
+            <ul class="context-list">
+              <li><strong>인자 분석:</strong> 14개 파생 지표를 5개 핵심 인자(고령화/독거, 경제력, 인지건강, 금융취약, 생활인프라)로 압축했습니다. (KMO 0.6078)</li>
+              <li><strong>공간 분석:</strong> Moran’s I로 위험 지역의 공간적 군집(Hot Spot)을 확인해 관리 우선순위를 설정했습니다.</li>
+              <li><strong>군집화:</strong> K-Means로 3가지 위험 유형(복합 결핍/인프라 결핍/소득 결핍)으로 분류했습니다.</li>
+            </ul>
+          </div>
 
-            <!-- Right col: 3 + map (one view) -->
-            <div class="result-map-card">
-              <div class="result-map-head">
-                <h3>3. Result & Policy Proposal</h3>
-                <p>위험군 정의(행정동) → 정책 처방을 한 카드에서 연결해, “왜 이 정책이 필요한지”를 한눈에 보이도록 구성했습니다.</p>
-              </div>
+          <div class="text-card">
+            <h3>3. Result & Policy Proposal</h3>
 
-              <div class="result-map-body">
-                <div class="policy-side">
-                  <div class="risk-policy-card">
-                    <div class="rpc-top">
-                      <div class="rpc-title">복합 결핍형</div>
-                      <span class="rpc-badge red">고위험군</span>
+            <div class="result-map-row">
+              <div>
+                <div class="type-cards">
+                  <div class="type-card">
+                    <div>
+                      <div class="t-title">복합 결핍형</div>
+                      <div class="t-desc">건강·경제·인지·인프라가 동시에 취약해 단일 서비스로는 개선이 어려운 구조입니다.</div>
                     </div>
-                    <div class="rpc-def">건강·경제·인지·인프라가 동시에 취약해 단일 서비스로는 개선이 어려운 구조입니다.</div>
-                    <div class="rpc-pol">
-                      <span>이동식 의료/목욕 차량</span>
-                      <span>ICT 안전 서비스</span>
-                    </div>
+                    <span class="type-pill">Type 1</span>
                   </div>
-
-                  <div class="risk-policy-card">
-                    <div class="rpc-top">
-                      <div class="rpc-title">인프라 결핍형</div>
-                      <span class="rpc-badge org">중위험군</span>
+                  <div class="type-card">
+                    <div>
+                      <div class="t-title">인프라 결핍형</div>
+                      <div class="t-desc">경제력보다 이동/접근성·고립이 문제라 “갈 수 있게/연결되게” 만드는 정책이 우선입니다.</div>
                     </div>
-                    <div class="rpc-def">경제력보다 이동/접근성·고립이 문제라 “갈 수 있게/연결되게” 만드는 정책이 우선입니다.</div>
-                    <div class="rpc-pol">
-                      <span>마을 커뮤니티 강화</span>
-                      <span>셔틀버스 확충</span>
-                    </div>
+                    <span class="type-pill">Type 2</span>
                   </div>
-
-                  <div class="risk-policy-card">
-                    <div class="rpc-top">
-                      <div class="rpc-title">소득 결핍형</div>
-                      <span class="rpc-badge grn">저위험군</span>
+                  <div class="type-card">
+                    <div>
+                      <div class="t-title">소득 결핍형</div>
+                      <div class="t-desc">생활 인프라는 비교적 괜찮지만 소득/지원 접근이 취약해 “현금성·일자리” 처방이 효과적입니다.</div>
                     </div>
-                    <div class="rpc-def">생활 인프라는 비교적 괜찮지만 소득/지원 접근이 취약해 “현금성·일자리” 처방이 효과적입니다.</div>
-                    <div class="rpc-pol">
-                      <span>노인 일자리 매칭</span>
-                      <span>지역 화폐 바우처</span>
-                    </div>
-                  </div>
-
-                  <div class="cta-row">
-                    <a class="btn btn-ghost" href="https://public.tableau.com/app/profile/.45103572/viz/_Tableau2_17560266784060/sheet0"
-                      target="_blank" rel="noopener">📊 Tableau 대시보드 바로가기 ↗</a>
+                    <span class="type-pill">Type 3</span>
                   </div>
                 </div>
 
-                <div class="map-side">
-                  <div class="map-wrap">
-                    <img src="asset/heatmap.jpg" alt="Cheonan Hotspot Map">
+                <div class="policy-grid-3">
+                  <div class="policy-card">
+                    <div class="policy-top"><span class="badge-risk risk-red">🔴 고위험군</span></div>
+                    <b>복합 결핍형</b>
+                    <p>이동식 의료/목욕 차량<br>ICT 안전 서비스</p>
                   </div>
-                  <div class="map-caption">🗺️ 위험 지역 Hot Spot 시각화 (행정동 기준)</div>
+                  <div class="policy-card">
+                    <div class="policy-top"><span class="badge-risk risk-orange">🟠 중위험군</span></div>
+                    <b>인프라 결핍형</b>
+                    <p>마을 커뮤니티 강화<br>셔틀버스 확충</p>
+                  </div>
+                  <div class="policy-card">
+                    <div class="policy-top"><span class="badge-risk risk-green">🟢 저위험군</span></div>
+                    <b>소득 결핍형</b>
+                    <p>노인 일자리 매칭<br>지역 화폐 바우처</p>
+                  </div>
+                </div>
+
+                <div style="margin-top:14px;">
+                  <button class="btn btn-wide" onclick="openLink('https://public.tableau.com/app/profile/.45103572/viz/_Tableau2_17560266784060/sheet0')">
+                    📊 Tableau 대시보드 바로가기 ↗
+                  </button>
+                </div>
+              </div>
+
+              <div class="map-preview" onclick="openModalImage('분석 지도', 'asset/heatmap.jpg')">
+                <img src="asset/heatmap.jpg" alt="Heatmap Preview">
+              </div>
+            </div>
+
+            <div class="media-grid-3">
+              <div class="media-card" onclick="openModalImage('분석 지도', 'asset/heatmap.jpg')">
+                <div class="media-header">
+                  <span class="media-title">🗺️ 분석 지도 보기</span>
+                  <span class="media-badge">View ↗</span>
+                </div>
+                <div class="media-body" style="height:180px;">
+                  <img src="asset/heatmap.jpg" class="media-thumb contain" alt="Heatmap">
+                </div>
+              </div>
+
+              <div class="media-card" onclick="openModalImage('탐색 UI', 'asset/factor_danger.jpg')">
+                <div class="media-header">
+                  <span class="media-title">🖼️ 탐색 UI 보기</span>
+                  <span class="media-badge">View ↗</span>
+                </div>
+                <div class="media-body" style="height:180px;">
+                  <img src="asset/factor_danger.jpg" class="media-thumb contain" alt="Dashboard UI">
+                </div>
+              </div>
+
+              <div class="media-card" onclick="openModal('발표 자료 (PDF)', 'asset/cheonan_presentation.pdf')">
+                <div class="media-header">
+                  <span class="media-title">📄 발표 자료 (PDF)</span>
+                  <span class="media-badge">View ↗</span>
+                </div>
+                <div class="media-body" style="height:180px;">
+                  <iframe
+                    src="asset/cheonan_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1"
+                    class="media-thumb contain"
+                    style="pointer-events:none;width:100%;height:100%;border:0;">
+                  </iframe>
                 </div>
               </div>
             </div>
+
           </div>
-
-          <!-- Media row: only 2 visuals + PDF (no extra map below) -->
-          <div class="cheonan-media-3">
-            <div class="media-card" onclick="openModal('탐색 UI', 'Dashboard UI', 'asset/factor_danger.jpg')">
-              <div class="media-header">
-                <span class="media-title">🖼️ 탐색 UI 보기</span>
-                <span class="media-badge">View ↗</span>
-              </div>
-              <div class="media-body" style="height:210px;">
-                <img src="asset/factor_danger.jpg" class="media-thumb" alt="Cheonan UI">
-              </div>
-            </div>
-
-            <div class="media-card" onclick="openModal('분석 지도', 'Heatmap', 'asset/heatmap.jpg')">
-              <div class="media-header">
-                <span class="media-title">🗺️ 분석 지도 보기</span>
-                <span class="media-badge">View ↗</span>
-              </div>
-              <div class="media-body" style="height:210px;">
-                <img src="asset/heatmap.jpg" class="media-thumb" alt="Cheonan Map">
-              </div>
-            </div>
-
-            <div class="media-card" onclick="openModal('발표 자료', 'PDF Viewer', null, 'asset/cheonan_presentation.pdf')">
-              <div class="media-header">
-                <span class="media-title">📄 발표 자료 (PDF)</span>
-                <span class="media-badge">View ↗</span>
-              </div>
-              <div class="media-body" style="height:210px;">
-                <iframe
-                  class="pdf-thumb"
-                  src="asset/cheonan_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1"
-                  title="Cheonan PDF Preview"
-                  sandbox="allow-scripts allow-same-origin"
-                ></iframe>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
-      <!-- /details -->
+
     </div>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="container">
-      <h2 class="section-title">Experience</h2>
+      <h2 class="section-title" style="text-align:center;margin-bottom:60px;">Experience</h2>
       <div class="exp-grid">
         <div class="exp-card">
           <span class="exp-date">2025.07 ~ 현재</span>
           <h3 class="exp-title">Tobig’s 24기</h3>
           <p class="exp-role">인공지능·데이터 분석 연합동아리</p>
-          <p class="exp-desc">기업 연계 프로젝트 전 과정을 주도하며, 성능보다 실제 적용 가능성과 구조 설계에 집중했습니다.</p>
+          <p class="exp-desc">기업 연계 프로젝트 전 과정을 주도하며, 모델 성능보다 실제 적용 가능성과 구조 설계에 집중했습니다.</p>
         </div>
         <div class="exp-card">
           <span class="exp-date">2024.09 ~ 2025.08</span>
@@ -1708,7 +1323,7 @@
           <span class="exp-date">2024.06 ~ 2024.08</span>
           <h3 class="exp-title">OUTTA</h3>
           <p class="exp-role">AI Bootcamp</p>
-          <p class="exp-desc">데이터 수집부터 모델링까지 분석 전 과정을 실습하며, 파이프라인을 직접 구현해 기본기를 다졌습니다.</p>
+          <p class="exp-desc">데이터 수집부터 모델링까지 분석 전 과정을 실습하며, 전체 파이프라인을 직접 구현해 기본기를 다졌습니다.</p>
         </div>
       </div>
     </div>
@@ -1723,7 +1338,7 @@
           <ul class="skill-list">
             <li>Python (Pandas, NumPy)</li>
             <li>R</li>
-            <li>SQL / Markdown</li>
+            <li>Markdown</li>
           </ul>
         </div>
         <div class="skill-col">
@@ -1739,17 +1354,16 @@
           <ul class="skill-list">
             <li>Tableau</li>
             <li>Streamlit</li>
-            <li>Dashboard Design</li>
           </ul>
         </div>
       </div>
 
-      <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:34px;">
-        <h3 style="font-weight:900;color:#fff;margin-bottom:10px;">Contact</h3>
-        <p style="opacity:.82;margin-bottom:18px;font-weight:500;">데이터로 문제를 정의하고 해결하는 과정을 함께하고 싶습니다.</p>
+      <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:40px;">
+        <h3 style="font-weight:800;color:#fff;margin-bottom:10px;">Contact</h3>
+        <p style="opacity:.85;margin-bottom:18px;font-weight:500;">데이터로 문제를 정의하고 해결하는 과정을 함께하고 싶습니다.</p>
         <div class="footer-links">
           <a href="mailto:han.zinna@email.com">Email</a>
-          <a href="https://github.com/HanJaeHui-GitHub" target="_blank" rel="noopener">Github</a>
+          <a href="https://github.com/HanJaeHui-GitHub" target="_blank">Github</a>
         </div>
         <p style="margin-top:34px;font-size:.8rem;opacity:.55;">&copy; 2026 Han Jaehui. All rights reserved.</p>
       </div>
@@ -1757,97 +1371,74 @@
   </footer>
 
   <!-- MODAL -->
-  <div id="visualModal" class="modal-overlay" role="dialog" aria-modal="true">
+  <div id="visualModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-close" onclick="closeModal()">✕</div>
       <h3 id="modalTitle" class="modal-title">Title</h3>
-      <p id="modalDesc" class="modal-desc" style="display:none;">Desc</p>
-      <div class="modal-body-container"></div>
+      <div class="modal-body-container" id="modalBody"></div>
     </div>
   </div>
 
   <script>
-    function toggleDetails(id, btn) {
+    function toggleDetails(id, btn){
       const el = document.getElementById(id);
-      if (!el) return;
       const isOpen = el.classList.contains('active');
-      if (isOpen) {
+      if(isOpen){
         el.classList.remove('active');
         btn.innerText = "상세 과정 보기 ▾";
-      } else {
+      }else{
         el.classList.add('active');
         btn.innerText = "상세 과정 접기 ▴";
       }
     }
 
-    function openModal(title, desc, imagePath, url, isLinkOnly) {
+    function openLink(url){
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function openModal(title, pdfPath){
       const modal = document.getElementById('visualModal');
-      const container = document.querySelector('.modal-body-container');
+      const body = document.getElementById('modalBody');
       const mTitle = document.getElementById('modalTitle');
-      const mDesc = document.getElementById('modalDesc');
-
-      container.innerHTML = '';
       mTitle.innerText = title;
+      body.innerHTML = '';
 
-      if (desc) {
-        mDesc.style.display = 'block';
-        mDesc.innerText = desc;
-      } else {
-        mDesc.style.display = 'none';
-      }
+      const iframe = document.createElement('iframe');
+      iframe.className = 'modal-iframe';
+      iframe.src = pdfPath + "#view=FitH&toolbar=0&navpanes=0&scrollbar=1";
+      iframe.setAttribute('loading', 'lazy');
+      iframe.setAttribute('referrerpolicy', 'no-referrer');
+      body.appendChild(iframe);
 
       modal.classList.add('active');
-
-      if (isLinkOnly && url) {
-        container.innerHTML =
-          `<div style="text-align:center;padding:46px;">
-            <a href="${url}" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration:none;">
-              새 창에서 열기 ↗
-            </a>
-          </div>`;
-        return;
-      }
-
-      if (url) {
-        const iframe = document.createElement('iframe');
-        const isPdf = url.toLowerCase().endsWith('.pdf');
-
-        iframe.className = 'modal-iframe';
-
-        if (isPdf) {
-          iframe.src = `${url}#view=FitH&toolbar=0&navpanes=0&scrollbar=1`;
-          iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
-        } else {
-          iframe.src = url;
-          iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups');
-        }
-
-        container.appendChild(iframe);
-        return;
-      }
-
-      if (imagePath) {
-        const img = document.createElement('img');
-        img.src = imagePath;
-        img.alt = title;
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'contain';
-        img.style.background = '#F3F4F6';
-        container.appendChild(img);
-      }
     }
 
-    function closeModal() {
+    function openModalImage(title, imgPath){
+      const modal = document.getElementById('visualModal');
+      const body = document.getElementById('modalBody');
+      const mTitle = document.getElementById('modalTitle');
+      mTitle.innerText = title;
+      body.innerHTML = '';
+
+      const img = document.createElement('img');
+      img.className = 'modal-img';
+      img.src = imgPath;
+      img.alt = title;
+      body.appendChild(img);
+
+      modal.classList.add('active');
+    }
+
+    function closeModal(){
       document.getElementById('visualModal').classList.remove('active');
-      document.querySelector('.modal-body-container').innerHTML = '';
+      document.getElementById('modalBody').innerHTML = '';
     }
 
-    document.getElementById('visualModal').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) closeModal();
+    document.getElementById('visualModal').addEventListener('click', (e)=>{
+      if(e.target === e.currentTarget) closeModal();
     });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') closeModal();
     });
   </script>
 </body>
