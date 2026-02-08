@@ -764,6 +764,120 @@
     .footer-links a{border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;}
     .footer-links a:hover{color:var(--accent);border-color:var(--accent);}
 
+    /* ===== CHEONAN Result: compact view (요약 + 접기) ===== */
+    .result-split-row.compact{
+      grid-template-columns: 1.05fr .95fr;
+      gap:22px;
+    }
+    
+    /* Map card + caption */
+    .result-split-row.compact .heatmap-container{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .result-split-row.compact .heatmap-container img{
+      width:100%;
+      height:auto;
+      display:block;
+      background:#F7F9FA;
+    }
+    .map-caption{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px 12px;
+      border-top:1px solid var(--border);
+      font-size:.85rem;
+      color:var(--text-sub);
+    }
+    .cap-pill{
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(0,70,42,.08);
+      color:var(--primary);
+      font-weight:700;
+    }
+    
+    /* Right panel */
+    .risk-panel{display:flex;flex-direction:column;gap:14px;}
+    
+    /* 3-line summary */
+    .risk-summary{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow: var(--shadow-sm);
+      padding:14px;
+    }
+    .summary-title{font-weight:800;color:var(--text-main);margin-bottom:10px;}
+    .summary-row{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:8px 0;
+      border-top:1px dashed rgba(17,24,39,.10);
+    }
+    .summary-row:first-of-type{border-top:0;}
+    .summary-type{font-weight:800;color:var(--text-main);min-width:140px;}
+    .summary-one{color:var(--text-sub);line-height:1.45;}
+    .dot{width:10px;height:10px;border-radius:999px;display:inline-block;margin-top:6px;}
+    .dot.red{background:#ef4444;}
+    .dot.orange{background:#f59e0b;}
+    .dot.green{background:#22c55e;}
+    
+    /* Accordions */
+    .risk-accordion{display:flex;flex-direction:column;gap:10px;}
+    .rp{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow: var(--shadow-sm);
+      overflow:hidden;
+    }
+    .rp-sum{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:12px;
+    }
+    .rp-sum::-webkit-details-marker{display:none;}
+    
+    .rp .badge{
+      padding:7px 10px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:.82rem;
+      border:1px solid rgba(17,24,39,.10);
+      background:#F7F9FA;
+    }
+    .rp .badge.risk-red{background:rgba(239,68,68,.08); color:#b91c1c;}
+    .rp .badge.risk-orange{background:rgba(245,158,11,.10); color:#b45309;}
+    .rp .badge.risk-green{background:rgba(34,197,94,.10); color:#15803d;}
+    
+    .rp-title{font-weight:900;color:var(--text-main);}
+    .rp-hint{margin-left:auto;font-size:.85rem;color:var(--text-light);font-weight:600;}
+    .rp-body{padding:0 12px 12px;}
+    .rp-desc{margin:8px 0 10px;color:var(--text-sub);line-height:1.55;font-weight:500;}
+    .rp-chips{display:flex;flex-wrap:wrap;gap:8px;}
+    .chip{
+      padding:8px 10px;
+      border-radius:999px;
+      background:#F7F9FA;
+      border:1px solid rgba(17,24,39,.08);
+      color:var(--text-main);
+      font-weight:600;
+      font-size:.88rem;
+    }
+    
+    /* Mobile */
+    @media (max-width: 768px){
+      .result-split-row.compact{grid-template-columns:1fr;}
+      .summary-type{min-width:0;}
+    }
+
     /* RESPONSIVE - ADJUSTED BREAKPOINT TO 768px */
     @media (max-width: 768px){
       .hero-grid{grid-template-columns:1fr;gap:40px;}
@@ -1239,63 +1353,93 @@
               위험도를 단일 지표로 보지 않고, 취약의 “구조”를 유형화해 정책 처방으로 연결했습니다.
             </p>
             
-            <div class="result-split-row">
-              <!-- Left: Map Image -->
-              <div class="heatmap-container" onclick="openModalImage('분석 지도', 'asset/heatmap.jpg')" style="cursor:pointer;">
-                <img src="asset/heatmap.jpg" alt="Analysis Heatmap" style="width:100%; height:auto; display:block;">
+            <div class="result-split-row compact">
+
+              <!-- Left: Map -->
+              <div class="heatmap-container"
+                   onclick="openModalImage('분석 지도', 'asset/heatmap.jpg')"
+                   style="cursor:pointer;">
+                <img src="asset/heatmap.jpg" alt="Analysis Heatmap">
+                <div class="map-caption">
+                  <span class="cap-pill">행정동 Hot Spot</span>
+                  <span class="cap-text">클릭하면 확대</span>
+                </div>
               </div>
-
-              <!-- Right: Risk Cards Stack -->
-              <div class="risk-policy-stack">
-                <!-- Type 1 / High Risk -->
-                <div class="risk-policy-card">
-                  <div class="rp-header">
-                    <span class="badge-risk risk-red">🔴 고위험군 (Type 1)</span>
-                    <span class="rp-title">복합 결핍형</span>
+            
+              <!-- Right: Summary + Accordions -->
+              <div class="risk-panel">
+            
+                <!-- 3줄 요약 -->
+                <div class="risk-summary">
+                  <div class="summary-title">위험유형 요약</div>
+            
+                  <div class="summary-row">
+                    <span class="dot red"></span>
+                    <span class="summary-type">Type 1 · 복합 결핍</span>
+                    <span class="summary-one">여러 취약이 동시 발생해 단일 서비스로는 개선이 어렵습니다.</span>
                   </div>
-                  <p class="rp-desc">건강·경제·인지·인프라 동시 취약으로 단일 서비스 개선이 어려운 구조</p>
-                  <div class="rp-divider"></div>
-                  <div class="rp-solution">
-                    <span class="rp-label">💡 제안 정책</span>
-                    <ul class="rp-list">
-                      <li>이동식 의료/목욕 차량</li>
-                      <li>ICT 안전 서비스</li>
-                    </ul>
+            
+                  <div class="summary-row">
+                    <span class="dot orange"></span>
+                    <span class="summary-type">Type 2 · 인프라 결핍</span>
+                    <span class="summary-one">소득보다 이동·접근·고립이 핵심이라 “연결”이 우선입니다.</span>
                   </div>
-                </div>
-
-                <!-- Type 2 / Medium Risk -->
-                <div class="risk-policy-card">
-                  <div class="rp-header">
-                    <span class="badge-risk risk-orange">🟠 중위험군 (Type 2)</span>
-                    <span class="rp-title">인프라 결핍형</span>
-                  </div>
-                  <p class="rp-desc">경제력 대비 이동/접근성·고립 문제 심화로 연결성 강화 정책 우선</p>
-                  <div class="rp-divider"></div>
-                  <div class="rp-solution">
-                    <span class="rp-label">💡 제안 정책</span>
-                    <ul class="rp-list">
-                      <li>마을 커뮤니티 강화</li>
-                      <li>셔틀버스 확충</li>
-                    </ul>
+            
+                  <div class="summary-row">
+                    <span class="dot green"></span>
+                    <span class="summary-type">Type 3 · 소득 결핍</span>
+                    <span class="summary-one">인프라는 비교적 양호하나 소득·지원 접근 취약으로 현금성 처방이 유효합니다.</span>
                   </div>
                 </div>
-
-                <!-- Type 3 / Low Risk -->
-                <div class="risk-policy-card">
-                  <div class="rp-header">
-                    <span class="badge-risk risk-green">🟢 저위험군 (Type 3)</span>
-                    <span class="rp-title">소득 결핍형</span>
-                  </div>
-                  <p class="rp-desc">생활 인프라 양호하나 소득/지원 접근 취약으로 현금성·일자리 처방 효과적</p>
-                  <div class="rp-divider"></div>
-                  <div class="rp-solution">
-                    <span class="rp-label">💡 제안 정책</span>
-                    <ul class="rp-list">
-                      <li>노인 일자리 매칭</li>
-                      <li>지역 화폐 바우처</li>
-                    </ul>
-                  </div>
+            
+                <!-- 접히는 카드 -->
+                <div class="risk-accordion">
+            
+                  <details class="rp" open>
+                    <summary class="rp-sum">
+                      <span class="badge risk-red">🔴 고위험군 (Type 1)</span>
+                      <span class="rp-title">복합 결핍형</span>
+                      <span class="rp-hint">정책 2개</span>
+                    </summary>
+                    <div class="rp-body">
+                      <p class="rp-desc">건강·경제·인지·인프라가 동시에 취약해 단일 서비스만으로는 개선이 어려운 구조입니다.</p>
+                      <div class="rp-chips">
+                        <span class="chip">이동식 의료/목욕 차량</span>
+                        <span class="chip">ICT 안전 서비스</span>
+                      </div>
+                    </div>
+                  </details>
+            
+                  <details class="rp">
+                    <summary class="rp-sum">
+                      <span class="badge risk-orange">🟠 중위험군 (Type 2)</span>
+                      <span class="rp-title">인프라 결핍형</span>
+                      <span class="rp-hint">정책 2개</span>
+                    </summary>
+                    <div class="rp-body">
+                      <p class="rp-desc">경제력보다 이동/접근성·고립이 문제라 “갈 수 있게/연결되게” 만드는 정책이 우선입니다.</p>
+                      <div class="rp-chips">
+                        <span class="chip">마을 커뮤니티 강화</span>
+                        <span class="chip">셔틀버스 확충</span>
+                      </div>
+                    </div>
+                  </details>
+            
+                  <details class="rp">
+                    <summary class="rp-sum">
+                      <span class="badge risk-green">🟢 저위험군 (Type 3)</span>
+                      <span class="rp-title">소득 결핍형</span>
+                      <span class="rp-hint">정책 2개</span>
+                    </summary>
+                    <div class="rp-body">
+                      <p class="rp-desc">생활 인프라는 비교적 괜찮지만 소득/지원 접근이 취약해 “현금성·일자리” 처방이 효과적입니다.</p>
+                      <div class="rp-chips">
+                        <span class="chip">노인 일자리 매칭</span>
+                        <span class="chip">지역 화폐 바우처</span>
+                      </div>
+                    </div>
+                  </details>
+            
                 </div>
               </div>
             </div>
