@@ -31,8 +31,7 @@
       --border: #E5E7EB;
 
       /* Layout */
-      /* ✅ 사이드바 너비 축소 (240 -> 220) */
-      --sidebar-width: 220px;
+      --sidebar-width: 200px;
       --sidebar-collapsed-width: 80px;
       --max-width: 1200px;
 
@@ -163,7 +162,7 @@
         padding: 12px 14px;
         font-weight: 600;            
         border-radius: var(--radius-md);
-        display: flex; align-items: flex-start; /* ✅ 텍스트 줄바꿈 시 정렬 */
+        display: flex; align-items: flex-start; 
         gap: 12px;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         border: 1px solid transparent;
@@ -210,7 +209,7 @@
         display: block;
     }
 
-    /* ✅ 아이콘 버튼 디자인 (보내주신 이미지 스타일) */
+    /* 아이콘 버튼 디자인 */
     .social-row { display: flex; gap: 10px; }
     .social-btn {
         width: 44px; height: 44px; border-radius: 14px;
@@ -404,14 +403,14 @@
     .teaser-meta { 
         font-size: var(--font-xs);
         color: var(--text-light);
-        font-weight: 700;           /* ✅ */
+        font-weight: 700;           
         text-transform: uppercase;
         letter-spacing: 0.05em;
         margin-bottom: 12px; 
     }
     .teaser-title { 
         font-size: var(--font-lg);
-        font-weight: 800;           /* ✅ 800 복원 */
+        font-weight: 800;           
         line-height: 1.3;
         margin-bottom: 12px;
         color: var(--text-main); 
@@ -421,7 +420,7 @@
         color: var(--text-sub);
         line-height: 1.7;
         margin-bottom: 20px;
-        font-weight: 500;           /* ✅ 500 */
+        font-weight: 500;         
     }
     .btn-link { font-weight: 700; color: var(--primary); font-size: var(--font-sm); display: inline-flex; align-items: center; gap: 8px; }
     .btn-link i { transition: transform 0.2s; }
@@ -468,7 +467,6 @@
         background: #eee;
     }
     .profile-name { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; color: var(--text-main); }
-    /* ✅ 이름만 남김 */
     .ko-name { font-size: 1.1rem; color: var(--text-light); font-weight: 600; display: block; margin-bottom: 20px; }
     
     .profile-actions { display: flex; justify-content: center; gap: 10px; }
@@ -504,14 +502,14 @@
     }
     .quote-text-sub { font-size: 1.05rem; color: var(--text-sub); line-height: 1.7; }
 
-    /* ✅ Keyword Card "Prettier" Style (More Compact) */
+    /* Keyword Card "Prettier" Style */
     .keywords-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);  /* ✅ 2열로 복귀 */
+        grid-template-columns: repeat(2, 1fr);  
         gap: 24px; 
     }
     .keyword-card {
-        padding: 24px 20px; /* ✅ 내부 여백 축소 */
+        padding: 24px 20px; 
         background: #fff;
         border-radius: 20px;
         border: 1px solid rgba(0,0,0,0.06);
@@ -520,7 +518,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        gap: 8px; /* ✅ 내부 요소 간격 축소 */
+        gap: 8px; 
         position: relative;
         overflow: hidden;
     }
@@ -538,17 +536,17 @@
     .keyword-card:hover::before { opacity: 1; }
     
     .kw-icon-circle {
-        width: 40px; height: 40px; /* ✅ 아이콘 원형 크기 축소 */
+        width: 40px; height: 40px; 
         background: var(--primary-light);
         color: var(--primary);
         border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
         font-size: 1.1rem;
-        margin-bottom: 12px; /* ✅ 하단 여백 축소 */
+        margin-bottom: 12px;
     }
     .hash { 
         font-size: 1.0rem; font-weight: 800; color: var(--text-main); 
-        margin-bottom: 6px; display: block; /* ✅ 하단 여백 축소 */
+        margin-bottom: 6px; display: block;
         line-height: 1.3;
     }
     .desc { 
@@ -567,7 +565,7 @@
     }
     .pj-title { 
         font-size: var(--font-xl);
-        font-weight: 800;           /* ✅ */
+        font-weight: 800;         
         line-height: 1.35;
         margin-bottom: 18px;
     }
@@ -605,7 +603,7 @@
     .result-text { font-size: var(--font-sm); font-weight: 600; color: var(--text-sub); line-height: 1.5; }
     .result-sub { font-size: var(--font-xs); color: var(--text-light); font-weight: 500; display: block; margin-top: 4px; }
 
-    /* ✅ View Project Button Spacing */
+    /* View Project Button Spacing */
     .btn-toggle-wrapper { text-align: center; margin-bottom: 40px; }
     .btn-toggle-details {
         background: #fff; border: 2px solid var(--primary); color: var(--primary);
@@ -660,10 +658,9 @@
         background: var(--bg-section); padding: 24px; border-radius: 16px; 
         border: 1px solid transparent; transition: transform 0.2s;
         display: flex; flex-direction: column; height: 100%;
-        justify-content: space-between; /* ✅ 내용물 상하 분산 */
+        justify-content: space-between; 
     }
     .strat-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: var(--shadow-sm); }
-    /* ✅ Top Group이 공간을 차지하여 태그를 바닥으로 밀어냄 */
     .strat-top-group { display: flex; flex-direction: column; flex-grow: 1; margin-bottom: 20px;}
     .strat-icon { 
         width: 40px; height: 40px; background: #fff; border-radius: 12px; 
@@ -677,9 +674,8 @@
         font-weight: 600; color: var(--text-light); background: #fff; 
         padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border);
         align-self: flex-start;
-        /* ✅ 줄바꿈 방지 */
         white-space: nowrap; 
-        margin-top: auto; /* 한번 더 안전장치 */
+        margin-top: auto;
     }
 
     /* Collapsible Formulas */
@@ -812,7 +808,6 @@
         gap: 10px;
         color: var(--text-light);
     }
-    /* ✅ 지도 확대 버튼 제거됨 */
 
     .risk-panel { display: flex; flex-direction: column; gap: 16px; }
     
@@ -909,7 +904,7 @@
 
     .modal-content {
         width: min(1200px, 94vw);
-        height: min(85vh, 900px);
+        height: 92vh;
         background: #fff;
         border-radius: 22px;
         display: flex;
@@ -930,7 +925,6 @@
     .modal-close { font-size: 1.4rem; cursor: pointer; color: var(--text-light); padding: 6px 10px; border-radius: 10px; }
     .modal-close:hover { background: #F3F4F6; color: var(--text-main); }
 
-    /* ✅ 모달 이미지/iframe 잘림 방지 (Flexbox 활용) */
     .modal-body-container{
         flex: 1; /* 남은 공간 모두 차지 */
         min-height: 0; /* Flex 자식 요소 스크롤 처리를 위해 필수 */
@@ -957,7 +951,6 @@
     }
 
     /* Responsive */
-    /* ✅ 1024px -> 768px로 조정하여 태블릿에서도 데스크톱 뷰 유지 */
     @media (max-width: 768px) {
         /* 사이드바 오버레이 모드 */
         .sidebar { 
@@ -1021,7 +1014,7 @@
         .sum-icon { margin-bottom: 0; margin-right: 12px; width: 40px; height: 40px; font-size: 1rem; }
 
         .pj-info-grid { flex-direction: column; width: 100%; border-radius: 20px; gap: 16px; }
-        .modal-content{ width: 96vw; height: 86vh; }
+        .modal-content{ width: 96vw; height: 92vh; } 
     }
   </style>
 </head>
@@ -1034,7 +1027,7 @@
         <a href="#" class="logo-short">H.</a>
     </div>
     
-    <!-- ✅ Slide Toggle Button (Arrow) -->
+    <!-- Slide Toggle Button -->
     <button class="sidebar-toggle-btn" onclick="toggleSidebar()">
         <i class="fas fa-chevron-right" id="toggleIcon"></i>
     </button>
@@ -1044,13 +1037,12 @@
         <a href="#hero" class="nav-link active"><i class="fas fa-home"></i> <span class="nav-text">Home</span></a>
         <a href="#about" class="nav-link"><i class="fas fa-user-circle"></i> <span class="nav-text">About</span></a>
         <a href="#project-1" class="nav-link"><i class="fas fa-star"></i> <span class="nav-text">Project 1: ThinkGood</span></a>
-        <!-- ✅ 줄바꿈 적용 -->
         <a href="#project-2" class="nav-link"><i class="fas fa-map"></i> <span class="nav-text">Project 2:<br>Cheonan</span></a>
         <a href="#experience" class="nav-link"><i class="fas fa-history"></i> <span class="nav-text">Experience</span></a>
       </nav>
     </div>
     
-    <!-- ✅ Clean Footer (Icons Only + Title) -->
+    <!-- Footer -->
     <div class="sidebar-footer">
       <div style="width: 100%;">
           <span class="sidebar-label">CONTACT</span>
@@ -1164,7 +1156,6 @@
               <div class="teaser-meta">2025.10 - 2026.01</div>
               <h3 class="teaser-title">ThinkGood:<br>공모전 추천 시스템</h3>
               <p class="teaser-desc">Cold Start 환경에서 즉시 운영 가능한 세그먼트 전략과 데이터 자산화 설계를 제안했습니다.</p>
-              <!-- ✅ 간격 추가 (margin-bottom) -->
               <div style="margin-top:24px; margin-bottom: 40px; display:flex; gap:6px; flex-wrap:wrap;">
                 <span class="badge">Cold Start</span>
                 <span class="badge">Rule-based</span>
@@ -1179,7 +1170,6 @@
               <div class="teaser-meta">2025.07 - 2025.08</div>
               <h3 class="teaser-title">Cheonan:<br>복지 사각지대 분석</h3>
               <p class="teaser-desc">좌표 데이터 정밀 가공과 통계 검증으로 행정동별 정책 우선순위를 도출했습니다.</p>
-              <!-- ✅ 간격 추가 (margin-bottom) -->
               <div style="margin-top:24px; margin-bottom: 40px; display:flex; gap:6px; flex-wrap:wrap;">
                 <span class="badge">GIS</span>
                 <span class="badge">Factor Analysis</span>
@@ -1201,12 +1191,10 @@
           <!-- Left: Merged Profile Card -->
           <div class="profile-side">
             <div class="profile-header">
-                <!-- ✅ 사진 크기 조정 및 여백 확보 -->
                 <div class="profile-img-slot">
                   <img src="asset/photo.jpg" alt="Profile" />
                 </div>
                 <h3 class="profile-name">Han Jaehui</h3>
-                <!-- ✅ 직무명 삭제, 이름만 남김 -->
                 <span class="ko-name">한재희</span>
                 <div class="profile-actions">
                     <a href="mailto:han.zinna@email.com" class="mini-btn"><i class="fas fa-envelope"></i></a>
@@ -1228,7 +1216,6 @@
                     <div class="info-content">
                         <span class="lbl">Certificate</span>
                         <span class="val">ADsP</span>
-                        <!-- ✅ 날짜 추가 -->
                         <span class="sub">데이터분석준전문가 (2024.09)</span>
                     </div>
                 </div>
@@ -1237,7 +1224,6 @@
 
           <!-- Right: Content -->
           <div class="about-content-area">
-            <!-- ✅ Quote Font Size Increased -->
             <div class="quote-area">
                 <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                 <p class="quote-text-main">
@@ -1248,7 +1234,7 @@
                 </p>
             </div>
 
-            <!-- ✅ 2x3 Grid (Returned) -->
+            <!-- 2x3 Grid -->
             <div class="keywords-grid">
               <div class="keyword-card">
                   <div class="kw-icon-circle"><i class="fas fa-bullseye"></i></div>
@@ -1433,7 +1419,7 @@
           </div>
 
           <div class="media-grid-2">
-            <!-- ✅ PDF 미리보기 개선 -->
+            <!-- PDF 미리보기 -->
             <div class="media-card" onclick="openModal('발표 자료 (PDF)', 'asset/thinkgood_presentation.pdf')">
               <div class="media-header">
                 <span class="media-title"><i class="fas fa-file-pdf"></i> 발표 자료 (PDF)</span>
@@ -1525,11 +1511,9 @@
 
               <div class="result-3-layout">
                   <!-- Left: Map -->
-                  <!-- ✅ 지도 확대 버튼 제거 / 클릭 안내만 남김 -->
                   <div class="heatmap-container" style="cursor:pointer;" onclick="openModalImage('분석 지도', 'asset/heatmap.jpg')">
                       <img src="asset/heatmap.jpg" alt="Analysis Heatmap">
                       
-                      <!-- ✅ 캡션 내부: 확대 버튼 제거 -->
                       <div class="map-caption">
                           <span class="badge" style="margin:0;">Hot Spot</span>
                           <span style="font-size:0.85rem;">지도 영역을 클릭하면 크게 볼 수 있습니다</span>
@@ -1538,7 +1522,7 @@
 
                   <!-- Right -->
                   <div class="risk-panel">
-                      <!-- ✅ 가로형 배치로 높이 감소 (3 Columns) + 깔끔한 스타일 적용 -->
+                      <!-- 가로형 배치로 높이 감소 (3 Columns) + 깔끔한 스타일 적용 -->
                       <div class="summary-grid-cards">
                           <div class="sum-card type-1">
                               <div class="sum-icon"><i class="fas fa-exclamation-triangle"></i></div>
@@ -1678,7 +1662,7 @@
         <h3 id="modalTitle" class="modal-title">Title</h3>
         <div class="modal-close" onclick="closeModal()">✕</div>
       </div>
-      <!-- ✅ 내용이 잘리지 않도록 Flex/Overflow 제어된 컨테이너 -->
+      <!-- 내용이 잘리지 않도록 Flex/Overflow 제어된 컨테이너 -->
       <div class="modal-body-container" id="modalBody"></div>
     </div>
   </div>
@@ -1799,7 +1783,7 @@
         window.addEventListener('scroll', updateNav);
         updateNav();
         
-        // 초기 아이콘 설정 (데스크톱 기준)
+        // 초기 아이콘 설정
         const icon = document.getElementById('toggleIcon');
         if(window.innerWidth > 768) {
             icon.classList.add('fa-chevron-left');
