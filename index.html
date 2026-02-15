@@ -78,7 +78,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ✅ Body Scroll Lock Class */
+    /* Body Scroll Lock Class */
     body.no-scroll {
         overflow: hidden;
     }
@@ -954,7 +954,7 @@
         flex-shrink: 0;
     }
     .modal-title { font-size: 1.05rem; font-weight: 700; }
-    .modal-close { font-size: 1.4rem; cursor: pointer; color: var(--text-light); padding: 6px 10px; border-radius: 10px; }
+    .modal-close { font-size: 1.2rem; cursor: pointer; color: var(--text-light); padding: 6px 12px; border-radius: 10px; transition: 0.2s; }
     .modal-close:hover { background: #F3F4F6; color: var(--text-main); }
 
     .modal-body-container{
@@ -982,7 +982,7 @@
         display: block;
     }
 
-    /* --- UPDATED: Minimal Code Modal --- */
+    /* --- Code Modal --- */
     .code-modal-content {
         width: min(1100px, 92vw);
         height: auto;
@@ -1046,7 +1046,7 @@
       max-height: 70vh;
     }
 
-    /* Code Syntax Highlighting (VS Code Dark) */
+    /* Code Syntax Highlighting */
     .c-k { color: #C586C0; font-weight: bold; } /* Keywords */
     .c-f { color: #DCDCAA; } /* Functions */
     .c-s { color: #CE9178; } /* Strings */
@@ -1097,13 +1097,22 @@
         margin-bottom: 24px;
         box-shadow: var(--shadow-sm);
         overflow: hidden;
+        cursor: pointer; 
+        transition: transform 0.2s, box-shadow 0.2s; 
     }
+    .diagram-box:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary);
+    }
+
     .diagram-header {
         background: #F8FAFC;
         padding: 12px 20px;
         border-bottom: 1px solid #E2E8F0;
         display: flex;
         align-items: center;
+        justify-content: space-between; 
         gap: 8px;
         font-size: 0.85rem;
         font-weight: 700;
@@ -1113,22 +1122,21 @@
     }
     .diagram-header i { color: var(--primary); }
     
-    /* ✅ ERD Mermaid Container: 반응형 + 중앙 정렬 */
+    /* ERD Mermaid Container */
     .diagram-box .mermaid-wrapper {
         overflow-x: auto;          
         overflow-y: hidden;
         padding: 24px;       
-        justify-content: center; /* 다시 중앙 정렬 */
+        justify-content: center;
         display: flex;
         background: #fff;
     }
 
-    /* Mermaid SVG: 화면에 맞춤 (너무 크지 않게) */
+    /* Mermaid SVG: 화면에 맞춤 */
     .diagram-box .mermaid-wrapper svg {
-        max-width: 100% !important; /* 화면 폭 넘지 않게 */
+        max-width: 100% !important;
         height: auto !important;
         display: block;
-        /* width: 1400px;  <-- 삭제: 강제 크기 제거 */
     }
 
     /* Responsive */
@@ -1581,30 +1589,43 @@
               AI 고도화의 병목을 데이터 구조로 정의하고, 운영 DB를 ‘학습 가능한 자산’으로 전환하는 설계를 역제안했습니다.
             </p>
 
-            <!-- Mermaid: Beautiful Wrapper -->
-            <div class="diagram-box">
-                <div class="diagram-header"><i class="fas fa-database"></i> Proposed Data Flow Structure</div>
+            <!-- Mermaid: Beautiful Wrapper with Click Event -->
+            <div class="diagram-box" onclick="openDiagramModal()">
+                <div class="diagram-header">
+                    <span><i class="fas fa-database"></i> Proposed Data Flow Structure</span>
+                    <span class="media-badge" style="font-size:0.75rem; background:#fff; border-color:#E5E7EB;"><i class="fas fa-search-plus"></i> Click to Enlarge</span>
+                </div>
                 <div class="mermaid-wrapper">
                     <pre class="mermaid">
 erDiagram
-    USER_MASTER ||--o{ USER_ACTIVITY_LOG : generates
-    CONTEST_META ||--o{ USER_ACTIVITY_LOG : targets
+    User_Master ||--o{ User_Activity_Log : "Generates (활동)"
+    Contest ||--o{ User_Activity_Log : "Targets (대상)"
 
-    USER_MASTER {
-      string member_pk PK "virtual id"
-      int status "member status"
+    User_Master {
+        string member_pk PK "사용자 고유 식별자"
+        int member_stats "회원 상태 (0/1)"
+        string contact "성명/이메일/전화번호"
+        string demographics "생년월일/성별/나이"
+        string address "거주지역"
+        string interests "공모전 관심분야(CCF)"
+        datetime login_date "로그인 날짜"
+        int activity_stats "로그인/참가 횟수"
     }
 
-    USER_ACTIVITY_LOG {
-      int log_id PK
-      string action "apply/click"
-      string contest_pk FK
-      string member_pk FK
+    User_Activity_Log {
+        int apply_id PK "접수번호 (식별자)"
+        string member_pk FK "사용자 식별자"
+        string contest_pk FK "공모전 식별자"
+        string type "참가유형 (개인/팀)"
     }
 
-    CONTEST_META {
-      string contest_pk PK
-      int age_min "normalized age"
+    Contest {
+        string contest_pk PK "공모전 고유 식별자"
+        string field_reward "분야/상금 규모"
+        string status_hit "게시 상태/조회수"
+        string host_organ "주최 기관"
+        date period "시작일/마감일"
+        string qualification "자격 (지역/연령)"
     }
                     </pre>
                 </div>
@@ -1651,7 +1672,6 @@ erDiagram
                 <span class="media-badge">View</span>
               </div>
               <div class="media-body">
-                <!-- ✅ scrollbar=1로 통일 -->
                 <iframe class="pdf-preview-iframe"
                         src="asset/thinkgood_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1"
                         loading="lazy"
@@ -1825,7 +1845,6 @@ erDiagram
             <div class="media-card" onclick="openModal('발표 자료 (PDF)', 'asset/cheonan_presentation.pdf')">
               <div class="media-header"><span class="media-title"><i class="fas fa-file-pdf"></i> 발표 자료 (PDF)</span><span class="media-badge">View</span></div>
               <div class="media-body">
-                <!-- ✅ pointer-events 제거 + scrollbar=1 통일 -->
                 <iframe class="pdf-preview-iframe"
                         src="asset/cheonan_presentation.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=1"
                         loading="lazy"
@@ -1898,13 +1917,13 @@ erDiagram
     <div class="modal-content">
       <div class="modal-header">
         <h3 id="modalTitle" class="modal-title">Title</h3>
-        <div class="modal-close" onclick="closeModal()">✕</div>
+        <div class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></div>
       </div>
       <div class="modal-body-container" id="modalBody"></div>
     </div>
   </div>
 
-  <!-- UPDATED: Simple Code Modal -->
+  <!-- Code Modal -->
   <div id="codeModal" class="modal-overlay">
       <div class="code-modal-content">
           <div class="code-window-minimal">
@@ -2024,12 +2043,17 @@ def find_adm_nm(dong_gdf, lon, lat):
     function openLink(url){ window.open(url, "_blank", "noopener,noreferrer"); }
 
     function openModal(title, pdfPath){
-      document.body.classList.add('no-scroll'); // ✅ Prevent Scroll
+      document.body.classList.add('no-scroll');
       const modal = document.getElementById('visualModal');
       const body = document.getElementById('modalBody');
       const mTitle = document.getElementById('modalTitle');
       mTitle.innerText = title;
       body.innerHTML = '';
+      
+      // Reset body container style for generic content
+      body.style.background = '#0b0f0d'; 
+      body.style.overflow = 'hidden';
+
       const iframe = document.createElement('iframe');
       iframe.className = 'modal-iframe';
       iframe.src = pdfPath + "#view=FitH&toolbar=0&navpanes=0&scrollbar=1";
@@ -2039,12 +2063,17 @@ def find_adm_nm(dong_gdf, lon, lat):
     }
 
     function openModalImage(title, imgPath){
-      document.body.classList.add('no-scroll'); // ✅ Prevent Scroll
+      document.body.classList.add('no-scroll');
       const modal = document.getElementById('visualModal');
       const body = document.getElementById('modalBody');
       const mTitle = document.getElementById('modalTitle');
       mTitle.innerText = title;
       body.innerHTML = '';
+
+      // Reset body container style for image
+      body.style.background = '#0b0f0d';
+      body.style.overflow = 'hidden';
+
       const img = document.createElement('img');
       img.className = 'modal-img';
       img.src = imgPath;
@@ -2054,7 +2083,7 @@ def find_adm_nm(dong_gdf, lon, lat):
     }
 
     function closeModal(){
-      document.body.classList.remove('no-scroll'); // ✅ Enable Scroll
+      document.body.classList.remove('no-scroll');
       document.getElementById('visualModal').classList.remove('active');
       document.getElementById('modalBody').innerHTML = '';
     }
@@ -2063,14 +2092,49 @@ def find_adm_nm(dong_gdf, lon, lat):
       if(e.target === e.currentTarget) closeModal();
     });
 
+    // --- NEW: Diagram Modal Function ---
+    function openDiagramModal(){
+        const wrapper = document.querySelector('.mermaid-wrapper');
+        const svg = wrapper.querySelector('svg');
+        if(!svg) return;
+
+        document.body.classList.add('no-scroll'); // Scroll Lock
+        const modal = document.getElementById('visualModal');
+        const body = document.getElementById('modalBody');
+        const mTitle = document.getElementById('modalTitle');
+
+        mTitle.innerText = "데이터 구조도 (ERD) 상세 보기";
+        body.innerHTML = ''; // Clear previous content
+        
+        // White Background & Scroll for Diagram
+        body.style.background = '#ffffff';
+        body.style.overflow = 'auto'; // Allow scroll if large
+        body.style.display = 'flex';
+        body.style.alignItems = 'center';
+        body.style.justifyContent = 'center';
+        body.style.padding = '40px';
+
+        // Clone the SVG
+        const clone = svg.cloneNode(true);
+        
+        // Force SVG to scale properly without forcing 100% width if too small, but allow shrinking
+        clone.style.maxWidth = '100%';
+        clone.style.height = 'auto';
+        clone.removeAttribute('height'); // Remove fixed height if present
+        
+        // Wrapper for centering
+        body.appendChild(clone);
+        modal.classList.add('active');
+    }
+
     // --- Code Modal Logic (Simplified) ---
     function openCodeModal(){
-        document.body.classList.add('no-scroll'); // ✅ Prevent Scroll
+        document.body.classList.add('no-scroll');
         document.getElementById('codeModal').classList.add('active');
         renderCodeModal();
     }
     function closeCodeModal(){
-        document.body.classList.remove('no-scroll'); // ✅ Enable Scroll
+        document.body.classList.remove('no-scroll');
         document.getElementById('codeModal').classList.remove('active');
     }
     document.getElementById('codeModal').addEventListener('click', (e)=>{
@@ -2119,7 +2183,6 @@ def find_adm_nm(dong_gdf, lon, lat):
             icon.classList.add('fa-chevron-right');
         }
 
-        // ✅ PDF iframe에서 스크롤/드래그 시 카드 onclick(모달 열기) 튀는거 방지
         document.querySelectorAll('.pdf-preview-iframe').forEach((iframe) => {
           iframe.addEventListener('pointerdown', (ev) => ev.stopPropagation());
           iframe.addEventListener('wheel', (ev) => ev.stopPropagation(), { passive: true });
@@ -2129,7 +2192,6 @@ def find_adm_nm(dong_gdf, lon, lat):
 
     // -------- Code modal Renderer with Syntax Highlighting ----------
     function escapeHtml(s){
-      // ✅ UPDATED: Only escape basic HTML tags, NOT quotes to preserve code
       return s.replace(/[&<]/g, (m)=>({
         "&":"&amp;","<":"&lt;"
       }[m]));
@@ -2172,7 +2234,7 @@ def find_adm_nm(dong_gdf, lon, lat):
     }
   </script>
 
-  <!-- ✅ Updated Mermaid Config: Pretty Theme -->
+  <!-- Mermaid Config -->
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
 
