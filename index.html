@@ -2106,27 +2106,32 @@ def find_adm_nm(dong_gdf, lon, lat):
     
       mTitle.innerText = "데이터 구조도 (ERD) 상세 보기";
       body.innerHTML = '';
-      
+
       body.style.background = '#ffffff';
-      body.style.overflow = 'auto';     
-      body.style.display = 'block';      
-      body.style.padding = '24px';
-    
-      const inner = document.createElement('div');
-      inner.style.display = 'inline-block';
-      inner.style.minWidth = 'max-content';
+      body.style.overflow = 'hidden';
+      body.style.display = 'flex';
+      body.style.alignItems = 'center';
+      body.style.justifyContent = 'center';
+      body.style.padding = '0';
     
       const clone = svg.cloneNode(true);
-    
-      clone.style.maxWidth = 'none';
-      clone.style.width = '1600px';    
-      clone.style.height = 'auto';
-      clone.removeAttribute('height');
+
+      if (!clone.getAttribute('viewBox')) {
+        const wAttr = (clone.getAttribute('width') || '').toString();
+        const hAttr = (clone.getAttribute('height') || '').toString();
+        const w = parseFloat(wAttr) || 1600;
+        const h = parseFloat(hAttr) || 900;
+        clone.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      }
+
+      clone.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      clone.style.width = '100%';
+      clone.style.height = '100%';
+      clone.style.maxWidth = '100%';
+      clone.style.maxHeight = '100%';
       clone.style.display = 'block';
     
-      inner.appendChild(clone);
-      body.appendChild(inner);
-    
+      body.appendChild(clone);
       modal.classList.add('active');
     }
 
