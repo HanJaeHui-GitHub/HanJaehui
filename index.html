@@ -1202,6 +1202,131 @@
             max-width: 100%;
         }
     }
+
+    /* =========================
+       ERDCloud-like Diagram Modal
+       ========================= */
+    .erd-stage{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(#F3F4F6 1px, transparent 1px),
+        linear-gradient(90deg, #F3F4F6 1px, transparent 1px);
+      background-size: 22px 22px; /* ERDCloud grid vibe */
+      background-color: #F8FAFC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px 24px; 
+      overflow: hidden;
+    }
+    
+    /* 상단 툴바 */
+    .erd-toolbar{
+      position: absolute;
+      top: 14px; left: 14px; right: 14px;
+      height: 46px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(17,24,39,0.10);
+      border-radius: 14px;
+      box-shadow: 0 16px 30px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 12px;
+      z-index: 20;
+    }
+    
+    .erd-title{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      color: #111827;
+      font-size: 13px;
+      letter-spacing: -0.01em;
+    }
+    .erd-pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 12px;
+      border: 1px solid rgba(17,24,39,0.10);
+      background: #fff;
+      color: #374151;
+    }
+    .erd-pill.pk{
+      border-color: rgba(0,70,42,0.20);
+      background: rgba(0,70,42,0.08);
+      color: #00462A;
+    }
+    .erd-pill.fk{
+      border-color: rgba(107,114,128,0.22);
+      background: rgba(243,244,246,1);
+      color: #374151;
+    }
+    .erd-spacer{ flex: 1; }
+    
+    .erd-actions{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .erd-btn{
+      height: 32px;
+      padding: 0 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(17,24,39,0.10);
+      background: #fff;
+      color: #374151;
+      font-weight: 800;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .erd-btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(0,70,42,0.25);
+      box-shadow: 0 10px 16px rgba(0,0,0,0.08);
+      color: #00462A;
+    }
+    .erd-btn:active{ transform: translateY(0px); }
+    
+    .erd-canvas{
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      max-height: 760px;
+      border-radius: 18px;
+      border: 1px solid rgba(17,24,39,0.10);
+      background: #fff;
+      box-shadow: 0 26px 60px rgba(0,0,0,0.10);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .erd-svg-wrap{
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    .erd-canvas svg{
+      background: transparent;
+    }
+    .erd-canvas svg text{
+      font-weight: 650 !important;
+    }
   </style>
 </head>
 
@@ -2092,47 +2217,146 @@ def find_adm_nm(dong_gdf, lon, lat):
       if(e.target === e.currentTarget) closeModal();
     });
 
-    // --- Diagram Modal Function ---
+    // ---- ERD zoom state ----
+    let __erdScale = 1;
+    let __erdFitScale = 1;
+  
     function openDiagramModal(){
       const wrapper = document.querySelector('.mermaid-wrapper');
       const svg = wrapper?.querySelector('svg');
       if(!svg) return;
-    
+  
       document.body.classList.add('no-scroll');
-    
+  
       const modal = document.getElementById('visualModal');
       const body  = document.getElementById('modalBody');
-      const mTitle= document.getElementById('modalTitle');
-    
-      mTitle.innerText = "데이터 구조도 (ERD) 상세 보기";
+      const title = document.getElementById('modalTitle');
+  
+      title.innerText = "ERD";
       body.innerHTML = '';
-
-      body.style.background = '#ffffff';
+  
+      // 모달 바디를 ERDCloud 캔버스로 세팅
+      body.style.background = '#F8FAFC';
       body.style.overflow = 'hidden';
-      body.style.display = 'flex';
-      body.style.alignItems = 'center';
-      body.style.justifyContent = 'center';
+      body.style.display = 'block';
       body.style.padding = '0';
-    
+      body.style.position = 'relative';
+  
+      // Stage
+      const stage = document.createElement('div');
+      stage.className = 'erd-stage';
+  
+      // Toolbar
+      const toolbar = document.createElement('div');
+      toolbar.className = 'erd-toolbar';
+      toolbar.innerHTML = `
+        <div class="erd-title">
+          <i class="fas fa-diagram-project" style="color:#00462A"></i>
+          데이터 모델 (ERD)
+          <span class="erd-pill pk"><span style="width:7px;height:7px;border-radius:50%;background:#00462A"></span>PK</span>
+          <span class="erd-pill fk"><span style="width:7px;height:7px;border-radius:50%;background:#6B7280"></span>FK</span>
+        </div>
+        <div class="erd-spacer"></div>
+        <div class="erd-actions">
+          <button class="erd-btn" id="erdZoomOut" title="Zoom Out"><i class="fas fa-minus"></i></button>
+          <button class="erd-btn" id="erdZoomIn" title="Zoom In"><i class="fas fa-plus"></i></button>
+          <button class="erd-btn" id="erdFit" title="Fit"><i class="fas fa-expand"></i> Fit</button>
+          <button class="erd-btn" id="erdDownload" title="Download SVG"><i class="fas fa-download"></i></button>
+        </div>
+      `;
+  
+      // Canvas (white card)
+      const canvas = document.createElement('div');
+      canvas.className = 'erd-canvas';
+  
+      // Clone SVG
       const clone = svg.cloneNode(true);
-
-      if (!clone.getAttribute('viewBox')) {
-        const wAttr = (clone.getAttribute('width') || '').toString();
-        const hAttr = (clone.getAttribute('height') || '').toString();
-        const w = parseFloat(wAttr) || 1600;
-        const h = parseFloat(hAttr) || 900;
-        clone.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      clone.removeAttribute('height');
+      clone.removeAttribute('width');
+  
+      // viewBox 보장(mermaid는 대부분 존재하지만 혹시 대비)
+      if(!clone.getAttribute('viewBox')) {
+        const vb = svg.viewBox?.baseVal;
+        if(vb) clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${vb.height}`);
       }
-
-      clone.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-      clone.style.width = '100%';
-      clone.style.height = '100%';
-      clone.style.maxWidth = '100%';
-      clone.style.maxHeight = '100%';
-      clone.style.display = 'block';
-    
-      body.appendChild(clone);
+  
+      const wrap = document.createElement('div');
+      wrap.className = 'erd-svg-wrap';
+      wrap.appendChild(clone);
+      canvas.appendChild(wrap);
+  
+      stage.appendChild(toolbar);
+      stage.appendChild(canvas);
+      body.appendChild(stage);
+  
       modal.classList.add('active');
+  
+      // --- Fit & Zoom handlers ---
+      const zoomInBtn = toolbar.querySelector('#erdZoomIn');
+      const zoomOutBtn = toolbar.querySelector('#erdZoomOut');
+      const fitBtn = toolbar.querySelector('#erdFit');
+      const dlBtn = toolbar.querySelector('#erdDownload');
+  
+      const applyScale = (s) => {
+        __erdScale = Math.max(0.35, Math.min(2.2, s));
+        wrap.style.transform = `scale(${__erdScale})`;
+      };
+  
+      const computeFit = () => {
+        // SVG 실제 크기 추정 (getBBox가 더 안정적)
+        let box;
+        try { box = clone.getBBox(); } catch(e){ box = null; }
+  
+        const cw = canvas.clientWidth;
+        const ch = canvas.clientHeight;
+  
+        const padding = 36; // 캔버스 여백 느낌
+        const aw = Math.max(100, cw - padding * 2);
+        const ah = Math.max(100, ch - padding * 2);
+  
+        const sw = box?.width || 1000;
+        const sh = box?.height || 600;
+  
+        __erdFitScale = Math.min(aw / sw, ah / sh);
+        __erdFitScale = Math.max(0.35, Math.min(1.6, __erdFitScale)); // 너무 커지는 것 방지
+        applyScale(__erdFitScale);
+      };
+  
+      // 초기 Fit
+      setTimeout(computeFit, 0);
+  
+      zoomInBtn.onclick = () => applyScale(__erdScale + 0.12);
+      zoomOutBtn.onclick = () => applyScale(__erdScale - 0.12);
+      fitBtn.onclick = computeFit;
+  
+      // 다운로드(SVG)
+      dlBtn.onclick = () => {
+        const serializer = new XMLSerializer();
+        const svgText = serializer.serializeToString(clone);
+        const blob = new Blob([svgText], { type: "image/svg+xml;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'erd.svg';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      };
+  
+      // 리사이즈 시에도 Fit 유지(“캡처 느낌” 유지)
+      window.__erdResizeHandler = () => computeFit();
+      window.addEventListener('resize', window.__erdResizeHandler, { passive: true });
+  
+      // 모달 닫을 때 리스너 정리(메모리 누수 방지)
+      const oldClose = window.closeModal;
+      window.closeModal = function(){
+        window.removeEventListener('resize', window.__erdResizeHandler);
+        window.__erdResizeHandler = null;
+        oldClose();
+        // 원복
+        window.closeModal = oldClose;
+      };
     }
 
     // --- Code Modal Logic ---
