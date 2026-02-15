@@ -78,6 +78,11 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ✅ Body Scroll Lock Class */
+    body.no-scroll {
+        overflow: hidden;
+    }
+
     a{text-decoration:none;color:inherit;transition:all .2s ease;}
     img{max-width:100%;display:block;}
     ul{list-style:none;}
@@ -977,7 +982,7 @@
         display: block;
     }
 
-    /* Code Modal Customization */
+    /* --- UPDATED: Minimal Code Modal --- */
     .code-modal-content {
         width: min(1100px, 92vw);
         height: auto;
@@ -988,83 +993,46 @@
         flex-direction: column;
     }
 
-    .mac-window {
-        background: #1e1e1e; /* VS Code Dark */
-        border-radius: 14px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    .code-window-minimal {
+        background: #1e1e1e;
+        border-radius: 12px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        border: 1px solid #333;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        height: 100%;
-        border: 1px solid #2a2a2a;
     }
 
-    .mac-header {
+    .code-header-minimal {
         background: #252526;
-        padding: 12px 14px;
+        padding: 12px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid #1e1e1e;
-        user-select: none;
-        gap: 12px;
+        border-bottom: 1px solid #333;
     }
 
-    .code-toolbar{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      justify-content:flex-end;
-      min-width:0;
-    }
-
-    .tool-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:12px;
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.10);
-      color:rgba(255,255,255,0.86);
-      font-weight:800;
-      cursor:pointer;
-      transition: all .2s;
-    }
-    .tool-btn:hover{
-      background:rgba(255,255,255,0.10);
-      border-color:rgba(163,230,53,0.28);
-    }
-
-    .kbd-hint{
-      font-size:0.72rem;
-      padding:6px 10px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,0.10);
-      color:rgba(255,255,255,0.55);
-      font-weight:900;
-    }
-
-    .window-close-btn {
-        color: #b3b3b3;
-        cursor: pointer;
-        font-size: 1.1rem;
-        width: 32px;
-        height: 32px;
-        display: flex;
+    .file-tag {
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        border-radius: 10px;
-        transition: all 0.2s;
-        border: 1px solid rgba(255,255,255,0.10);
-        background: rgba(255,255,255,0.06);
+        gap: 8px;
+        color: #e0e0e0;
+        font-weight: 700;
+        font-size: 0.95rem;
     }
+    .file-tag i { color: #8CB86E; }
 
-    .window-close-btn:hover {
-        background-color: #c42b1c;
-        color: #ffffff;
-        border-color: rgba(255,255,255,0.0);
+    .close-minimal {
+        background: transparent;
+        border: none;
+        color: #888;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: color 0.2s;
+        padding: 4px;
+        line-height: 1;
     }
+    .close-minimal:hover { color: #fff; }
 
     .code-editor{
       position: relative;
@@ -1078,6 +1046,15 @@
       max-height: 70vh;
     }
 
+    /* Code Syntax Highlighting (VS Code Dark) */
+    .c-k { color: #C586C0; font-weight: bold; } /* Keywords */
+    .c-f { color: #DCDCAA; } /* Functions */
+    .c-s { color: #CE9178; } /* Strings */
+    .c-c { color: #8CB86E; font-style: italic; } /* Comments (Brighter Green + Italic) */
+    .c-n { color: #B5CEA8; } /* Numbers */
+    .c-t { color: #4EC9B0; } /* Types/Classes */
+    .c-o { color: #D4D4D4; } /* Operators */
+
     .code-shell{
       display:flex;
       align-items:flex-start;
@@ -1089,10 +1066,10 @@
       width: 54px;
       text-align: right;
       padding: 18px 12px 18px 0;
-      color: #8a8a8a;
+      color: #555;
       user-select: none;
-      border-right: 1px solid #2f2f2f;
-      background: #1a1a1a;
+      border-right: 1px solid #333;
+      background: #1e1e1e;
       margin: 0;
       white-space: pre;
     }
@@ -1111,66 +1088,35 @@
     .code-editor::-webkit-scrollbar-thumb { background: #424242; border-radius: 5px; border: 2px solid #1e1e1e; }
     .code-editor::-webkit-scrollbar-thumb:hover { background: #555; }
 
-    /* --- Code Modal Upgrade --- */
-    .tabbar{display:flex;gap:10px;align-items:center;min-width:0;}
-    .tab{
-      display:flex;align-items:center;gap:10px;
-      padding:8px 12px;border-radius:12px;
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.10);
-      color:rgba(255,255,255,0.86);
-      font-weight:800;font-size:0.9rem;
+    /* --- UPDATED: Beautiful Mermaid Container --- */
+    .diagram-box {
+        background: #ffffff;
+        border: 1px solid #E2E8F0;
+        border-radius: 16px;
+        padding: 0;
+        margin-bottom: 24px;
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
     }
-    .tab i{color:#A3E635;}
-    .tab-name{max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-    .lang-pill{
-      font-size:0.72rem;
-      padding:3px 8px;border-radius:999px;
-      border:1px solid rgba(163,230,53,0.35);
-      background:rgba(163,230,53,0.10);
-      color:#D9F99D;font-weight:900;
+    .diagram-header {
+        background: #F8FAFC;
+        padding: 12px 20px;
+        border-bottom: 1px solid #E2E8F0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text-sub);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
-
-    .searchbox{
-      display:flex;align-items:center;gap:8px;
-      padding:8px 10px;border-radius:12px;
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.10);
-      min-width: 280px;
-    }
-    .searchbox i{color:rgba(255,255,255,0.55);}
-    .searchbox input{
-      width: 220px;
-      background:transparent;border:none;outline:none;
-      color:rgba(255,255,255,0.88);
-      font-weight:700;font-size:0.85rem;
-    }
-    .searchbox input::placeholder{color:rgba(255,255,255,0.35);font-weight:700;}
-    .clear-btn{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.12);
-      color:rgba(255,255,255,0.75);
-      width:26px;height:26px;border-radius:10px;
-      cursor:pointer;font-weight:900;
-    }
-    .clear-btn:hover{background:rgba(255,255,255,0.12);}
-
-    .code-toast{
-      position:absolute;top:14px;right:14px;z-index:5;
-      padding:10px 12px;border-radius:12px;
-      background:rgba(20,20,20,0.85);
-      border:1px solid rgba(255,255,255,0.12);
-      color:rgba(255,255,255,0.9);
-      font-weight:800;font-size:0.85rem;
-      display:none;align-items:center;gap:8px;
-      pointer-events:none;
-    }
-
-    mark.code-hit{
-      background: rgba(163,230,53,0.22);
-      color: rgba(255,255,255,0.95);
-      padding: 0 2px;
-      border-radius: 4px;
+    .diagram-header i { color: var(--primary); }
+    .mermaid-wrapper {
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        background: #fff;
     }
 
     /* Responsive */
@@ -1229,9 +1175,6 @@
 
         .pj-info-grid { flex-direction: column; width: 100%; border-radius: 20px; gap: 16px; }
         .modal-content, .code-modal-content{ width: 96vw; height: 92vh; }
-
-        .searchbox{min-width: 200px;}
-        .searchbox input{width: 140px;}
     }
   </style>
 </head>
@@ -1620,30 +1563,33 @@
               AI 고도화의 병목을 데이터 구조로 정의하고, 운영 DB를 ‘학습 가능한 자산’으로 전환하는 설계를 역제안했습니다.
             </p>
 
-            <!-- Mermaid: 안정 문법 + pre.mermaid 유지 -->
-            <div style="background:#fff; padding:20px; border-radius:12px; border:1px solid #E2E8F0; margin-bottom:24px; overflow:hidden;">
-              <pre class="mermaid">
+            <!-- Mermaid: Beautiful Wrapper -->
+            <div class="diagram-box">
+                <div class="diagram-header"><i class="fas fa-database"></i> Proposed Data Flow Structure</div>
+                <div class="mermaid-wrapper">
+                    <pre class="mermaid">
 erDiagram
-  USER_MASTER ||--o{ USER_ACTIVITY_LOG : generates
-  CONTEST_META ||--o{ USER_ACTIVITY_LOG : targets
+    USER_MASTER ||--o{ USER_ACTIVITY_LOG : generates
+    CONTEST_META ||--o{ USER_ACTIVITY_LOG : targets
 
-  USER_MASTER {
-    string member_pk PK "virtual id"
-    int status "member status"
-  }
+    USER_MASTER {
+      string member_pk PK "virtual id"
+      int status "member status"
+    }
 
-  USER_ACTIVITY_LOG {
-    int log_id PK
-    string action "apply/click"
-    string contest_pk FK
-    string member_pk FK
-  }
+    USER_ACTIVITY_LOG {
+      int log_id PK
+      string action "apply/click"
+      string contest_pk FK
+      string member_pk FK
+    }
 
-  CONTEST_META {
-    string contest_pk PK
-    int age_min "normalized age"
-  }
-              </pre>
+    CONTEST_META {
+      string contest_pk PK
+      int age_min "normalized age"
+    }
+                    </pre>
+                </div>
             </div>
 
             <div class="asset-grid-3">
@@ -1940,47 +1886,26 @@ erDiagram
     </div>
   </div>
 
-  <!-- CODE MODAL -->
+  <!-- UPDATED: Simple Code Modal -->
   <div id="codeModal" class="modal-overlay">
       <div class="code-modal-content">
-          <div class="mac-window">
-              <div class="mac-header">
-                <div class="tabbar">
-                  <div class="tab active">
-                    <i class="fas fa-file-code"></i>
-                    <span class="tab-name">gis_pipeline.py</span>
-                    <span class="lang-pill">PY</span>
-                  </div>
-                </div>
-
-                <div class="code-toolbar">
-                  <div class="searchbox" onclick="event.stopPropagation()">
-                    <i class="fas fa-magnifying-glass"></i>
-                    <input id="codeSearch" type="text" placeholder="Search in code (Enter: next)" />
-                    <button class="clear-btn" onclick="clearCodeSearch(event)" title="Clear">✕</button>
-                  </div>
-
-                  <button class="tool-btn" onclick="copyCodeFromModal(event)">
-                    <i class="fas fa-copy"></i> Copy
-                  </button>
-
-                  <span class="kbd-hint">ESC</span>
-
-                  <div class="window-close-btn" onclick="closeCodeModal()">
+          <div class="code-window-minimal">
+              <!-- Minimal Header: No buttons, no tabs, just file name -->
+              <div class="code-header-minimal">
+                <span class="file-tag">
+                    <i class="fas fa-code"></i> gis_pipeline.py
+                </span>
+                <button class="close-minimal" onclick="closeCodeModal()" title="Close">
                     <i class="fas fa-times"></i>
-                  </div>
-                </div>
+                </button>
               </div>
 
               <div class="code-editor" id="codeEditor">
-                <div id="codeToast" class="code-toast"><i class="fas fa-check"></i> Copied</div>
-
                 <div class="code-shell" id="codeShell">
                   <pre class="line-numbers" id="codeLn"></pre>
                   <pre class="code-content" id="codeSrc"></pre>
                 </div>
 
-                <!-- 원본 코드는 숨겨두고, JS가 line numbers + 검색 highlight 포함 렌더링 -->
                 <pre id="codeRaw" style="display:none;">
 # [Pipeline 1] Kakao API 기반 Geocoding (Address → Coordinate)
 import requests
@@ -2081,6 +2006,7 @@ def find_adm_nm(dong_gdf, lon, lat):
     function openLink(url){ window.open(url, "_blank", "noopener,noreferrer"); }
 
     function openModal(title, pdfPath){
+      document.body.classList.add('no-scroll'); // ✅ Prevent Scroll
       const modal = document.getElementById('visualModal');
       const body = document.getElementById('modalBody');
       const mTitle = document.getElementById('modalTitle');
@@ -2095,6 +2021,7 @@ def find_adm_nm(dong_gdf, lon, lat):
     }
 
     function openModalImage(title, imgPath){
+      document.body.classList.add('no-scroll'); // ✅ Prevent Scroll
       const modal = document.getElementById('visualModal');
       const body = document.getElementById('modalBody');
       const mTitle = document.getElementById('modalTitle');
@@ -2109,6 +2036,7 @@ def find_adm_nm(dong_gdf, lon, lat):
     }
 
     function closeModal(){
+      document.body.classList.remove('no-scroll'); // ✅ Enable Scroll
       document.getElementById('visualModal').classList.remove('active');
       document.getElementById('modalBody').innerHTML = '';
     }
@@ -2117,18 +2045,15 @@ def find_adm_nm(dong_gdf, lon, lat):
       if(e.target === e.currentTarget) closeModal();
     });
 
-    // --- Code Modal Logic ---
+    // --- Code Modal Logic (Simplified) ---
     function openCodeModal(){
+        document.body.classList.add('no-scroll'); // ✅ Prevent Scroll
         document.getElementById('codeModal').classList.add('active');
-        renderCodeModal(); // ✅ 열릴 때 렌더/검색 바인딩
-        const input = document.getElementById('codeSearch');
-        setTimeout(()=>input?.focus(), 60);
+        renderCodeModal();
     }
     function closeCodeModal(){
+        document.body.classList.remove('no-scroll'); // ✅ Enable Scroll
         document.getElementById('codeModal').classList.remove('active');
-        const input = document.getElementById('codeSearch');
-        if(input) input.value = "";
-        applyCodeSearch("");
     }
     document.getElementById('codeModal').addEventListener('click', (e)=>{
       if(e.target === e.currentTarget) closeCodeModal();
@@ -2184,29 +2109,35 @@ def find_adm_nm(dong_gdf, lon, lat):
         });
     });
 
-    // -------- Code modal: search/highlight/copy/toast ----------
-    let __codePlain = "";
-    let __hits = [];
-    let __hitIndex = -1;
-
-    function showCodeToast(text){
-      const t = document.getElementById('codeToast');
-      if(!t) return;
-      t.innerHTML = `<i class="fas fa-check"></i> ${text}`;
-      t.style.display = 'inline-flex';
-      clearTimeout(t.__timer);
-      t.__timer = setTimeout(()=>{ t.style.display='none'; }, 1100);
+    // -------- Code modal Renderer with Syntax Highlighting ----------
+    function escapeHtml(s){
+      // ✅ UPDATED: Only escape basic HTML tags, NOT quotes to preserve code
+      return s.replace(/[&<]/g, (m)=>({
+        "&":"&amp;","<":"&lt;"
+      }[m]));
     }
 
-    function escapeHtml(s){
-      return s.replace(/[&<>"']/g, (m)=>({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-      }[m]));
+    // Simple Python Highlighter
+    function highlightPython(code) {
+        // 1. Escape HTML (basic)
+        let safe = escapeHtml(code);
+
+        // 2. Tokenize and replace
+        const tokenRegex = /(#.*)|("""[\s\S]*?"""|"[^"]*"|'[^']*')|(\b(?:import|from|def|return|if|else|try|except|None|True|False)\b)|(\b[a-zA-Z_]\w*(?=\())|(\b\d+(?:\.\d+)?\b)/g;
+
+        return safe.replace(tokenRegex, (match, comment, string, keyword, func, number) => {
+            if (comment) return `<span class="c-c">${comment}</span>`;
+            if (string) return `<span class="c-s">${string}</span>`;
+            if (keyword) return `<span class="c-k">${keyword}</span>`;
+            if (func) return `<span class="c-f">${func}</span>`;
+            if (number) return `<span class="c-n">${number}</span>`;
+            return match;
+        });
     }
 
     function renderCodeModal(){
       const rawEl = document.getElementById('codeRaw');
-      __codePlain = (rawEl?.textContent || '')
+      const codePlain = (rawEl?.textContent || '')
         .replace(/\u00A0/g, ' ')
         .replace(/[\u200B-\u200D\uFEFF]/g, '')
         .trimEnd();
@@ -2215,95 +2146,30 @@ def find_adm_nm(dong_gdf, lon, lat):
       const codeLn  = document.getElementById('codeLn');
       if(!codeSrc || !codeLn) return;
 
-      codeSrc.innerHTML = escapeHtml(__codePlain);
+      // Apply Syntax Highlighting
+      codeSrc.innerHTML = highlightPython(codePlain);
 
-      const lines = __codePlain.split('\n').length;
+      const lines = codePlain.split('\n').length;
       codeLn.textContent = Array.from({length:lines}, (_,i)=>String(i+1)).join('\n') + '\n';
-
-      const input = document.getElementById('codeSearch');
-      if(input){
-        input.oninput = () => applyCodeSearch(input.value);
-        input.onkeydown = (ev)=>{
-          if(ev.key === 'Enter'){ ev.preventDefault(); gotoNextHit(); }
-          if(ev.key === 'Escape'){ ev.preventDefault(); closeCodeModal(); }
-        };
-      }
-    }
-
-    function applyCodeSearch(q){
-      const src = document.getElementById('codeSrc');
-      if(!src) return;
-
-      __hits = [];
-      __hitIndex = -1;
-
-      if(!q){
-        src.innerHTML = escapeHtml(__codePlain);
-        return;
-      }
-
-      const safe = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const re = new RegExp(safe, 'gi');
-
-      let m;
-      while((m = re.exec(__codePlain)) !== null){
-        __hits.push({ start: m.index, end: m.index + m[0].length });
-        if(m.index === re.lastIndex) re.lastIndex++;
-      }
-
-      let out = "";
-      let last = 0;
-      for(const h of __hits){
-        out += escapeHtml(__codePlain.slice(last, h.start));
-        out += `<mark class="code-hit">${escapeHtml(__codePlain.slice(h.start, h.end))}</mark>`;
-        last = h.end;
-      }
-      out += escapeHtml(__codePlain.slice(last));
-      src.innerHTML = out;
-
-      if(__hits.length) gotoNextHit();
-    }
-
-    function gotoNextHit(){
-      const shell = document.getElementById('codeEditor'); // scroll container
-      const src = document.getElementById('codeSrc');
-      if(!shell || !src || !__hits.length) return;
-
-      __hitIndex = (__hitIndex + 1) % __hits.length;
-
-      const before = __codePlain.slice(0, __hits[__hitIndex].start);
-      const line = before.split('\n').length;
-
-      // 대략적인 줄 위치로 스크롤
-      const lineHeight = 1.6 * 13;
-      shell.scrollTop = Math.max(0, (line - 1) * lineHeight - 120);
-    }
-
-    function clearCodeSearch(ev){
-      ev?.stopPropagation();
-      const input = document.getElementById('codeSearch');
-      if(input) input.value = "";
-      applyCodeSearch("");
-      input?.focus();
-    }
-
-    async function copyCodeFromModal(ev){
-      ev?.stopPropagation();
-      const code = __codePlain || document.getElementById('codeSrc')?.textContent || "";
-      if(!code) return;
-      await navigator.clipboard.writeText(code);
-      showCodeToast("Copied");
     }
   </script>
 
-  <!-- ✅ Mermaid: startOnLoad 끄고, 블록 단위 render로 에러 원문 로그까지 -->
+  <!-- ✅ Updated Mermaid Config: Pretty Theme -->
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
 
     mermaid.initialize({
       startOnLoad: false,
       securityLevel: "strict",
-      theme: "default"
+      theme: "base",
+      themeVariables: {
+        primaryColor: '#E0F2E9',
+        primaryTextColor: '#00462A',
+        primaryBorderColor: '#00462A',
+        lineColor: '#00462A',
+        secondaryColor: '#f4f4f4',
+        tertiaryColor: '#fff'
+      }
     });
 
     window.addEventListener("DOMContentLoaded", async () => {
@@ -2325,15 +2191,9 @@ def find_adm_nm(dong_gdf, lon, lat):
           el.replaceWith(wrapper);
         } catch (e) {
           console.error("Mermaid render failed:", e);
-          console.error("Mermaid source was:\n", code);
-
           el.style.whiteSpace = "pre-wrap";
-          el.style.background = "#fff5f5";
-          el.style.border = "1px solid #fecaca";
-          el.style.borderRadius = "12px";
-          el.style.padding = "14px";
-          el.style.color = "#7f1d1d";
-          el.textContent = `Mermaid Syntax Error\n\n${code}`;
+          el.style.color = "red";
+          el.textContent = `Mermaid Error: ${e.message}`;
         }
       }
     });
