@@ -2092,50 +2092,42 @@ def find_adm_nm(dong_gdf, lon, lat):
       if(e.target === e.currentTarget) closeModal();
     });
 
-    // --- Diagram Modal Function ---
+    // --- NEW: Diagram Modal Function ---
     function openDiagramModal(){
-      const wrapper = document.querySelector('.mermaid-wrapper');
-      const svg = wrapper?.querySelector('svg');
-      if(!svg) return;
-    
-      document.body.classList.add('no-scroll');
-    
-      const modal = document.getElementById('visualModal');
-      const body  = document.getElementById('modalBody');
-      const mTitle= document.getElementById('modalTitle');
-    
-      mTitle.innerText = "데이터 구조도 (ERD) 상세 보기";
-      body.innerHTML = '';
+        const wrapper = document.querySelector('.mermaid-wrapper');
+        const svg = wrapper.querySelector('svg');
+        if(!svg) return;
 
-      body.style.background = '#ffffff';
-      body.style.overflow = 'hidden';
-      body.style.display = 'flex';
-      body.style.alignItems = 'center';
-      body.style.justifyContent = 'center';
-      body.style.padding = '0';
-    
-      const clone = svg.cloneNode(true);
+        document.body.classList.add('no-scroll'); // Scroll Lock
+        const modal = document.getElementById('visualModal');
+        const body = document.getElementById('modalBody');
+        const mTitle = document.getElementById('modalTitle');
 
-      if (!clone.getAttribute('viewBox')) {
-        const wAttr = (clone.getAttribute('width') || '').toString();
-        const hAttr = (clone.getAttribute('height') || '').toString();
-        const w = parseFloat(wAttr) || 1600;
-        const h = parseFloat(hAttr) || 900;
-        clone.setAttribute('viewBox', `0 0 ${w} ${h}`);
-      }
+        mTitle.innerText = "데이터 구조도 (ERD) 상세 보기";
+        body.innerHTML = ''; // Clear previous content
+        
+        // White Background & Scroll for Diagram
+        body.style.background = '#ffffff';
+        body.style.overflow = 'auto'; // Allow scroll if large
+        body.style.display = 'flex';
+        body.style.alignItems = 'center';
+        body.style.justifyContent = 'center';
+        body.style.padding = '40px';
 
-      clone.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-      clone.style.width = '100%';
-      clone.style.height = '100%';
-      clone.style.maxWidth = '100%';
-      clone.style.maxHeight = '100%';
-      clone.style.display = 'block';
-    
-      body.appendChild(clone);
-      modal.classList.add('active');
+        // Clone the SVG
+        const clone = svg.cloneNode(true);
+        
+        // Force SVG to scale properly without forcing 100% width if too small, but allow shrinking
+        clone.style.maxWidth = '100%';
+        clone.style.height = 'auto';
+        clone.removeAttribute('height'); // Remove fixed height if present
+        
+        // Wrapper for centering
+        body.appendChild(clone);
+        modal.classList.add('active');
     }
 
-    // --- Code Modal Logic ---
+    // --- Code Modal Logic (Simplified) ---
     function openCodeModal(){
         document.body.classList.add('no-scroll');
         document.getElementById('codeModal').classList.add('active');
