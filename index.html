@@ -1112,11 +1112,23 @@
         letter-spacing: 0.05em;
     }
     .diagram-header i { color: var(--primary); }
-    .mermaid-wrapper {
-        padding: 30px;
+    
+    /* ✅ ERD Mermaid Container: 반응형 + 중앙 정렬 */
+    .diagram-box .mermaid-wrapper {
+        overflow-x: auto;          
+        overflow-y: hidden;
+        padding: 24px;       
+        justify-content: center; /* 다시 중앙 정렬 */
         display: flex;
-        justify-content: center;
         background: #fff;
+    }
+
+    /* Mermaid SVG: 화면에 맞춤 (너무 크지 않게) */
+    .diagram-box .mermaid-wrapper svg {
+        max-width: 100% !important; /* 화면 폭 넘지 않게 */
+        height: auto !important;
+        display: block;
+        /* width: 1400px;  <-- 삭제: 강제 크기 제거 */
     }
 
     /* Responsive */
@@ -1175,6 +1187,12 @@
 
         .pj-info-grid { flex-direction: column; width: 100%; border-radius: 20px; gap: 16px; }
         .modal-content, .code-modal-content{ width: 96vw; height: 92vh; }
+
+        /* Mermaid Mobile Width: 모바일에서도 꽉 차게만 설정 */
+        .diagram-box .mermaid-wrapper svg {
+            /* width: 1100px; <-- 삭제 */
+            max-width: 100%;
+        }
     }
   </style>
 </head>
