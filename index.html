@@ -1088,7 +1088,7 @@
     .code-editor::-webkit-scrollbar-thumb { background: #424242; border-radius: 5px; border: 2px solid #1e1e1e; }
     .code-editor::-webkit-scrollbar-thumb:hover { background: #555; }
 
-    /* --- UPDATED: Beautiful Mermaid Container --- */
+    /* --- Mermaid Container --- */
     .diagram-box {
         background: #ffffff;
         border: 1px solid #E2E8F0;
@@ -1132,7 +1132,6 @@
         background: #fff;
     }
 
-    /* Mermaid SVG: 화면에 맞춤 */
     .diagram-box .mermaid-wrapper svg {
         max-width: 100% !important;
         height: auto !important;
@@ -2092,42 +2091,50 @@ def find_adm_nm(dong_gdf, lon, lat):
       if(e.target === e.currentTarget) closeModal();
     });
 
-    // --- NEW: Diagram Modal Function ---
+    // --- Diagram Modal Function ---
     function openDiagramModal(){
-        const wrapper = document.querySelector('.mermaid-wrapper');
-        const svg = wrapper.querySelector('svg');
-        if(!svg) return;
-
-        document.body.classList.add('no-scroll'); // Scroll Lock
-        const modal = document.getElementById('visualModal');
-        const body = document.getElementById('modalBody');
-        const mTitle = document.getElementById('modalTitle');
-
-        mTitle.innerText = "데이터 구조도 (ERD) 상세 보기";
-        body.innerHTML = ''; // Clear previous content
-        
-        // White Background & Scroll for Diagram
-        body.style.background = '#ffffff';
-        body.style.overflow = 'auto'; // Allow scroll if large
-        body.style.display = 'flex';
-        body.style.alignItems = 'center';
-        body.style.justifyContent = 'center';
-        body.style.padding = '40px';
-
-        // Clone the SVG
-        const clone = svg.cloneNode(true);
-        
-        // Force SVG to scale properly without forcing 100% width if too small, but allow shrinking
-        clone.style.maxWidth = '100%';
-        clone.style.height = 'auto';
-        clone.removeAttribute('height'); // Remove fixed height if present
-        
-        // Wrapper for centering
-        body.appendChild(clone);
-        modal.classList.add('active');
+      const wrapper = document.querySelector('.mermaid-wrapper');
+      const svg = wrapper?.querySelector('svg');
+      if(!svg) return;
+    
+      document.body.classList.add('no-scroll');
+    
+      const modal = document.getElementById('visualModal');
+      const body  = document.getElementById('modalBody');
+      const mTitle= document.getElementById('modalTitle');
+    
+      mTitle.innerText = "데이터 구조도 (ERD) 상세 보기";
+      body.innerHTML = '';
+    
+      body.style.background = '#ffffff';
+      body.style.overflow = 'hidden';
+      body.style.display = 'flex';
+      body.style.alignItems = 'center';
+      body.style.justifyContent = 'center';
+      body.style.padding = '0';
+    
+      const clone = svg.cloneNode(true);
+    
+      if (!clone.getAttribute('viewBox')) {
+        const wAttr = (clone.getAttribute('width') || '').toString();
+        const hAttr = (clone.getAttribute('height') || '').toString();
+        const w = parseFloat(wAttr) || 1600;
+        const h = parseFloat(hAttr) || 900;
+        clone.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      }
+    
+      clone.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      clone.style.width = '100%';
+      clone.style.height = '100%';
+      clone.style.maxWidth = '100%';
+      clone.style.maxHeight = '100%';
+      clone.style.display = 'block';
+    
+      body.appendChild(clone);
+      modal.classList.add('active');
     }
 
-    // --- Code Modal Logic (Simplified) ---
+    // --- Code Modal Logic ---
     function openCodeModal(){
         document.body.classList.add('no-scroll');
         document.getElementById('codeModal').classList.add('active');
